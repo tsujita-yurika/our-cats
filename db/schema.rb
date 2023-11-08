@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_08_075312) do
+ActiveRecord::Schema.define(version: 2023_11_08_134443) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -71,18 +71,21 @@ ActiveRecord::Schema.define(version: 2023_11_08_075312) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "entries", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "room_id", null: false
+  create_table "deposit_cats", force: :cascade do |t|
+    t.integer "request_id", null: false
+    t.string "name", null: false
+    t.string "health_state", null: false
+    t.integer "age", null: false
+    t.string "sex", null: false
+    t.string "category", null: false
+    t.string "family"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "identifications", force: :cascade do |t|
+  create_table "entries", force: :cascade do |t|
     t.integer "member_id", null: false
-    t.string "name", null: false
-    t.string "phone_number", null: false
-    t.string "address", null: false
+    t.integer "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -101,6 +104,9 @@ ActiveRecord::Schema.define(version: 2023_11_08_075312) do
     t.string "sex", null: false
     t.string "prefectures", null: false
     t.string "family"
+    t.string "real_name"
+    t.string "phone_number"
+    t.string "address"
     t.boolean "identification_status", default: false, null: false
     t.boolean "is_active", default: false, null: false
     t.string "reset_password_token"
@@ -133,13 +139,10 @@ ActiveRecord::Schema.define(version: 2023_11_08_075312) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer "mamber_id", null: false
-    t.integer "cat_id", null: false
+    t.integer "member_id", null: false
     t.string "season", null: false
     t.string "days", null: false
     t.string "location", null: false
-    t.string "deposit_cat", null: false
-    t.string "health_state", null: false
     t.string "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

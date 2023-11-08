@@ -1,0 +1,2 @@
+class DepositCat < ApplicationRecord
+end

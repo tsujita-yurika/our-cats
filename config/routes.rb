@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
 # 会員用
 # URL /customers/sign_in ...
 devise_for :members,skip: [:passwords], controllers: {
@@ -18,9 +19,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    get 'members/index' => 'members#index'
-    get 'members/show' => 'members#show'
-    get 'members/edit' => 'members#edit'
+    resources :members
+    resources :cats
   end
 
 

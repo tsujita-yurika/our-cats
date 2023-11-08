@@ -1,6 +1,6 @@
 require "test_helper"
 
-class IdentificationTest < ActiveSupport::TestCase
+class DepositCatTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

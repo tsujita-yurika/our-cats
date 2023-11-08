@@ -3,6 +3,9 @@ class Public::MembersController < ApplicationController
   end
 
   def show
+    @member = Member.find(params[:id])
+    @cats = @member.cats
+    @cat = Cat.new
   end
 
   def edit

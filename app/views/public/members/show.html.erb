@@ -1,2 +1,24 @@
 <h1>Public::Members#show</h1>
 <p>Find me in app/views/public/members/show.html.erb</p>
+      <h3>マイページ</h3>
+
+        <table>
+          <thead>
+          <tr>
+            <th>お名前</th>
+            <td><%= @member.name %></td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td><%= @member.sex %></td>
+          </tr>
+          <tr>
+            <th>都道府県</th>
+            <td><%= @member.prefectures %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @member.email %></td>
+          </tr>
+          </thead>
+        </table>
