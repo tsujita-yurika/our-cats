@@ -9,12 +9,11 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
 
       t.string :name, null: false
       t.string :sex, null: false
-      t.string :occupation, null: false
       t.string :prefectures, null: false
-      t.string :family, null: false
-      t.boolean :identification_status, null: false, dafault: false
-      t.boolean :is_active, null: false, dafault: false
-      
+      t.string :family
+      t.boolean :identification_status, null: false, default: false
+      t.boolean :is_active, null: false, default: false
+
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
