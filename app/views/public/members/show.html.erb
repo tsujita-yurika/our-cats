@@ -2,51 +2,59 @@
   <div class="row">
       <h3>マイページ</h3>
 
-    <div class="col-2">
-    </div>
+    <%= image_tag @member.get_profile_image, size: "100x100" %>
 
-  <div class="container">
-    <div class="row">
-        <table>
-          <thead>
-          <tr>
-            <th>お名前</th>
-            <td><%= @member.name %></td>
-          </tr>
-          <tr>
-            <th>性別</th>
-            <td><%= @member.sex %></td>
-          </tr>
-          <tr>
-            <th>都道府県</th>
-            <td><%= @member.prefectures %></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= @member.email %></td>
-          </tr>
-            <!--<div>-->
-              <%#= link_to cat_path(@member.cats) do %>
-                <%#= image_tag @cat.image, size: "200x150" %>
-              <%# end %>
-            <!--</div>-->
+    <div class="container">
+      <div class="row">
+          <table>
+            <thead>
+            <tr>
+              <th>お名前</th>
+              <td><%= @member.name %></td>
+            </tr>
+            <tr>
+              <th>性別</th>
+              <td><%= @member.sex %></td>
+            </tr>
+            <tr>
+              <th>都道府県</th>
+              <td><%= @member.prefectures %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @member.email %></td>
+            </tr>
 
-          <tr>
-            <% @cats.each do |cat| %>
-              <td><%= link_to cat.name, cat_path(cat.id) %></td>
-            <% end %>
+            <!--<tr>-->
+            <!--  <th>家族</th>-->
+            <!--  <%# @cats.each do |cat| %>-->
+            <!--  <td><%#= link_to cat_path(cat.id) do %><td>-->
+            <!--  <td><%#= image_tag cat.get_image, size:"150x150" %></td>-->
+            <!--  <%# end %>-->
+            <!--</tr>-->
 
-                <%= link_to new_cat_path do %>
-            <i class="fa-solid fa-circle-plus fa-2xl"></i>
-                <% end %>
-          </tr>
-          </thead>
-        </table>
+            <tr>
+              <th>家族</th>
+              <% @cats.each do |cat| %>
+                <td><%= link_to cat.name,cat_path(cat.id) %></td>
+                <td><%= image_tag cat.get_image, size:"100x100" %></td>
+              <% end %>
+                <td><%= link_to new_cat_path do %>
+              <i class="fa-solid fa-circle-plus fa-2xl"></i>
+                  <% end %>
+                </td>
+            </tr>
+           </thead>
+          </table>
+
+        </div>
       </div>
-    </div>
 
-  <div>
-    <%= link_to edit_member_path(current_member), class: "btn btn-outline-secondary btn-block" do %>
-      <i class="fas fa-user-cog"></i>
-    <% end %>
+      <div>
+        <%= link_to edit_member_path(current_member), class: "btn btn-outline-secondary btn-block" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
+
   </div>
+</div>

@@ -21,13 +21,17 @@ class Member < ApplicationRecord
 
   has_many :request
 
-  has_one_attached :image
+  has_one_attached :profile_image
 
-  # validates :name, presence: true
-  # validates :sex, presence: true
-  # validates :email, presence: true
-  # validates :encrypted_password, presence: true
-  # validates :prefectures, presence: true
+   validates :name, presence: true
+   validates :sex, presence: true
+   validates :email, presence: true
+   validates :encrypted_password, presence: true
+   validates :prefectures, presence: true
+
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
 
 
   #会員ステータス

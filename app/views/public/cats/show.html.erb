@@ -1,17 +1,14 @@
 <div class="container">
-  <div class="row">
-    <h3>猫の詳細</h3>
+  <div class="row row justify-content-center m-2 ">
 
-      <div class = col-5>
-          <%# if cat.image.attached? %>
-            <%#= image_tag cat.image, size: "200x200" %>
-          <%# else %>
-            <%#= image_tag 'no_image', size: "200x200" %>
-          <%# end %>
+      <div class='col-md-2'>
+        <h3>猫の詳細</h3>
+
       </div>
 
-    <div class="col-5">
+    <div class="col-5 p-5">
       <table class="table table-borderless">
+        <%= image_tag @cat.get_image, size:"150x150" %>
         <tr>
           <td>お名前</td>
           <td><%= @cat.name %></td>
