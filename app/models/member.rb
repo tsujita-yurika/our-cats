@@ -19,6 +19,28 @@ class Member < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-  has_one :request
+  has_many :request
+
+  has_one_attached :image
+
+  # validates :name, presence: true
+  # validates :sex, presence: true
+  # validates :email, presence: true
+  # validates :encrypted_password, presence: true
+  # validates :prefectures, presence: true
+
+
+  #会員ステータス
+  def member_status
+    if is_active == false
+      "退会"
+    else
+      "有効"
+    end
+  end
+
+  # def active_for_authentication?
+  #   super && (is_active == true)
+  # end
 
 end

@@ -1,5 +1,8 @@
 class Request < ApplicationRecord
 
-    has_one :member, dependent: :destroy
+    belongs_to :member, dependent: :destroy
+    has_many :deposit_cat
+
+    has_one_attached :image
 
 end

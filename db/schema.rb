@@ -53,12 +53,13 @@ ActiveRecord::Schema.define(version: 2023_11_08_134443) do
   end
 
   create_table "cats", force: :cascade do |t|
-    t.integer "member_id", null: false
+    t.integer "member_id"
     t.string "name", null: false
     t.string "sex", null: false
     t.integer "age", null: false
     t.string "category", null: false
     t.string "family"
+    t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

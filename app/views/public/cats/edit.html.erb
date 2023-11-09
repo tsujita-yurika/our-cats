@@ -1,2 +1,36 @@
-<h1>Public::Cats#edit</h1>
-<p>Find me in app/views/public/cats/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+      <h3>猫の編集</h3>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <%= form_with model: @cats, url: cat_path(@cats.id), method: :patch do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <td><%= f.label :写真 %></td>
+            <td><%= f.file_field :image, accept: "image/*", class: "form-control-file" %></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :年齢 %></td>
+            <td><%= f.text_field :age, class: "form-control" %></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :自己紹介 %></td>
+            <td><%= f.text_area :introduction, placeholder: "ささみが好きです", class: "form-control", rows:5 %></td>
+            <td></td>
+          </tr>
+        </table>
+
+        <div class="actions text-center m-5">
+          <%= f.submit '保存', class: "button btn btn-success btn-lg center-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  </div>
+</div>

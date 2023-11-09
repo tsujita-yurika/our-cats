@@ -1,2 +1,42 @@
-<h1>Public::Cats#show</h1>
-<p>Find me in app/views/public/cats/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3>猫の詳細</h3>
+
+      <div class = col-5>
+          <%# if cat.image.attached? %>
+            <%#= image_tag cat.image, size: "200x200" %>
+          <%# else %>
+            <%#= image_tag 'no_image', size: "200x200" %>
+          <%# end %>
+      </div>
+
+    <div class="col-5">
+      <table class="table table-borderless">
+        <tr>
+          <td>お名前</td>
+          <td><%= @cat.name %></td>
+        </tr>
+        <tr>
+          <td>性別</td>
+          <td><%= @cat.sex %></td>
+        </tr>
+        <tr>
+          <td>年齢</td>
+          <td><%= @cat.age %></td>
+        </tr>
+        <tr>
+          <td>種類</td>
+          <td><%= @cat.category %></td>
+        </tr>
+        <tr>
+          <td>猫の紹介</td>
+          <td><%= @cat.introduction %></td>
+        </tr>
+        <tr>
+          <td><%= link_to "編集", edit_cat_path(@cat.id), class: "btn btn-info btn-block" %></td>
+          <td><%= link_to "削除", cat_path(@cat.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

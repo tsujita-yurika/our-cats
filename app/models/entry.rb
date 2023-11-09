@@ -1,6 +1,6 @@
 class Entry < ApplicationRecord
 
-  belongs_to :user
+  belongs_to :member
   belongs_to :room
 
 end

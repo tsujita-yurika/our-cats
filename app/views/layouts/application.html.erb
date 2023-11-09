@@ -5,27 +5,32 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <script src="https://kit.fontawesome.com/83655083cf.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-      <header>
-    <% if member_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_member_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_member_session_path %>
-      </li>
-    <% end %>
-  </header>
-    <%= yield %>
+    <header class="header">
+      <%= render 'layouts/header' %>
+    </header>
+
+    <main style="min-height: 480px;">
+
+      <div class="container">
+        <%= flash[:error] %>
+        <%= flash[:notice] %>
+      </div>
+      <%= yield %>
+    </main>
+    <footer class="pt-5 pb-4">
+      <div class="container">
+       <div class="row">
+        <div class="mx-auto" style = "color: brown;" >
+          <p>© OurCats</p>
+        </div>
+       </div>
+      </div>
+    </footer>
   </body>
 </html>

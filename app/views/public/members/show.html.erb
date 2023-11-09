@@ -1,7 +1,12 @@
-<h1>Public::Members#show</h1>
-<p>Find me in app/views/public/members/show.html.erb</p>
+<div class="container">
+  <div class="row">
       <h3>マイページ</h3>
 
+    <div class="col-2">
+    </div>
+
+  <div class="container">
+    <div class="row">
         <table>
           <thead>
           <tr>
@@ -20,5 +25,28 @@
             <th>メールアドレス</th>
             <td><%= @member.email %></td>
           </tr>
+            <!--<div>-->
+              <%#= link_to cat_path(@member.cats) do %>
+                <%#= image_tag @cat.image, size: "200x150" %>
+              <%# end %>
+            <!--</div>-->
+
+          <tr>
+            <% @cats.each do |cat| %>
+              <td><%= link_to cat.name, cat_path(cat.id) %></td>
+            <% end %>
+
+                <%= link_to new_cat_path do %>
+            <i class="fa-solid fa-circle-plus fa-2xl"></i>
+                <% end %>
+          </tr>
           </thead>
         </table>
+      </div>
+    </div>
+
+  <div>
+    <%= link_to edit_member_path(current_member), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
+  </div>
