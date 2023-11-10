@@ -25,23 +25,16 @@
               <td><%= @member.email %></td>
             </tr>
 
-            <!--<tr>-->
-            <!--  <th>家族</th>-->
-            <!--  <%# @cats.each do |cat| %>-->
-            <!--  <td><%#= link_to cat_path(cat.id) do %><td>-->
-            <!--  <td><%#= image_tag cat.get_image, size:"150x150" %></td>-->
-            <!--  <%# end %>-->
-            <!--</tr>-->
-
             <tr>
               <th>家族</th>
               <% @cats.each do |cat| %>
-                <td><%= link_to cat.name,cat_path(cat.id) %></td>
-                <td><%= image_tag cat.get_image, size:"100x100" %></td>
+                <%= link_to cat_path(cat.id) do %>
+                  <%= image_tag cat.get_image, size: "100x100" %>
+                <% end %>
               <% end %>
                 <td><%= link_to new_cat_path do %>
               <i class="fa-solid fa-circle-plus fa-2xl"></i>
-                  <% end %>
+                    <% end %>
                 </td>
             </tr>
            </thead>

@@ -13,6 +13,7 @@ class Public::CatsController < ApplicationController
   end
 
   def index
+    @cats = Cat.all
   end
 
   def update

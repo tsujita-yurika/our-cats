@@ -1,2 +1,16 @@
-<h1>Public::Cats#index</h1>
-<p>Find me in app/views/public/cats/index.html.erb</p>
+<div class="container">
+  <div class="row row justify-content-center m-2 ">
+    <h3>猫一覧</h3>
+
+  <div class="container">
+    <div class="row justify-content-center">
+
+  <% @cats.each do |cat| %>
+  <div>
+    <%= link_to cat_path(cat.id) do %>
+      <%= image_tag cat.get_image, size: "100x100" %>
+    <% end %>
+  </div>
+  <%= cat.name %>
+
+<% end %>

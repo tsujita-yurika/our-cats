@@ -15,14 +15,18 @@
             マイページ <i class="fas fa-user"></i>
           <% end %>
 
+          <%= link_to cats_path, class:"btn m-2", style: "color: brown" do %>
+            猫一覧 <i class="fa-solid fa-paw"></i>
+          <% end %>
+
           <%= link_to destroy_member_session_path, method: :delete, class:"btn m-2", style: "color: brown" do %>
-            ログアウト<i class="fas fa-sign-out-alt"></i>
+            ログアウト <i class="fas fa-sign-out-alt"></i>
           <% end %>
 
         <% elsif admin_signed_in? %>
 
           <%= link_to destroy_admin_session_path, method: :delete, class:"btn m-2", style: "color: brown" do %>
-            ログアウト<i class="fas fa-sign-out-alt"></i>
+            ログアウト <i class="fas fa-sign-out-alt"></i>
           <% end %>
 
         <% else %>
@@ -32,6 +36,10 @@
 
           <%= link_to new_member_registration_path, class:"btn m-2", style: "color: brown"  do %>
             新規登録 <i class="fas fa-user-plus"></i>
+          <% end %>
+
+          <%= link_to cats_path, class:"btn m-2", style: "color: brown" do %>
+            猫一覧 <i class="fa-solid fa-paw"></i>
           <% end %>
 
           <%= link_to new_member_session_path, class:"btn m-2", style: "color: brown" do %>
