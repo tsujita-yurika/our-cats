@@ -5,4 +5,6 @@ class Request < ApplicationRecord
 
     has_one_attached :image
 
+    enum location: { home: "自宅に来てもらう", deposit: "相手に預かってもらう" }
+
 end

@@ -1,2 +1,35 @@
-<h1>Public::Requests#index</h1>
-<p>Find me in app/views/public/requests/index.html.erb</p>
+<div class="container">
+  <div class="row row justify-content-center m-2 ">
+    <h3依頼一覧</h3>
+
+    <div class="container">
+      <div class="row justify-content-center">
+
+        <table>
+          <% @requests.each do |request| %>
+          <tr>
+            <td><%= f.label :時期 %></td>
+            <td><%= f.text_field :season, class: "form-control" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.label :日数 %></td>
+            <td><%= f.text_field :days, class: "form-control" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.label :場所 %></td>
+            <td><%= f.text_field :location, class: "form-control" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.label :備考 %></td>
+            <td><%= f.text_area :memo, class: "form-control", rows:5 %></td>
+            <td></td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+<div>

@@ -1,2 +1,51 @@
-<h1>Public::Requests#new</h1>
-<p>Find me in app/views/public/requests/new.html.erb</p>
+<div class="container">
+  <div class="row row justify-content-center">
+      <h3>お世話依頼</h3>
+
+  <div>
+      <% if @request.errors.any? %>
+        <%= @request.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <%= form_with model: @request, url: requests_path do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <td><%= f.label :時期 %></td>
+            <td><%= f.text_field :season, class: "form-control" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.label :日数 %></td>
+            <td><%= f.text_field :days, class: "form-control" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>場所
+            <%= f.radio_button :location, :home, checked: true %>自宅に来てもらう
+            <%= f.radio_button :location, :deposit %>相手に預かって貰う
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.label :備考 %></td>
+            <td><%= f.text_area :memo, class: "form-control", rows:5 %></td>
+            <td></td>
+          </tr>
+        </table>
+
+        <div class="actions text-center m-5">
+          <%= f.submit '依頼する', class: "button btn btn-success btn-lg center-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  </div>
+</div>

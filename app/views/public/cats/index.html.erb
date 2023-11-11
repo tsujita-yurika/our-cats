@@ -2,15 +2,23 @@
   <div class="row row justify-content-center m-2 ">
     <h3>猫一覧</h3>
 
-  <div class="container">
-    <div class="row justify-content-center">
+    <div class="container">
+      <div class="row justify-content-center">
 
-  <% @cats.each do |cat| %>
-  <div>
-    <%= link_to cat_path(cat.id) do %>
-      <%= image_tag cat.get_image, size: "100x100" %>
-    <% end %>
+        <table>
+          <% @cats.each do |cat| %>
+          <tr>
+            <td>
+              <%= link_to cat_path(cat.id) do %>
+                <%= image_tag cat.get_image, size: "100x100" %>
+                <%= cat.name %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+
+      </div>
+    </div>
   </div>
-  <%= cat.name %>
-
-<% end %>
+<div>

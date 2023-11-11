@@ -23,11 +23,13 @@ class Member < ApplicationRecord
 
   has_one_attached :profile_image
 
-   validates :name, presence: true
-   validates :sex, presence: true
-   validates :email, presence: true
-   validates :encrypted_password, presence: true
-   validates :prefectures, presence: true
+  validates :name, presence: true
+  validates :sex, presence: true
+  validates :email, presence: true
+  validates :encrypted_password, presence: true
+  validates :prefectures, presence: true
+
+  enum sex: { male: "男性", female: "女性" }
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'

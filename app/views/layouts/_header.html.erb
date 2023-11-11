@@ -15,8 +15,12 @@
             マイページ <i class="fas fa-user"></i>
           <% end %>
 
+          <%= link_to new_request_path, class:"btn m-2", style: "color: brown" do %>
+            お世話依頼 <i class="fa-solid fa-paw"></i>
+          <% end %>
+
           <%= link_to cats_path, class:"btn m-2", style: "color: brown" do %>
-            猫一覧 <i class="fa-solid fa-paw"></i>
+            猫一覧 <i class="fa-solid fa-cat"></i>
           <% end %>
 
           <%= link_to destroy_member_session_path, method: :delete, class:"btn m-2", style: "color: brown" do %>

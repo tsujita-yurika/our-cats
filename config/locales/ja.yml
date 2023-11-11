@@ -1,4 +1,14 @@
 ja:
+  models:
+    member:
+      sex:
+        male: "男性"
+        female: "女性"
+    request:
+      location:
+        home: "自宅に来てもらう"
+        deposit: "相手に預かってもらう"
+ja:
   enums:
   activerecord:
     errors:
@@ -7,6 +17,11 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    # models:
+    #   member:
+    #     sex:
+    #       male: "男性"
+    #       female: "女性"
   date:
     abbr_day_names:
     - 日
@@ -181,3 +196,4 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
