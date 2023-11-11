@@ -16,6 +16,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 # 会員用
   scope module: :public do
+    Rails.application.routes.draw do
+      root "requests#index"
+      resources :requests
+    end
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :members
