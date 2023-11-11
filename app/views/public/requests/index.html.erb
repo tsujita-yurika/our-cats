@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row row justify-content-center m-2 ">
-    <h3依頼一覧</h3>
+  <div class="row justify-content-center m-2 ">
+    <h3>依頼一覧</h3>
 
     <div class="container">
       <div class="row justify-content-center">
@@ -8,25 +8,26 @@
         <table>
           <% @requests.each do |request| %>
           <tr>
-            <td><%= f.label :時期 %></td>
-            <td><%= f.text_field :season, class: "form-control" %></td>
+            <td>時期</td>
+            <td><%= request.season %></td>
             <td></td>
           </tr>
           <tr>
-            <td><%= f.label :日数 %></td>
-            <td><%= f.text_field :days, class: "form-control" %></td>
+            <td>日数</td>
+            <td><%= request.days %></td>
             <td></td>
           </tr>
           <tr>
-            <td><%= f.label :場所 %></td>
-            <td><%= f.text_field :location, class: "form-control" %></td>
+            <td>場所</td>
+            <td><%= request.location %></td>
             <td></td>
           </tr>
           <tr>
-            <td><%= f.label :備考 %></td>
-            <td><%= f.text_area :memo, class: "form-control", rows:5 %></td>
+            <td>備考</td>
+            <td><%= request.memo %></td>
             <td></td>
           </tr>
+          <% end %>
         </table>
 
       </div>

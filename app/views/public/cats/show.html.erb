@@ -15,7 +15,13 @@
         </tr>
         <tr>
           <td>性別</td>
-          <td><%= @cat.sex %></td>
+          <td>
+          <% if @cat.sex == 'female' %>
+            女の子
+          <% else %>
+            男の子
+          <% end %>
+          </td>
         </tr>
         <tr>
           <td>年齢</td>

@@ -5,17 +5,18 @@
     <div class="container">
       <div class="row justify-content-center">
 
-        <table>
+        <table><tr>
           <% @cats.each do |cat| %>
-          <tr>
             <td>
               <%= link_to cat_path(cat.id) do %>
-                <%= image_tag cat.get_image, size: "100x100" %>
-                <%= cat.name %>
+              <table>
+                <tr><td><%= image_tag cat.get_image, size: "100x100" %></td></tr>
+                <tr><td><%= cat.name %></td></tr>
+              </table>
               <% end %>
             </td>
-          </tr>
           <% end %>
+          </tr>
         </table>
 
       </div>

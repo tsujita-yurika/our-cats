@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row row justify-content-center">
+  <div class="row justify-content-center">
       <h3>お世話依頼</h3>
 
   <div>
@@ -18,28 +18,28 @@
       <%= form_with model: @request, url: requests_path do |f| %>
         <table class="table table-borderless">
           <tr>
-            <td><%= f.label :時期 %></td>
+            <td align="right"><%= f.label :時期 %></td>
             <td><%= f.text_field :season, class: "form-control" %></td>
             <td></td>
           </tr>
           <tr>
-            <td><%= f.label :日数 %></td>
+            <td align="right"><%= f.label :日数 %></td>
             <td><%= f.text_field :days, class: "form-control" %></td>
             <td></td>
           </tr>
           <tr>
-            <td>場所
+            <td align="right">場所</td>
+            <td>
             <%= f.radio_button :location, :home, checked: true %>自宅に来てもらう
             <%= f.radio_button :location, :deposit %>相手に預かって貰う
             </td>
           </tr>
           <tr>
-            <td><%= f.label :備考 %></td>
+            <td align="right"><%= f.label :備考 %></td>
             <td><%= f.text_area :memo, class: "form-control", rows:5 %></td>
             <td></td>
           </tr>
         </table>
-
         <div class="actions text-center m-5">
           <%= f.submit '依頼する', class: "button btn btn-success btn-lg center-block" %>
         </div>

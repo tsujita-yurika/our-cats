@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row row justify-content-center m-2 ">
+  <div class="row justify-content-center m-2 ">
 
       <div class='col-md-2'>
         <h3>依頼詳細</h3>
@@ -20,8 +20,13 @@
           </tr>
           <tr>
             <td>場所</td>
-            <td><%= @request.location %></td>
-            <td></td>
+            <td>
+          <% if @cat.location == 'home' %>
+            自宅に来てもらう
+          <% else %>
+            預かってもらう
+          <% end %>
+          </td>
           </tr>
           <tr>
             <td>備考</td>

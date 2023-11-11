@@ -14,7 +14,13 @@
             </tr>
             <tr>
               <th>性別</th>
-              <td><%= @member.sex %></td>
+              <td>
+                <% if @member.sex == 'female' %>
+                  女性
+                <% else %>
+                  男性
+                <% end %>
+              </td>
             </tr>
             <tr>
               <th>都道府県</th>

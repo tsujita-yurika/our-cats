@@ -1,14 +1,4 @@
 ja:
-  models:
-    member:
-      sex:
-        male: "男性"
-        female: "女性"
-    request:
-      location:
-        home: "自宅に来てもらう"
-        deposit: "相手に預かってもらう"
-ja:
   enums:
   activerecord:
     errors:
@@ -196,4 +186,3 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-

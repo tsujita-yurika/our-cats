@@ -1,10 +1,10 @@
 class Request < ApplicationRecord
 
     belongs_to :member, dependent: :destroy
-    has_many :deposit_cat
+    has_many :deposit_cats
+
+    accepts_nested_attributes_for :deposit_cats, allow_destroy: true, reject_if: :all_blank
 
     has_one_attached :image
-
-    enum location: { home: "自宅に来てもらう", deposit: "相手に預かってもらう" }
 
 end
