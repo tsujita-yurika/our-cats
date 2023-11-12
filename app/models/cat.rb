@@ -1,6 +1,7 @@
 class Cat < ApplicationRecord
 
   belongs_to :member
+  has_many :deposit_cats, dependent: :destroy
 
   has_one_attached :image
 

@@ -73,13 +73,8 @@ ActiveRecord::Schema.define(version: 2023_11_08_134443) do
   end
 
   create_table "deposit_cats", force: :cascade do |t|
+    t.integer "cat_id", null: false
     t.integer "request_id", null: false
-    t.string "name", null: false
-    t.string "health_state", null: false
-    t.integer "age", null: false
-    t.string "sex", null: false
-    t.string "category", null: false
-    t.string "family"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

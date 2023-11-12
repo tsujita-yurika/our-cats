@@ -2,6 +2,7 @@ class Public::RequestsController < ApplicationController
 
   def new
     @request = Request.new
+    @my_cats = current_member.cats
   end
 
   def index
