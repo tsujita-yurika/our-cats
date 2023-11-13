@@ -7,14 +7,17 @@ class Public::RequestsController < ApplicationController
 
   def index
     @requests = Request.all
+    @my_cats = current_member.cats
   end
 
   def show
     @request = Request.find(params[:id])
+    @my_cats = @request.cats
   end
 
   def edit
     @request = Request.find(params[:id])
+    @my_cats = current_member.cats
   end
 
   def update
@@ -42,7 +45,7 @@ class Public::RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:season, :days, :location, :memo)
+    params.require(:request).permit(:season, :days, :location, :memo, cat_ids:[] )
   end
 
 end

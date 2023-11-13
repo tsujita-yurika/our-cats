@@ -1,6 +1,12 @@
 <div class="container">
   <div class="row justify-content-center m-2 ">
       <h3>マイページ</h3>
+        <% @requests.each do |request| %>
+          <% cat = request.cats.first %>
+          <p><%= image_tag cat.image, size:"80x80" %></p>
+          <p><%= cat.name %></p>
+         <!--<td>時期</td>-->
+        <% end %>
 
       <div class="container">
         <div class="row justify-content-center m-2 ">
@@ -53,17 +59,17 @@
                       <% end %>
                     </td>
                   </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
 
-                </table>
-              </thead>
-            </table>
-
+        </div>
       </div>
 
       <div>
-        <%= link_to edit_member_path(current_member), class: "btn btn-outline-secondary btn-block" do %>
-          <i class="fas fa-user-cog"></i>
-        <% end %>
+        <%= link_to "プロフィール編集", edit_member_path(current_member), class: "btn btn-info btn-block" %>
+        <%#= link_to "依頼確認", request_path(@request.id), class: "btn btn-info btn-block" %>
       </div>
 
   </div>

@@ -6,6 +6,7 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     @cats = @member.cats
     @cat = Cat.new
+    @requests = @member.requests
   end
 
   def edit

@@ -1,36 +1,20 @@
 <div class="container">
-  <div class="row justify-content-center m-2 ">
+  <div class="row justify-content-center mt-3">
     <h3>依頼一覧</h3>
-
-    <div class="container">
-      <div class="row justify-content-center">
-
-        <table>
-          <% @requests.each do |request| %>
-          <tr>
-            <td>時期</td>
-            <td><%= request.season %></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>日数</td>
-            <td><%= request.days %></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>場所</td>
-            <td><%= request.location %></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>備考</td>
-            <td><%= request.memo %></td>
-            <td></td>
-          </tr>
-          <% end %>
-        </table>
-
-      </div>
-    </div>
   </div>
-<div>
+
+            <div class="row ml-5">
+              <% @requests.each do |request| %>
+                <div class="col-3">
+                  <div>
+                    <%= link_to request_path(request.id) do %>
+                     <%= image_tag request.member.get_profile_image, size:"150x150" %>
+                    <% end %>
+                  </div>
+                  <div><%=  request.season %></div>
+                </div>
+              <% end %>
+            </div>
+
+
+</div>

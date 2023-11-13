@@ -33,7 +33,7 @@
         </tr>
         <tr>
           <td><%= link_to "編集", edit_cat_path(@cat.id), class: "btn btn-info btn-block" %></td>
-          <td><%= link_to "削除", cat_path(@cat.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
+          <td><%= link_to "猫ちゃんのデータを削除", cat_path(@cat.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
         </tr>
       </table>
     </div>
