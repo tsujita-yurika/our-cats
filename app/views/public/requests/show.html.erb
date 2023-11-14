@@ -43,6 +43,22 @@
                 <tr>
                   <td><%= link_to "編集", edit_request_path(@request.id), class: "btn btn-info btn-block" %></td>
                   <td><%= link_to "削除", request_path(@request.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
+                <% unless @request.member_id == current_member.id %>
+                <!--もしリクエストした人とログインしている人が違ったら-->
+                    <% if @isRoom == true %>
+                    さらに
+                      <td><%= link_to "メッセージを続ける", room_path(@roomId), class: "btn btn-success btn-block" %></td>
+                    <% else %>
+                      <td>
+                      <%= form_for @room do |f| %>
+                        <%= fields_for @entry do |e|%>
+                          <% e.hidden_field :member_id, value: @request.member_id %>
+                        <% end %>
+                        <%= f.submit "メッセージを始める", class: "btn btn-success btn-block" %>
+                      <% end %>
+                      </td>
+                    <% end %>
+                <% end %>
                 </tr>
             </table>
           </div>

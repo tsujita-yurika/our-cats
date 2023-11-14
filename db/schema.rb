@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 2023_11_08_134443) do
     t.integer "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_entries_on_member_id"
+    t.index ["room_id"], name: "index_entries_on_room_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -117,9 +119,11 @@ ActiveRecord::Schema.define(version: 2023_11_08_134443) do
   create_table "messages", force: :cascade do |t|
     t.integer "member_id", null: false
     t.integer "room_id", null: false
-    t.text "body", null: false
+    t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_messages_on_member_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -151,4 +155,8 @@ ActiveRecord::Schema.define(version: 2023_11_08_134443) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "entries", "members"
+  add_foreign_key "entries", "rooms"
+  add_foreign_key "messages", "members"
+  add_foreign_key "messages", "rooms"
 end

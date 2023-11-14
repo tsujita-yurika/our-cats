@@ -12,6 +12,24 @@ class Public::RequestsController < ApplicationController
   def show
     @request = Request.find(params[:id])
     @my_cats = @request.cats
+
+    @currentMemberEntry = Entry.where(member_id: current_member.id)
+    @requestMemberEntry = Entry.where(member_id: @request.member_id)
+
+    @currentMemberEntry.each do |curren_member_entry|
+      @requestMemberEntry.each do |request_member_entry|
+        if curren_member_entry.room_id == request_member_entry.room_id then
+          @isRoom = true
+          @roomId = curren_member_entry.room_id
+        end
+      end
+    end
+
+    if @isRoom != true
+      @room = Room.new
+      @entry = Entry.new
+    end
+
   end
 
   def edit
