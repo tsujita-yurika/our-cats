@@ -7,7 +7,6 @@ class Public::RequestsController < ApplicationController
 
   def index
     @requests = Request.all
-    @my_cats = current_member.cats
   end
 
   def show
