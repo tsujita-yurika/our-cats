@@ -1,25 +1,21 @@
 <div class="container">
-  <div class="row row justify-content-center m-2">
+  <div class="row justify-content-center m-4">
     <h3>猫一覧</h3>
 
-    <div class="container">
-      <div class="row justify-content-center">
-
-        <table><tr>
+      <div class="container">
+        <div class="row m-xl-4">
           <% @cats.each do |cat| %>
-            <td>
-              <%= link_to cat_path(cat.id) do %>
-              <table>
-                <tr><td><%= image_tag cat.get_image, size: "100x100" %></td></tr>
-                <tr><td><%= cat.name %></td></tr>
-              </table>
-              <% end %>
-            </td>
+            <div class="col-2">
+              <div>
+                <%= link_to cat_path(cat.id) do %>
+                  <%= image_tag cat.get_image, size: "120x120" %>
+                <% end %>
+              </div>
+              <div><%= cat.name %></div>
+            </div>
           <% end %>
-          </tr>
-        </table>
-
+        </div>
       </div>
-    </div>
+      <%= paginate @cats %>
   </div>
-<div>
+</div>

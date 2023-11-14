@@ -1,12 +1,16 @@
 <div class="container">
-  <div class="row justify-content-center m-2 ">
-      <h3>マイページ</h3>
-        <% @requests.each do |request| %>
-          <% cat = request.cats.first %>
-          <p><%= image_tag cat.image, size:"80x80" %></p>
-          <p><%= cat.name %></p>
-         <!--<td>時期</td>-->
-        <% end %>
+  <div class="row justify-content-center m-2">
+            <h5>依頼</h5>
+
+<div class="container">
+  <div class="row justify-content-center m-2">
+            <% @requests.each do |request| %>
+              <% cat = request.cats.first %>
+              <div><%= image_tag cat.image, size:"80x80" %></div>
+              <div><%= cat.name %></div>
+              <div><%= request.season %></div>
+            <% end %>
+
 
       <div class="container">
         <div class="row justify-content-center m-2 ">

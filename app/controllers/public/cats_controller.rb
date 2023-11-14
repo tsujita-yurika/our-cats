@@ -13,7 +13,7 @@ class Public::CatsController < ApplicationController
   end
 
   def index
-    @cats = Cat.all
+    @cats = Cat.all.page(params[:page]).per(12)
   end
 
   def update
