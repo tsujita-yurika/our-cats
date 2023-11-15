@@ -29,8 +29,9 @@
           </tr>
           <tr>
             <td>性別</td>
-            <td><%= f.radio_button :sex, :male, checked: true %>男の子
-            <%= f.radio_button :sex, :female %>女の子
+            <td>
+              <%= f.radio_button :sex, :male, checked: true %>男の子
+              <%= f.radio_button :sex, :female %>女の子
             </td>
             <td></td>
           </tr>
@@ -41,7 +42,7 @@
           </tr>
           <tr>
             <td><%= f.label :種類 %></td>
-            <td><%= f.text_field :category, class: "form-control" %></td>
+            <td><%= f.collection_select :category_names, Category.all, :name, :name %></td>
             <td></td>
           </tr>
           <tr>

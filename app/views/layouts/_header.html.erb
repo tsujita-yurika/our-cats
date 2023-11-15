@@ -29,6 +29,14 @@
 
         <% elsif admin_signed_in? %>
 
+          <%= link_to admin_requests_path, class:"btn m-2", style: "color: brown" do %>
+            お世話依頼一覧 <i class="fa-solid fa-paw"></i>
+          <% end %>
+
+          <%= link_to admin_cats_path, class:"btn m-2", style: "color: brown" do %>
+            猫一覧 <i class="fa-solid fa-cat"></i>
+          <% end %>
+
           <%= link_to destroy_admin_session_path, method: :delete, class:"btn m-2", style: "color: brown" do %>
             ログアウト <i class="fas fa-sign-out-alt"></i>
           <% end %>

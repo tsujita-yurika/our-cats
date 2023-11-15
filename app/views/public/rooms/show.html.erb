@@ -1,2 +1,25 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center mt-2">
+    <h3>トークルーム</h3>
+
+    <div class="container">
+      <div class="row xl-3">
+        <% @entries.each do |e| %>
+            <h3><strong><a href="/members/<%= e.member.id %>"><%= e.member.name%>さん</a></strong></h3>
+        <% end %>
+
+        <div class="dmMain">
+            <% @messages.each do |m| %>
+                <strong><%= m.body %></strong>
+                <small><%= m.member.name %>さん</small><hr>
+            <% end %>
+
+            <%= form_for @message do |f| %>
+            <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
+            <%= f.hidden_field :room_id, :value => @room.id %>
+            <br>
+            <%= f.submit "送信する" %>
+            <% end %>
+        </div>
+      </div>
+    </div>

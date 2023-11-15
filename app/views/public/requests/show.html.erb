@@ -41,18 +41,25 @@
                   <td></td>
                 </tr>
                 <tr>
+                <% if @request.member_id == current_member.id %>
                   <td><%= link_to "編集", edit_request_path(@request.id), class: "btn btn-info btn-block" %></td>
                   <td><%= link_to "削除", request_path(@request.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
+                  <% @entry_lists.each do |entry| %>
+                  <td><%= link_to entry.member.name, room_path(entry.room) %></td>
+                  <% end %>
+                <% end %>
                 <% unless @request.member_id == current_member.id %>
-                <!--もしリクエストした人とログインしている人が違ったら-->
-                    <% if @isRoom == true %>
-                    さらに
-                      <td><%= link_to "メッセージを続ける", room_path(@roomId), class: "btn btn-success btn-block" %></td>
+                <!--もしリクエストした人とログインしている人が違ったら（同じであればボタンは出ない）-->
+                    <% if @my_entry %>
+                    <!--さらに、既にルームが有れば-->
+                      <td><%= link_to "メッセージを続ける", room_path(@my_entry.room), class: "btn btn-success btn-block" %></td>
                     <% else %>
                       <td>
-                      <%= form_for @room do |f| %>
+                      <%= form_for @room, url: request_rooms_path(@request) do |f| %>
                         <%= fields_for @entry do |e|%>
+
                           <% e.hidden_field :member_id, value: @request.member_id %>
+                          <!--メンバーidカラムに対してvalue（依頼者のメンバーid）を入れる。次はroomscontrollerへ-->
                         <% end %>
                         <%= f.submit "メッセージを始める", class: "btn btn-success btn-block" %>
                       <% end %>

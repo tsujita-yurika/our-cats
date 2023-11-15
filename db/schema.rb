@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_08_134443) do
+ActiveRecord::Schema.define(version: 2023_11_15_044514) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,12 +52,18 @@ ActiveRecord::Schema.define(version: 2023_11_08_134443) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "cats", force: :cascade do |t|
     t.integer "member_id"
+    t.integer "category_id"
     t.string "name", null: false
     t.string "sex", null: false
-    t.integer "age", null: false
-    t.string "category", null: false
+    t.string "age", null: false
     t.string "family"
     t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
@@ -80,11 +86,13 @@ ActiveRecord::Schema.define(version: 2023_11_08_134443) do
   end
 
   create_table "entries", force: :cascade do |t|
+    t.integer "request_id", null: false
     t.integer "member_id", null: false
     t.integer "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["member_id"], name: "index_entries_on_member_id"
+    t.index ["request_id"], name: "index_entries_on_request_id"
     t.index ["room_id"], name: "index_entries_on_room_id"
   end
 
@@ -106,7 +114,7 @@ ActiveRecord::Schema.define(version: 2023_11_08_134443) do
     t.string "phone_number"
     t.string "address"
     t.boolean "identification_status", default: false, null: false
-    t.boolean "is_active", default: false, null: false
+    t.boolean "is_active", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -156,6 +164,7 @@ ActiveRecord::Schema.define(version: 2023_11_08_134443) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "entries", "members"
+  add_foreign_key "entries", "requests"
   add_foreign_key "entries", "rooms"
   add_foreign_key "messages", "members"
   add_foreign_key "messages", "rooms"

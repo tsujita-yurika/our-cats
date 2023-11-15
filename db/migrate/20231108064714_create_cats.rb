@@ -3,10 +3,10 @@ class CreateCats < ActiveRecord::Migration[6.1]
     create_table :cats do |t|
 
       t.integer :member_id
+      t.integer :category_id
       t.string :name, null: false
       t.string :sex, null: false
-      t.integer :age, null: false
-      t.string :category, null: false
+      t.string :age, null: false
       t.string :family
       t.text :introduction
 

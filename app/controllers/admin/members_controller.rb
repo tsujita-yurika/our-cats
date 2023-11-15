@@ -1,12 +1,11 @@
-class Public::MembersController < ApplicationController
+class Admin::MembersController < ApplicationController
+  before_action :authenticate_admin!
   def index
+    @members = Member.page(params[:page]).per(10)
   end
 
   def show
     @member = Member.find(params[:id])
-    @cats = @member.cats
-    @cat = Cat.new
-    @requests = @member.requests
   end
 
   def edit
@@ -14,11 +13,10 @@ class Public::MembersController < ApplicationController
   end
 
   def update
-    @member = Member.find(params[:id])
-    @member.update(member_params)
-    @newmember = Member.new(member_params)
-    if @member.save
-      redirect_to member_path(@member.id)
+    @member = member.find(params[:id])
+    if @member.update(member_params)
+      flash[:notice] = "編集しました"
+      redirect_to admin_members_path(@member)
     else
       render :edit
     end

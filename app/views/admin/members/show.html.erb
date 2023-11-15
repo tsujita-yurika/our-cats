@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2><%= @member.name %>さんの会員詳細</h2>
+        <table class="table table-borderless">
+          <thead class="no-bg">
+          <tr>
+            <th>会員ID</th>
+            <td><%= @member.id %></td>
+          </tr>
+          <tr>
+            <th>名前</th>
+            <td><%= @member.name %></td>
+          </tr>
+          <tr>
+            <th>性別</th>
+            <td>
+            <% if @member.sex == 'female' %>
+              女性
+            <% else %>
+              男性
+            <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>お住いの都道府県</th>
+            <td><%= @member.prefectures %></td>
+          </tr>
+          <tr>
+            <th>本名</th>
+            <td><%= @member.real_name %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @member.phone_number %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @member.address %></td>
+          </tr>
+          <tr>
+            <th>本人確認</th>
+            <% if @member.identification_status == true %>
+              <td class="text-success">確認済み</td>
+            <% else %>
+              <td class="text-danger">未登録</td>
+            <% end %>
+          </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <% if @member.is_active == true %>
+              <td class="text-success">有効</td>
+            <% else %>
+              <td class="text-danger">退会</td>
+            <% end %>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= link_to "編集する",edit_admin_member_path, class: "btn btn-success"%> </td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>

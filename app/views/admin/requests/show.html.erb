@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row justify-content-center mt-2">
+    <h3>依頼詳細</h3>
+
+    <div class="container">
+      <div class="row justify-content-center">
+
+        <table class="table table-borderless">
+          <tr>
+            <% @my_cats.each do |cat| %>
+            <p><%= image_tag cat.image, size:"80x80" %></p>
+              <p><%= cat.name %></p>
+            <% end %>
+          </tr>
+        </table>
+          <div class="col-5 p-5">
+            <table class="table table-borderless">
+                <tr>
+                  <td>時期</td>
+                  <td><%= @request.season %></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>日数</td>
+                  <td><%= @request.days %></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>場所</td>
+                  <td>
+                  <% if @request.location == 'home' %>
+                    自宅に来てもらう
+                  <% else %>
+                    預かってもらう
+                  <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>備考</td>
+                  <td><%= @request.memo %></td>
+                  <td></td>
+                </tr>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

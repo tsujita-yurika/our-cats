@@ -15,7 +15,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string :phone_number
       t.string :address
       t.boolean :identification_status, null: false, default: false
-      t.boolean :is_active, null: false, default: false
+      t.boolean :is_active, null: false, default: true
 
       ## Recoverable
       t.string   :reset_password_token

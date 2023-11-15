@@ -25,6 +25,7 @@ class Public::CatsController < ApplicationController
   def create
     @cat = Cat.new(cat_params)
     @cat.member_id = current_member.id
+    @cat.category = cat_params[:category_names]
     if @cat.save
       redirect_to cat_path(@cat), notice: "登録しました。"
     else
@@ -41,7 +42,7 @@ class Public::CatsController < ApplicationController
   private
 
   def cat_params
-    params.require(:cat).permit(:name, :sex, :age, :category, :introduction, :image)
+    params.require(:cat).permit(:name, :sex, :age, :category_name, :introduction, :image)
   end
 
 end
