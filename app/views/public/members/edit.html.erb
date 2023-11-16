@@ -1,57 +1,64 @@
 <div class="container">
-  <div class="row row justify-content-center m-2 ">
-    <h3>会員編集</h3>
+  <div class="row row justify-content-center mt-3">
+    <h3>プロフィール編集</h3>
 
-  <div class="container">
-    <div class="row justify-content-center">
-      <%= form_with model: @member, url: member_path(@member.id), method: :patch do |f| %>
-        <table class="table table-borderless">
-          <tr>
-            <td><%= f.label :写真 %></td>
-            <td><%= f.file_field :image, accept: "image/*", class: "form-control-file" %></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><%= f.label :都道府県 %></td>
-            <td><%= f.text_field :prefectures, class: "form-control" %></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><%= f.label :メールアドレス %></td>
-            <td><%= f.email_field :email, autofocus: true, class: "form-control" %></td>
-            <td></td>
-          </tr>
-        </table>
+      <div class="container">
+        <div class="row justify-content-center mt-3">
+          <%= form_with model: @member, url: member_path(@member.id), method: :patch do |f| %>
+            <table class="table table-borderless">
+              <tr>
+                <td><%= f.label :プロフィール画像 %></td>
+                <td><%= f.file_field :profile_image, accept: "image/*", class: "form-control-file" %></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><%= f.label :お名前 %></td>
+                <td><%= f.text_field :name, class: "form-control" %></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><%= f.label :お住まいの都道府県 %></td>
+                <td><%= f.text_field :prefectures, class: "form-control" %></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><%= f.label :メールアドレス %></td>
+                <td><%= f.email_field :email, autofocus: true, class: "form-control" %></td>
+                <td></td>
+              </tr>
+            </table>
 
-      <div class="row justify-content-center">
-        <table class="table table-borderless">
-            <h5>ご本人様確認</h5>
-          <tr>
-            <td><%= f.label :ご身分証の写真 %></td>
-            <td><%= f.file_field :image, accept: "image/*", class: "form-control-file" %></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><%= f.label :本名 %></td>
-            <td><%= f.text_field :real_name, class: "form-control" %></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><%= f.label :電話番号%></td>
-            <td><%= f.text_field :phone_number, class: "form-control" %></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><%= f.label :住所 %></td>
-            <td><%= f.text_field :address, class: "form-control" %></td>
-            <td></td>
-          </tr>
-        </table>
+            <div class="row justify-content-center mt-3">
+              <table class="table table-borderless">
+                  <h5>ご本人様確認</h5>
+                <tr>
+                  <td><%= f.label :ご身分証の写真 %></td>
+                  <td><%= f.file_field :image, accept: "image/*", class: "form-control-file" %></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><%= f.label :本名 %></td>
+                  <td><%= f.text_field :real_name, class: "form-control" %></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><%= f.label :電話番号%></td>
+                  <td><%= f.text_field :phone_number, class: "form-control" %></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><%= f.label :住所 %></td>
+                  <td><%= f.text_field :address, class: "form-control" %></td>
+                  <td></td>
+                </tr>
+              </table>
+            </div>
 
-        <div class="actions text-center m-5">
-          <%= f.submit '保存', class: "button btn btn-success btn-lg center-block" %>
-        </div>
-      <% end %>
-
+            <div class="actions text-center m-5">
+              <%= f.submit '保存', class: "button btn btn-success btn-lg center-block" %>
+            </div>
+          <% end %>
+      </div>
+    </div>
   </div>
 </div>

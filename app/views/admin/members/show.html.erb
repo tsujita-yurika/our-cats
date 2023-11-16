@@ -39,11 +39,15 @@
             <td><%= @member.address %></td>
           </tr>
           <tr>
+            <th>本人確認書類</th>
+            <td><%= image_tag @member.get_image, size:"150x150" %></td>
+          </tr>
+          <tr>
             <th>本人確認</th>
             <% if @member.identification_status == true %>
-              <td class="text-success">確認済み</td>
+              <td class="text-success">確認済</td>
             <% else %>
-              <td class="text-danger">未登録</td>
+              <td class="text-danger">未確認</td>
             <% end %>
           </tr>
           <tr>

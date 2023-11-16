@@ -15,12 +15,11 @@ class Public::MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-    @member.update(member_params)
-    @newmember = Member.new(member_params)
-    if @member.save
+    @member.profile_image.attach(params[:member][:profile_image])
+    if @member.update(member_params)
       redirect_to member_path(@member.id)
     else
-      render :edit
+      render 'edit'
     end
   end
 
@@ -36,7 +35,8 @@ class Public::MembersController < ApplicationController
                                   :address, :prefectures,
                                   :identification_status,
                                   :is_active,
-                                  :image
+                                  :image,
+                                  :profile_image
                                   )
   end
 

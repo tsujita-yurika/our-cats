@@ -22,6 +22,7 @@ class Member < ApplicationRecord
   has_many :requests, dependent: :destroy
 
   has_one_attached :profile_image
+  has_one_attached :image
 
   validates :name, presence: true
   validates :sex, presence: true
@@ -30,8 +31,24 @@ class Member < ApplicationRecord
   validates :prefectures, presence: true
 
   def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+    if profile_image.attached?
+      profile_image
+    else
+      'no_image.jpg'
+    end
   end
+
+  def get_image
+     if image.attached?
+       image
+     else
+       'no_image.jpg'
+     end
+  end
+
+  # def get_profile_image
+  #   (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  # end
 
 
   #会員ステータス

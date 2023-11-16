@@ -2,85 +2,91 @@
   <div class="row m-2">
     <h3>マイページ</h3>
 
-  <div class="container">
-    <div class="row justify-content-center m-2">
-      <% if @requests.present? %>
-        <div>あなたの依頼</div>
-        <% @requests.each do |request| %>
-          <% cat = request.cats.first %>
-          <div><%= link_to(image_tag(cat.image, size: "80x80"), request_path(request.id)) %></div>
-          <div><%= cat.name %></div>
-          <div><%= request.season %></div>
+      <div class="row justify-content-center m-2">
+        <% if @requests.present? %>
+          <h6>あなたの依頼</h6>
+          <table>
+          <% @requests.each do |request| %>
+            <% cat = request.cats.first %>
+            <th><%= link_to(image_tag(cat.image, size: "80x80"), request_path(request.id)) %></th>
+            <th><%= cat.name %></th>
+            <th><%= request.season %></th>
+          <% end %>
+          </table>
         <% end %>
-      <% end %>
 
-      <div class="container">
-        <div class="row justify-content-center m-2 ">
-          <%= image_tag @member.get_profile_image, size: "100x100" %>
-
-          <div class="container">
-            <div class="row justify-content-center m-2 ">
-              <table>
-                <thead>
-                  <tr>
-                    <th>お名前</th>
-                    <td><%= @member.name %></td>
-                  </tr>
-                  <tr>
-                    <th>性別</th>
-                    <td>
-                      <% if @member.sex == 'male' %>
-                        男性
-                      <% else %>
-                        女性
-                      <% end %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>都道府県</th>
-                    <td><%= @member.prefectures %></td>
-                  </tr>
-                  <tr>
-                    <th>メールアドレス</th>
-                    <td><%= @member.email %></td>
-                  </tr>
-                  <tr>
-                    <th>家族</th>
-                  </tr>
-
-                  <tr>
-                    <% @cats.each do |cat| %>
+            <div class="container">
+              <div class="row justify-content-center m-2">
+                <table>
+                  <thead>
+                    <tr>
+                      <th><%= image_tag @member.get_profile_image, size: "100x100" %></th>
+                          <% if @member.identification_status == true %>
+                            <td class="text-success">本人確認済 <i class="fas fa-check"></i></td>
+                          <% else %>
+                          <td><%= link_to '本人確認登録をする',edit_member_path(current_member) %></td>
+                          <% end %>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th>お名前</th>
+                      <td><%= @member.name %></td>
+                    </tr>
+                    <tr>
+                      <th>性別</th>
                       <td>
-                        <%= link_to cat_path(cat.id) do %>
-                        <table>
-                          <tr><td><%= image_tag cat.get_image, size: "90x90" %></td></tr>
-                          <tr><td><%= cat.name %></td></tr>
-                        </table>
+                        <% if @member.sex == 'male' %>
+                          男性
+                        <% else %>
+                          女性
                         <% end %>
                       </td>
-                    <% end %>
-                    <td>
-                      <% if @member == current_member %>
-                        <%= link_to new_cat_path do %>
-                           <i class="fa-solid fa-circle-plus fa-3x pl-3 pb-4 "></i>
-                        <% end %>
+                    </tr>
+                    <tr>
+                      <th>都道府県</th>
+                      <td><%= @member.prefectures %></td>
+                    </tr>
+                    <tr>
+                      <th>メールアドレス</th>
+                      <td><%= @member.email %></td>
+                    </tr>
+                    <tr>
+                      <th>家族</th>
+                    </tr>
+
+                    <tr>
+                      <% @cats.each do |cat| %>
+                        <td>
+                          <%= link_to cat_path(cat.id) do %>
+                          <table>
+                            <tr><td><%= image_tag cat.get_image, size: "90x90" %></td></tr>
+                            <tr><td><%= cat.name %></td></tr>
+                          </table>
+                          <% end %>
+                        </td>
                       <% end %>
-                    </td>
-                  </tr>
-                </thead>
-              </table>
+                      <td>
+                        <% if @member == current_member %>
+                          <%= link_to new_cat_path do %>
+                             <i class="fa-solid fa-circle-plus fa-3x pl-3 pb-4 "></i>
+                          <% end %>
+                        <% end %>
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
             </div>
           </div>
-
         </div>
+
+          <% if @member == current_member %>
+            <div>
+              <%= link_to "プロフィール編集", edit_member_path(current_member), class: "btn btn-info" %>
+            </div>
+          <% end %>
       </div>
-        <% if @member == current_member %>
-          <div>
-            <%= link_to "プロフィール編集", edit_member_path(current_member), class: "btn btn-info btn-block" %>
-          </div>
-        <% end %>
     </div>
-  </div>
 
   </div>
 </div>

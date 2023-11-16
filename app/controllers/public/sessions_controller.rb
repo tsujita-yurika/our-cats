@@ -2,6 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_member, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -26,12 +27,12 @@ class Public::SessionsController < Devise::SessionsController
   # end
     protected
 
-  def reject_customer
-    @customer = Customer.find_by(email: params[:customer][:email])
-    if @customer
-      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == false)
+  def reject_member
+    @member = Member.find_by(email: params[:member][:email])
+    if @member
+      if @member.valid_password?(params[:member][:password]) && (@member.is_active == false)
         flash[:notice] = "退会済みです"
-        redirect_to new_customer_session_path
+        redirect_to new_member_session_path
       end
     else
       flash[:error] = "必須項目を入力してください"

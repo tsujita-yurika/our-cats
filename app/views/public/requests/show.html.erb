@@ -1,10 +1,9 @@
 <div class="container">
-  <div class="row justify-content-center mt-2">
+  <div class="row justify-content-center mt-3">
     <h3>依頼詳細</h3>
 
     <div class="container">
-      <div class="row justify-content-center">
-
+      <div class="row justify-content-center mt-3">
         <table class="table table-borderless">
           <tr>
             <% @my_cats.each do |cat| %>
@@ -13,7 +12,7 @@
             <% end %>
           </tr>
         </table>
-          <div class="col-5 p-5">
+          <div class="col-5">
             <table class="table table-borderless">
                 <tr>
                   <td>時期</td>
@@ -45,9 +44,12 @@
                   <td><%= link_to "編集", edit_request_path(@request.id), class: "btn btn-info btn-block" %></td>
                   <td><%= link_to "削除", request_path(@request.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
                   <% @entry_lists.each do |entry| %>
-                  <td><%= link_to entry.member.name, room_path(entry.room) %></td>
+                  <td><%= link_to entry.member.name, room_path(entry.room), class: "btn btn-primary" %></td>
                   <% end %>
                 <% end %>
+
+                <% if current_member.identification_status == true %>
+
                 <% unless @request.member_id == current_member.id %>
                 <!--もしリクエストした人とログインしている人が違ったら（同じであればボタンは出ない）-->
                     <% if @my_entry %>
@@ -65,6 +67,9 @@
                       <% end %>
                       </td>
                     <% end %>
+                <% end %>
+                <% else %>
+                  本人確認を登録しましょう。既ににご登録済みの方は２営業日以内に確認致します。お待ちくださいませ。
                 <% end %>
                 </tr>
             </table>

@@ -7,4 +7,9 @@ class Request < ApplicationRecord
 
     has_one_attached :image
 
+    validates :cats, presence: { message: "少なくとも1匹の猫を選択してください" }
+    validates :season, presence: true
+    validates :days, presence: true
+    validates :location, presence: true
+
 end
