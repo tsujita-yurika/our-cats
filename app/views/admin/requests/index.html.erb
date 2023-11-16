@@ -7,7 +7,7 @@
               <% @requests.each do |request| %>
                 <div class="col-3">
                   <div>
-                    <%= link_to request_path(request.id) do %>
+                    <%= link_to admin_request_path(request.id) do %>
                      <%= image_tag request.member.get_profile_image, size:"150x150" %>
                     <% end %>
                   </div>

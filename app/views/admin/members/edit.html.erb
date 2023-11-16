@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h2><%= @member.name %>さんの会員編集</h2>
+      <h3><%= @member.name %>さんの会員編集</h3>
 
       <%= form_with model: @member, url: admin_member_path(@member.id), method: :patch do |f| %>
           <%= render "admin/shared/error_messages", resource: @member %>

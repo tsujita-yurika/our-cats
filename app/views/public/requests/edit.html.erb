@@ -9,7 +9,7 @@
             <tr>
               <td><%= f.label :お世話してもらう猫 %></td>
                 <table class="table table-borderless my-2"><tr>
-                  <%= f.collection_check_boxes :cat_ids, @my_cats, :id, :name, {checked: true}, multiple: true do |b| %>
+                <%= f.collection_check_boxes :cat_ids, @my_cats, :id, :name, checked: @my_cats.ids, multiple: true do |b| %>
                      <td>
                       <%= b.label do %>
                       <table>

@@ -25,15 +25,17 @@
         </tr>
         <tr>
           <td>種類</td>
-          <td><%= @cat.category %></td>
+          <td><%= @cat.category.name %></td>
         </tr>
         <tr>
           <td>猫の紹介</td>
           <td><%= @cat.introduction %></td>
         </tr>
         <tr>
-          <td><%= link_to "編集", edit_cat_path(@cat.id), class: "btn btn-info btn-block" %></td>
-          <td><%= link_to "猫ちゃんのデータを削除", cat_path(@cat.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
+          <% if current_member && current_member.cat_ids.include?(@cat.id) %>
+            <td><%= link_to "編集", edit_cat_path(@cat.id), class: "btn btn-info btn-block" %></td>
+            <td><%= link_to "猫ちゃんのデータを削除", cat_path(@cat.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
+          <% end %>
         </tr>
       </table>
     </div>

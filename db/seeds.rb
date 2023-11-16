@@ -8,16 +8,15 @@
 Admin.create!(email: 'our@cats', password: 'ourcats')
 
 10.times do |num|
+ sex = num.even? ? "female" : "male"
  Member.create!(
   name: "会員#{num + 1}",
-  sex: "女性",
+  sex: sex,
   prefectures: "東京都",
   email: "email#{num + 1}@email",
   password: "password#{num + 1}",
   password_confirmation: "password#{num + 1}",
-  phone_number: "00000000000#{num + 1}",
-  address: "東京都#{num + 1}",
-  real_name: "令和道子#{num + 1}"
+
  )
 end
 
@@ -70,7 +69,7 @@ cat = Cat.create!(
 cat.image.attach(io: File.open(Rails.root.join("app/assets/images/cat.jpg")), filename: "cat.jpg")
 
 cat = Cat.create!(
-  member_id: 2,
+  member_id: 1,
   category_id: 2,
   name: "ギャオ",
   sex: "女の子",

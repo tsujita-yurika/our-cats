@@ -1,16 +1,18 @@
 <div class="container">
-  <div class="row justify-content-center m-2">
-            <h5>依頼</h5>
+  <div class="row m-2">
+    <h3>マイページ</h3>
 
   <div class="container">
     <div class="row justify-content-center m-2">
-            <% @requests.each do |request| %>
-              <% cat = request.cats.first %>
-              <div><%= image_tag cat.image, size:"80x80" %></div>
-              <div><%= cat.name %></div>
-              <div><%= request.season %></div>
-            <% end %>
-
+      <% if @requests.present? %>
+        <div>あなたの依頼</div>
+        <% @requests.each do |request| %>
+          <% cat = request.cats.first %>
+          <div><%= link_to(image_tag(cat.image, size: "80x80"), request_path(request.id)) %></div>
+          <div><%= cat.name %></div>
+          <div><%= request.season %></div>
+        <% end %>
+      <% end %>
 
       <div class="container">
         <div class="row justify-content-center m-2 ">
@@ -58,8 +60,10 @@
                       </td>
                     <% end %>
                     <td>
-                      <%= link_to new_cat_path do %>
-                         <i class="fa-solid fa-circle-plus fa-3x pl-3 pb-4 "></i>
+                      <% if @member == current_member %>
+                        <%= link_to new_cat_path do %>
+                           <i class="fa-solid fa-circle-plus fa-3x pl-3 pb-4 "></i>
+                        <% end %>
                       <% end %>
                     </td>
                   </tr>
@@ -70,12 +74,11 @@
 
         </div>
       </div>
-
-      <div>
-        <%= link_to "プロフィール編集", edit_member_path(current_member), class: "btn btn-info btn-block" %>
-        <%#= link_to "依頼確認", request_path(@request.id), class: "btn btn-info btn-block" %>
-      </div>
-
+        <% if @member == current_member %>
+          <div>
+            <%= link_to "プロフィール編集", edit_member_path(current_member), class: "btn btn-info btn-block" %>
+          </div>
+        <% end %>
     </div>
   </div>
 

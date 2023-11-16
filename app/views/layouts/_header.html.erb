@@ -1,10 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class = "container" >
 
-      <%= link_to requests_path do %>
+      <%= link_to root_path do %>
         <%= image_tag "Logo2.png", size:"100x100" %>
       <% end %>
-        <%#= image_tag "logo.jpg", alt: "Logo", size:"340x90" %>
 
       <div class = "ml-auto">
         <div class="row justify-content-between align-items-center">
@@ -16,7 +15,11 @@
           <% end %>
 
           <%= link_to new_request_path, class:"btn m-2", style: "color: brown" do %>
-            お世話依頼 <i class="fa-solid fa-paw"></i>
+            お世話を依頼する <i class="fa-solid fa-paw"></i>
+          <% end %>
+
+          <%= link_to requests_path, class:"btn m-2", style: "color: brown" do %>
+            お世話依頼一覧 <i class="fa-solid fa-list"></i>
           <% end %>
 
           <%= link_to cats_path, class:"btn m-2", style: "color: brown" do %>
@@ -29,8 +32,12 @@
 
         <% elsif admin_signed_in? %>
 
+          <%= link_to admin_members_path, class:"btn m-2", style: "color: brown" do %>
+            会員一覧 <i class="fa-solid fa-user"></i>
+          <% end %>
+
           <%= link_to admin_requests_path, class:"btn m-2", style: "color: brown" do %>
-            お世話依頼一覧 <i class="fa-solid fa-paw"></i>
+            お世話依頼一覧 <i class="fa-solid fa-list"></i>
           <% end %>
 
           <%= link_to admin_cats_path, class:"btn m-2", style: "color: brown" do %>
@@ -50,8 +57,12 @@
             新規登録 <i class="fas fa-user-plus"></i>
           <% end %>
 
+          <%= link_to requests_path, class:"btn m-2", style: "color: brown" do %>
+            お世話依頼一覧 <i class="fa-solid fa-list"></i>
+          <% end %>
+
           <%= link_to cats_path, class:"btn m-2", style: "color: brown" do %>
-            猫一覧 <i class="fa-solid fa-paw"></i>
+            猫一覧 <i class="fa-solid fa-cat"></i>
           <% end %>
 
           <%= link_to new_member_session_path, class:"btn m-2", style: "color: brown" do %>

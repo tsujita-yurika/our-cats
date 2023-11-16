@@ -43,8 +43,8 @@ class Member < ApplicationRecord
     end
   end
 
-  # def active_for_authentication?
-  #   super && (is_active == true)
-  # end
+   def active_for_authentication?
+     super && (is_active == true)
+   end
 
 end

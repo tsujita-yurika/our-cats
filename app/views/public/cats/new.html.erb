@@ -41,9 +41,8 @@
             <td></td>
           </tr>
           <tr>
-            <td><%= f.label :種類 %></td>
-            <td><%= f.collection_select :category_names, Category.all, :name, :name %></td>
-            <td></td>
+              <td><%= f.label :category_id, "種類" %></td>
+              <td><%= f.collection_select :category_id, Category.all, :id, :name, prompt: true %></td>
           </tr>
           <tr>
             <td><%= f.label :自己紹介 %></td>

@@ -12,10 +12,10 @@ class Public::RequestsController < ApplicationController
   def show
     @request = Request.find(params[:id])
     @my_cats = @request.cats
-    
+
     @entries = current_member.entries
     @my_entry = @entries.find_by(request_id: @request.id)
-    
+
     @entry_lists = @request.entries
     #byebug
 

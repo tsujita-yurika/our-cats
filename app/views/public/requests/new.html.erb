@@ -52,16 +52,9 @@
                 <%= f.radio_button :location, :deposit %>相手に預かって貰う</td>
             <td></td>
           </tr>
-          <!--<tr>-->
-          <!--  <%#= form_with model: deposit_cat, url: requests_path do |f| %>-->
-          <!--    <td><%#= f.label :毎日投薬が必要または急変の可能性のある疾患の有無 %></td>-->
-          <!--    <td><%#= f.radio_button :health_state, :true %>有</td>-->
-          <!--    <td><%#= f.radio_button :health_state, :false, checked: true %>無</td>-->
-          <!--  <%# end %>-->
-          <!--</tr>-->
           <tr>
             <td><%= f.label :備考 %></td>
-            <td><%= f.text_area :memo, class: "form-control", rows:5 %></td>
+            <td><%= f.text_area :memo, placeholder: "毎日の投薬または急変する可能性のある疾患等あれば記入",class: "form-control", rows:5 %></td>
             <td></td>
           </tr>
         </table>
