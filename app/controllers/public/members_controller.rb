@@ -1,4 +1,7 @@
 class Public::MembersController < ApplicationController
+  before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:edit]
+
   def index
   end
 
@@ -38,6 +41,13 @@ class Public::MembersController < ApplicationController
                                   :image,
                                   :profile_image
                                   )
+  end
+
+  def ensure_guest_member
+    @member = Member.find(params[:id])
+    if @member.email == "guest@example.com"
+      redirect_to member_path(current_member) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    end
   end
 
 end

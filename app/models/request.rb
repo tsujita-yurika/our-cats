@@ -7,9 +7,13 @@ class Request < ApplicationRecord
 
     has_one_attached :image
 
-    validates :cats, presence: { message: "少なくとも1匹の猫を選択してください" }
     validates :season, presence: true
     validates :days, presence: true
     validates :location, presence: true
+    validate :at_least_one_cat_selected
+
+    def at_least_one_cat_selected
+        errors.add(:cat_ids, "は１つ以上選択してください") if cat_ids.blank?
+    end
 
 end

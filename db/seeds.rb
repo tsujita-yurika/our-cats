@@ -26,6 +26,7 @@ end
   category_names = [
  '雑種（ミックス）',
  '和猫',
+ 'ジャパニーズ・ボブテイル',
  'スコティッシュフォールド',
  'マンチカン',
  'アメリカンショートヘア',
@@ -51,7 +52,6 @@ end
  'ボンベイ',
  'マンチカール',
  'エジプシャンマウ',
- 'ジャパニーズ・ボブテイル',
  'オシキャット',
  'ラパーマ',
  'バーマン',
@@ -72,12 +72,62 @@ cat = Cat.create!(
 cat.image.attach(io: File.open(Rails.root.join("app/assets/images/cat.jpg")), filename: "cat.jpg")
 
 cat = Cat.create!(
-  member_id: 2,
+  member_id: 1,
   category_id: 2,
   name: "ギャオ",
   sex: "女の子",
   age: 6,
   introduction: "日向ぼっこが好き"
   )
-cat.image.attach(io: File.open(Rails.root.join("app/assets/images/cat.jpg")), filename: "cat.jpg")
+cat.image.attach(io: File.open(Rails.root.join("app/assets/images/ギャオ4.jpg")), filename: "ギャオ4.jpg")
+
+cat = Cat.create!(
+  member_id: 2,
+  category_id: 13,
+  name: "アル",
+  sex: "男の子",
+  age: 1,
+  introduction: ""
+  )
+cat.image.attach(io: File.open(Rails.root.join("app/assets/images/アメカ4.jpg")), filename: "アメカ4.jpg")
+
+cat = Cat.create!(
+  member_id: 3,
+  category_id: 6,
+  name: "ララ",
+  sex: "女の子",
+  age: 4,
+  introduction: ""
+  )
+cat.image.attach(io: File.open(Rails.root.join("app/assets/images/アメショ4.jpg")), filename: "アメショ4.jpg")
+
+cat = Cat.create!(
+  member_id: 4,
+  category_id: 31,
+  name: "みかん",
+  sex: "女の子",
+  age: 3,
+  introduction: ""
+  )
+cat.image.attach(io: File.open(Rails.root.join("app/assets/images/バーマン4.jpg")), filename: "バーマン4.jpg")
+
+cat = Cat.create!(
+  member_id: 5,
+  category_id: 14,
+  name: "もふもふ",
+  sex: "女の子",
+  age: 5,
+  introduction: ""
+  )
+cat.image.attach(io: File.open(Rails.root.join("app/assets/images/メインクーン4.jpg")), filename: "メインクーン4.jpg")
+
+cat = Cat.create!(
+  member_id: 6,
+  category_id: 14,
+  name: "ぶる",
+  sex: "男の子",
+  age: 5,
+  introduction: ""
+  )
+cat.image.attach(io: File.open(Rails.root.join("app/assets/images/ロシアンブルー4.jpg")), filename: "ロシアンブルー4.jpg")
 

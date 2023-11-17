@@ -30,6 +30,25 @@ class Member < ApplicationRecord
   validates :encrypted_password, presence: true
   validates :prefectures, presence: true
 
+
+GUEST_MEMBER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_MEMBER_EMAIL) do |member|
+      member.password = SecureRandom.urlsafe_base64
+      member.name = "guestmember"
+      member.sex = "male"
+      member.prefectures = "東京"
+      member.real_name = "guestreal_name"
+      member.phone_number = "00000000011"
+      member.address = "東京都新宿区0-0-0"
+    end
+  end
+
+  def guest_member?
+    email == GUEST_MEMBER_EMAIL
+  end
+
   def get_profile_image
     if profile_image.attached?
       profile_image
@@ -45,11 +64,6 @@ class Member < ApplicationRecord
        'no_image.jpg'
      end
   end
-
-  # def get_profile_image
-  #   (profile_image.attached?) ? profile_image : 'no_image.jpg'
-  # end
-
 
   #会員ステータス
   def member_status

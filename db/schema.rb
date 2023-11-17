@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2023_11_15_044514) do
     t.string "real_name"
     t.string "phone_number"
     t.string "address"
-    t.boolean "identification_status", default: false, null: false
+    t.boolean "identification_status", default: true, null: false
     t.boolean "is_active", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

@@ -19,4 +19,13 @@ class Cat < ApplicationRecord
     end
   end
 
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @cat = Cat.where("name LIKE?", "#{word}")
+    else
+      @cat = Cat.all
+    end
+  end
+
 end

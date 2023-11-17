@@ -14,7 +14,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string :real_name
       t.string :phone_number
       t.string :address
-      t.boolean :identification_status, null: false, default: false
+      t.boolean :identification_status, null: false, default: true
       t.boolean :is_active, null: false, default: true
 
       ## Recoverable

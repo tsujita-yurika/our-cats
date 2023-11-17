@@ -48,7 +48,7 @@
                   <% end %>
                 <% end %>
 
-                <% if current_member.identification_status == true %>
+                <%# if current_member.identification_status == true %>
 
                 <% unless @request.member_id == current_member.id %>
                 <!--もしリクエストした人とログインしている人が違ったら（同じであればボタンは出ない）-->
@@ -68,9 +68,9 @@
                       </td>
                     <% end %>
                 <% end %>
-                <% else %>
-                  本人確認を登録しましょう。既ににご登録済みの方は２営業日以内に確認致します。お待ちくださいませ。
-                <% end %>
+                <%# else %>
+                  <!--本人確認を登録しましょう。既ににご登録済みの方は２営業日以内に確認致します。お待ちくださいませ。-->
+                <%# end %>
                 </tr>
             </table>
           </div>

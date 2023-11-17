@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'search', to: 'searches#search'
   get 'rooms/show'
 # 会員用
 # URL /customers/sign_in ...
@@ -22,7 +23,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :members
     resources :cats
     resources :requests do
-      resources :rooms, :only => [:create]
+    resources :rooms, :only => [:create]
     end
     resources :messages, :only => [:create]
     resources :rooms, :only => [:show]
@@ -33,6 +34,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   resources :members, only: [:index, :show, :edit, :update]
   resources :cats, only: [:index, :show]
   resources :requests, only: [:index, :show]
+  end
+
+  devise_scope :member do
+    post "members/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

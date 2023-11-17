@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto">
+        <div class="row">
+          <%= link_to "ゲストログイン（閲覧用）", members_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+        </div>
       <div class="card">
         <%= image_tag "cat.jpg",class: "card-img", size:"400x450" %>
 

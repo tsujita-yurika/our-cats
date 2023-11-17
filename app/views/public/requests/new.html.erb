@@ -19,6 +19,7 @@
           <table class="table table-borderless mt-1">
             <tr>
               <td><%= f.label :お世話してもらう猫 %></td>
+
                 <table class="table table-borderless my-2"><tr>
                   <%= f.collection_check_boxes :cat_ids, @my_cats, :id, :name, checked: @my_cats.ids, multiple: true do |b| %>
                      <td>
@@ -29,6 +30,9 @@
                         <tr><td><%= b.object.name %></tr></td>
                       </table>
                       <% end %>
+                        <% if @request.errors.key?(:cat_ids) %>
+                          <div class="error-message"><%= @request.errors[:cat_ids].first %></div>
+                        <% end %>
                       </td>
                     <% end %>
                     </tr>
@@ -38,12 +42,12 @@
           <table class="table table-borderless my-2">
             <tr>
               <td><%= f.label :時期 %></td>
-              <td><%= f.text_field :season, class: "form-control" %></td>
+              <td><%= f.text_field :season, class: "form-control", required: true %></td>
               <td></td>
             </tr>
             <tr>
               <td><%= f.label :日数 %></td>
-              <td><%= f.text_field :days, class: "form-control" %></td>
+              <td><%= f.text_field :days, class: "form-control", required: true %></td>
               <td></td>
             </tr>
             <tr>
@@ -59,7 +63,11 @@
             </tr>
           </table>
           <div class="actions text-center m-5">
-            <%= f.submit '依頼する', class: "button btn btn-success btn-lg center-block" %>
+            <% if @my_cats.present?  %>
+              <%= f.submit '依頼する', class: "button btn btn-success btn-lg center-block" %>
+            <% else %>
+              <%= link_to "猫の登録をする", new_cat_path, class: "btn btn-success btn-lg center-block" %>
+            <% end %>
           </div>
         <% end %>
       </div>
