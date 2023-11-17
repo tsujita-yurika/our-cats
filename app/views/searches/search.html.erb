@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-10 mt-2 mb-2">
+      <h3>検索結果（全<%= @search_count %>件) </h3><br>
+
+      <div class="search-items d-flex flex-wrap">
+        <% @search_results.each do |cat| %>
+          <div class="search-item mr-4">
+            <div>
+              <%= link_to cat_path(cat) do %>
+                <%= image_tag cat.image, size: "150x150" %>
+              <% end %>
+            </div>
+            <div><%= cat.name %></div>
+            <div><%= cat.category.name %></div>
+            <div><%= cat.introduction %></div>
+          </div>
+        <% end %>
+      </div>

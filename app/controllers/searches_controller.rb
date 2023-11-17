@@ -2,14 +2,8 @@ class SearchesController < ApplicationController
   before_action :authenticate_member!
 
   def search
-    @range = params[:range]
-    @word = params[:word]
-
-    if @range == "Category"
-      @categories = Category.looks(params[:search], params[:word])
-    else
-      @members = Member.looks(params[:search], params[:word])
-    end
+    @search_results = Cat.joins(:category).where("categories.name LIKE ?", "%#{params[:search]}%")
+    @search_count = @search_results.count
   end
 
 end
