@@ -31,9 +31,11 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 # 管理者ルーティング
   namespace :admin do
-  resources :members, only: [:index, :show, :edit, :update]
-  resources :cats, only: [:index, :show]
-  resources :requests, only: [:index, :show]
+    resources :members, only: [:index, :show, :edit, :update]
+    resources :cats, only: [:index, :show]
+    resources :requests, only: [:index, :show]
+    resources :rooms, only: [:index, :show]
+    resources :messages, only: [:destroy]
   end
 
   devise_scope :member do

@@ -2,7 +2,11 @@
   <div class="row">
 
     <div class="col-10 mt-2 mb-2">
-      <h3>検索結果（全<%= @search_count %>件) </h3><br>
+      <% if @search_count.zero? %>
+        <h3>検索結果がありませんでした</h3><br>
+      <% else %>
+        <h3>検索結果（全<%= @search_count %>件) </h3><br>
+      <% end %>
 
       <div class="search-items d-flex flex-wrap">
         <% @search_results.each do |cat| %>
@@ -18,3 +22,6 @@
           </div>
         <% end %>
       </div>
+    </div>
+  </div>
+</div>

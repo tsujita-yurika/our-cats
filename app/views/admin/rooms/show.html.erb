@@ -1,0 +1,17 @@
+<div 囲う
+  <div class="row">
+    <div class="col">
+
+      <h3 id="room-id">Room ID: <%= @room.id %></h3>
+
+      <h3 class="mt-4">メッセージ一覧</h3>
+      <ul class="list-group">
+        <% @messages.each do |message| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center ml-2 mr-2">
+            <%= message.body %><%= link_to "by#{message.member.name}さん", admin_member_path(message.member) %>
+            <%= link_to '削除', admin_message_path(message), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "badge badge-danger" %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
