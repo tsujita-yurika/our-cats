@@ -18,3 +18,36 @@ body {
 footer {
   background-color: #efe7de;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination li a {
+  color: brown;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 6px 12px;
+  border: 1px solid brown;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+.pagination li.disabled a {
+  color: #aaa;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.pagination li.active a {
+  color: #fff;
+  background-color: brown;
+  border-color: #333;
+}

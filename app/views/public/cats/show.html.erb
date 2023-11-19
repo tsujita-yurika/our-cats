@@ -1,10 +1,10 @@
-<div class="container">
-  <div class="row justify-content-center m-2 ">
-    <h3>猫の詳細</h3>
+<div class="container m-3">
+  <h3>　　猫の詳細</h3>
 
+  <div class="row justify-content-center m-3">
     <div class="col-5 p-5">
       <table class="table table-borderless">
-        <%= image_tag @cat.get_image, size:"150x150" %>
+        <%= image_tag @cat.get_image, size:"150x150" %><br><br>
         <tr>
           <td>お名前</td>
           <td><%= @cat.name %></td>

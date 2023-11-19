@@ -1,4 +1,24 @@
-<div 囲う
+<style>
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2px;
+}
+
+.message-content {
+  flex-grow: 1;
+  margin-left: 10px; /* スペースの幅を調整 */
+}
+</style>
+
+<div container>
   <div class="row">
     <div class="col">
 
@@ -7,11 +27,25 @@
       <h3 class="mt-4">メッセージ一覧</h3>
       <ul class="list-group">
         <% @messages.each do |message| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center ml-2 mr-2">
-            <%= message.body %><%= link_to "by#{message.member.name}さん", admin_member_path(message.member) %>
-            <%= link_to '削除', admin_message_path(message), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "badge badge-danger" %>
+          <li class="list-group-item">
+            <div class="message-info">
+              <span class="member-name"><%= message.member.name %>　</span>
+              <span class="message-date"><%= message.created_at.localtime('+09:00').strftime('%Y-%m-%d %H:%M:%S') %></span>
+            </div>
+            <div class="message-content">
+              <%= message.body %>
+            </div>
+            <div class="message-actions">
+              <%= link_to '削除', admin_message_path(message), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "badge badge-danger" %>
+            </div>
+          </li>
         <% end %>
       </ul>
+
     </div>
   </div>
+</div>
+
+<div class="pagination-container">
+  <%= paginate @messages %>
 </div>

@@ -6,7 +6,8 @@ class Public::RequestsController < ApplicationController
   end
 
   def index
-    @requests = Request.all
+    @requests = Request.page(params[:page]).per(12)
+    @request_count = Request.count
   end
 
   def show
@@ -53,7 +54,7 @@ class Public::RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:season, :days, :location, :memo, cat_ids:[] )
+    params.require(:request).permit(:season, :days, :location, :memo, cat_ids: [] )
   end
 
 end

@@ -1,11 +1,12 @@
 class Admin::RoomsController < ApplicationController
+
   def index
-    @rooms = Room.all
+    @rooms = Room.page(params[:page]).per(10)
   end
 
   def show
     @room = Room.find(params[:id])
-    @messages = @room.messages
+    @messages = @room.messages.page(params[:page]).per(10)
   end
 
   def destroy

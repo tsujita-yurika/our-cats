@@ -1,76 +1,84 @@
 <div class="container">
-  <div class="row justify-content-center mt-3">
+  <div class="row m-3">
     <h3>お世話依頼</h3>
+  </div>
 
-    <div>
-        <% if @request.errors.any? %>
-          <%= @request.errors.count %>件のエラーが発生しました
-          <ul>
-            <% @request.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
-    </div>
+  <div>
+      <% if @request.errors.any? %>
+        <%= @request.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
 
-    <div class="container">
-      <div class="row justify-content-center">
-        <%= form_with model: @request, url: requests_path do |f| %>
-          <table class="table table-borderless mt-1">
-            <tr>
-              <td><%= f.label :お世話してもらう猫 %></td>
+  <div class="container">
+    <div class="row justify-content-center">
+      <%= form_with model: @request, url: requests_path do |f| %>
+        <table class="table table-borderless mt-1">
+          <tr>
+            <td><%= f.label :お世話してもらう猫 %></td>
 
-                <table class="table table-borderless my-2"><tr>
-                  <%= f.collection_check_boxes :cat_ids, @my_cats, :id, :name, checked: @my_cats.ids, multiple: true do |b| %>
-                     <td>
-                      <%= b.label do %>
-                      <table>
-                        <tr><td><%= b.check_box %>
-                        <%= image_tag b.object.image, size:"80x80" %></tr></td>
-                        <tr><td><%= b.object.name %></tr></td>
-                      </table>
-                      <% end %>
-                        <% if @request.errors.key?(:cat_ids) %>
-                          <div class="error-message"><%= @request.errors[:cat_ids].first %></div>
+              <table class="table table-borderless my-2">
+                <tr>
+                  <% if @my_cats.present? %>
+                    <%= f.collection_check_boxes :cat_ids, @my_cats, :id, :name, checked: @my_cats.ids, multiple: true do |b| %>
+                       <td>
+                        <%= b.label do %>
+                        <table>
+                          <tr><td><%= b.check_box %>
+                          <%= image_tag b.object.image, size:"80x80" %></tr></td>
+                          <tr><td><%= b.object.name %></tr></td>
+                        </table>
                         <% end %>
+
+                          <% if @request.errors.key?(:cat_ids) %>
+                            <div class="error-message"><%= @request.errors[:cat_ids].first %></div>
+                          <% end %>
+                        </td>
+                      <% end %>
+                  <% else %>
+                      <td colspan="3">
+                        <div class="error-message text-danger">猫のデータが見つかりません。</div>
                       </td>
-                    <% end %>
-                    </tr>
-                </table>
-            </tr>
-          </table>
-          <table class="table table-borderless my-2">
-            <tr>
-              <td><%= f.label :時期 %></td>
-              <td><%= f.text_field :season, class: "form-control", required: true %></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><%= f.label :日数 %></td>
-              <td><%= f.text_field :days, class: "form-control", required: true %></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><%= f.label :場所 %></td>
-              <td><%= f.radio_button :location, :home, checked: true %>自宅に来てもらう
-                  <%= f.radio_button :location, :deposit %>相手に預かって貰う</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><%= f.label :備考 %></td>
-              <td><%= f.text_area :memo, placeholder: "毎日の投薬または急変する可能性のある疾患等あれば記入",class: "form-control", rows:5 %></td>
-              <td></td>
-            </tr>
-          </table>
-          <div class="actions text-center m-5">
-            <% if @my_cats.present?  %>
-              <%= f.submit '依頼する', class: "button btn btn-success btn-lg center-block" %>
-            <% else %>
-              <%= link_to "猫の登録をする", new_cat_path, class: "btn btn-success btn-lg center-block" %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+                  <% end %>
+                </tr>
+              </table>
+          </tr>
+        </table>
+        <table class="table table-borderless my-2">
+          <tr>
+            <td><%= f.label :時期 %></td>
+            <td><%= f.text_field :season, class: "form-control", required: true %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.label :日数 %></td>
+            <td><%= f.text_field :days, class: "form-control", required: true %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.label :場所 %></td>
+            <td><%= f.radio_button :location, :home, checked: true %>自宅に来てもらう
+                <%= f.radio_button :location, :deposit %>相手に預かって貰う</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.label :備考 %></td>
+            <td><%= f.text_area :memo, placeholder: "毎日の投薬または急変する可能性のある疾患等あれば記入",class: "form-control", rows:5 %></td>
+            <td></td>
+          </tr>
+        </table>
+        <div class="actions text-center m-5">
+          <% if @my_cats.present?  %>
+            <%= f.submit '依頼する', class: "button btn btn-success btn-lg center-block" %>
+          <% else %>
+            <%= link_to "猫の登録をする", new_cat_path, class: "btn btn-success btn-lg center-block" %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

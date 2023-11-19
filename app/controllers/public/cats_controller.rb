@@ -14,6 +14,7 @@ class Public::CatsController < ApplicationController
 
   def index
     @cats = Cat.all.page(params[:page]).per(12)
+    @cat_count = Cat.count
   end
 
   def update

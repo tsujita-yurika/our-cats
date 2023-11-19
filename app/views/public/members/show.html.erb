@@ -1,31 +1,26 @@
 <div class="container">
   <div class="row m-2">
     <h3>マイページ</h3>
-
-      <div class="row justify-content-center m-2">
-        <% if @requests.present? %>
-          <h6>あなたの依頼</h6>
-          <table>
-          <% @requests.each do |request| %>
-            <% cat = request.cats.first %>
-            <th><%= link_to(image_tag(cat.image, size: "80x80"), request_path(request.id)) %></th>
-            <th><%= cat.name %></th>
-            <th><%= request.season %></th>
-          <% end %>
-          </table>
+    <% if @requests.present? %>
+      <h6>あなたの依頼</h6>
+      <table>
+      <% @requests.each do |request| %>
+        <% cat = request.cats.first %>
+          <th><%= link_to(image_tag(cat.image, size: "80x80"), request_path(request.id)) %></th>
+          <tr><%= cat.name %></tr>
+          <tr><%= request.season %></tr>
         <% end %>
+      </table>
+    <% end %>
+  </div>
 
-            <div class="container">
-              <div class="row justify-content-center m-2">
+    <div class="container">
+      <div class="row m-2">
                 <table>
                   <thead>
                     <tr>
                       <th><%= image_tag @member.get_profile_image, size: "100x100" %></th>
-                          <%# if @member.identification_status == true %>
-                            <!--<td class="text-success">本人確認済 <i class="fas fa-check"></i></td>-->
-                          <%# else %>
-                          <!--<td><%#= link_to '本人確認登録をする',edit_member_path(current_member) %></td>-->
-                          <%# end %>
+
                       <td></td>
                     </tr>
                     <tr>
@@ -80,22 +75,12 @@
           </div>
         </div>
 
-          <%# if member.email != "guest@example.com" %>
-            <!--<div class="row">-->
             <% if @member.email != "guest@example.com" || @member == current_member %>
               <div class="row">
             <%= link_to "プロフィール編集", edit_member_path(@member), class: "btn btn-info edit_member_#{@member.id}" %>
               </div>
             <% end %>
-          <%#= link_to "プロフィール編集",edit_member_path(member),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_member_#{member.id}" %>
-          <!--  </div>-->
-          <%# end %>
 
-          <%# if @member == current_member %>
-          <!--  <div>-->
-              <%#= link_to "プロフィール編集", edit_member_path(current_member), class: "btn btn-info" %>
-          <!--  </div>-->
-          <%# end %>
       </div>
     </div>
 
