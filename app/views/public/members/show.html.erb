@@ -1,88 +1,124 @@
 <div class="container">
   <div class="row m-2">
     <h3>マイページ</h3>
-    <% if @requests.present? %>
-      <h6>あなたの依頼</h6>
-      <table>
-      <% @requests.each do |request| %>
-        <% cat = request.cats.first %>
-          <th><%= link_to(image_tag(cat.image, size: "80x80"), request_path(request.id)) %></th>
-          <tr><%= cat.name %></tr>
-          <tr><%= request.season %></tr>
-        <% end %>
-      </table>
-    <% end %>
   </div>
 
-    <div class="container">
-      <div class="row m-2">
-                <table>
-                  <thead>
-                    <tr>
-                      <th><%= image_tag @member.get_profile_image, size: "100x100" %></th>
+    <div class="row m-2">
+      <div class="col-10 mx-auto">
+        <div class="row">
+          <div class="col-8 mb-2">
+            <table>
+              <thead>
+                <tr>
+                  <th><%= image_tag @member.get_profile_image, size: "100x100" %></th>
+                </tr>
+                <tr>
+                  <th>お名前</th>
+                  <td><%= @member.name %></td>
+                </tr>
+                <tr>
+                  <th>性別</th>
+                  <td>
+                    <% if @member.sex == 'male' %>
+                      男性
+                    <% else %>
+                      女性
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>都道府県</th>
+                  <td><%= @member.prefectures %></td>
+                </tr>
+                <tr>
+                  <th>メールアドレス</th>
+                  <td><%= @member.email %></td>
+                </tr>
+                <tr>
+                  <th>家族</th>
+                </tr>
 
+                <tr>
+                <% @cats.each_slice(3) do |cat_group| %>
+                    <% cat_group.each do |cat| %>
+                      <td>
+                        <%= link_to cat_path(cat.id) do %>
+                        <table>
+                          <tr>
+                            <td><%= image_tag cat.get_image, size: "120x90" %></td>
+                          </tr>
+                          <tr>
+                            <td><%= cat.name %></td>
+                          </tr>
+                        </table>
+                        <% end %>
+                      </td>
+                    <% end %>
+                    <% (4 - cat_group.size).times do %>
                       <td></td>
-                    </tr>
-                    <tr>
-                      <th>お名前</th>
-                      <td><%= @member.name %></td>
-                    </tr>
-                    <tr>
-                      <th>性別</th>
-                      <td>
-                        <% if @member.sex == 'male' %>
-                          男性
-                        <% else %>
-                          女性
-                        <% end %>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>都道府県</th>
-                      <td><%= @member.prefectures %></td>
-                    </tr>
-                    <tr>
-                      <th>メールアドレス</th>
-                      <td><%= @member.email %></td>
-                    </tr>
-                    <tr>
-                      <th>家族</th>
-                    </tr>
+                    <% end %>
+                </tr>
+                <% end %>
 
-                    <tr>
-                      <% @cats.each do |cat| %>
+                <td>
+                  <% if @member == current_member %>
+                    <%= link_to new_cat_path do %>
+                       <i class="fa-solid fa-circle-plus fa-3x pl-3 pb-4 "></i>
+                    <% end %>
+                  <% end %>
+                </td>
+                  <% if @member.email != "guest@example.com" || @member == current_member %>
+                      <tr>
                         <td>
-                          <%= link_to cat_path(cat.id) do %>
-                          <table>
-                            <tr><td><%= image_tag cat.get_image, size: "90x90" %></td></tr>
-                            <tr><td><%= cat.name %></td></tr>
-                          </table>
-                          <% end %>
+                        <%= link_to "プロフィール編集", edit_member_path(@member), class: "btn btn-info edit_member_#{@member.id}" %>
                         </td>
-                      <% end %>
-                      <td>
-                        <% if @member == current_member %>
-                          <%= link_to new_cat_path do %>
-                             <i class="fa-solid fa-circle-plus fa-3x pl-3 pb-4 "></i>
-                          <% end %>
-                        <% end %>
-                      </td>
-                    </tr>
-                  </thead>
-                </table>
-              </div>
-            </div>
+                      </tr>
+                  <% end %>
+              </thead>
+            </table>
           </div>
-        </div>
 
-            <% if @member.email != "guest@example.com" || @member == current_member %>
-              <div class="row">
-            <%= link_to "プロフィール編集", edit_member_path(@member), class: "btn btn-info edit_member_#{@member.id}" %>
-              </div>
+          <% if @requests.present? %>
+            <div class="col-4">
+              <h4>あなたの依頼</h4>
+              <table>
+                <% @requests.each_slice(3) do |request_group| %>
+                  <tr>
+                    <% request_group.each do |request| %>
+                      <td>
+                        <% cat = request.cats.first %>
+                        <%= link_to image_tag(cat.image, size: "120x90"), request_path(request.id) %><br>
+                        <%= cat.name %><br>
+                        <%= request.season %>
+                      </td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </table>
+          <% end %>
+
+          <table>
+            <% if @member.id == current_member.id %>
+              <h3>メッセージルームへのリンク一覧</h3>
+              <% if @requests.present? %>
+                <% @requests.each do |req| %>
+                  <% req.entries.each do |entry| %>
+                    <% if entry.room.present? %>
+                      <div>
+                        <%= link_to "#{entry.room.entries.select{|other_member| other_member.member_id != current_member.id}[0].member.name}さんとのDM", room_path(entry.room) %>
+                      </div>
+                    <% end %>
+                  <% end %>
+
+                <% end %>
+              <% else %>
+                <div>メッセージはありません</div>
+              <% end %>
             <% end %>
+          </table>
 
+        </div>
       </div>
     </div>
-
   </div>
 </div>

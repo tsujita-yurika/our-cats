@@ -1,25 +1,48 @@
+<style>
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2px;
+}
+
+.message-content {
+  flex-grow: 1;
+  margin-left: 10px; /* スペースの幅を調整 */
+}
+</style>
+
 <div class="container">
-  <div class="row justify-content-center mt-2">
-    <h3>トークルーム</h3>
+  <div class="row">
+    <div class = "col">
+      <h3><%= "#{@room.entries.select{|other_member| other_member.member_id != current_member.id}[0].member.name}さんとのDM" %></h3>
 
-    <div class="container">
-      <div class="row xl-3">
-        <% @entries.each do |e| %>
-            <h3><strong><a href="/members/<%= e.member.id %>"><%= e.member.name%>さん</a></strong></h3>
+      <ul class = "list-group">
+        <% @messages.each do |m| %>
+          <li class = "list-group-item">
+            <div class = "message-info">
+              <span class = "member-name"><%= m.member.name %>　</span>
+              <span class = "message-date"><%= m.created_at.localtime('+09:00').strftime('%Y-%m-%d %H:%M:%S') %></span>
+            </div>
+            <div class = "message-content">
+              <%= m.body %>
+            </div>
+          </li>
         <% end %>
+      </ul>
 
-        <div class="dmMain">
-            <% @messages.each do |m| %>
-                <strong><%= m.body %></strong>
-                <small><%= m.member.name %>さん</small><hr>
-            <% end %>
-
-            <%= form_for @message do |f| %>
-            <%= f.text_field :body, :placeholder => "メッセージを入力して下さい" , :size => 100 %>
-            <%= f.hidden_field :room_id, :value => @room.id %>
-            <br>
-            <%= f.submit "送信する" %>
-            <% end %>
-        </div>
-      </div>
+      <%= form_for @message do |f| %>
+        <%= f.text_field :body, :placeholder => "メッセージを入力して下さい", :size => 100 %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+        <br>
+        <%= f.submit "送信する" %>
+      <% end %>
     </div>
+  </div>
+</div>

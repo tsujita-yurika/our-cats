@@ -18,7 +18,7 @@
 }
 </style>
 
-<div container>
+<div class="container">
   <div class="row">
     <div class="col">
 
@@ -26,17 +26,17 @@
 
       <h3 class="mt-4">メッセージ一覧</h3>
       <ul class="list-group">
-        <% @messages.each do |message| %>
+        <% @messages.each do |m| %>
           <li class="list-group-item">
             <div class="message-info">
-              <span class="member-name"><%= message.member.name %>　</span>
-              <span class="message-date"><%= message.created_at.localtime('+09:00').strftime('%Y-%m-%d %H:%M:%S') %></span>
+              <span class="member-name"><%= m.member.name %>　</span>
+              <span class="message-date"><%= m.created_at.localtime('+09:00').strftime('%Y-%m-%d %H:%M:%S') %></span>
             </div>
             <div class="message-content">
-              <%= message.body %>
+              <%= m.body %>
             </div>
             <div class="message-actions">
-              <%= link_to '削除', admin_message_path(message), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "badge badge-danger" %>
+              <%= link_to '削除', admin_message_path(m), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "badge badge-danger" %>
             </div>
           </li>
         <% end %>

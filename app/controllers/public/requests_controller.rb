@@ -16,9 +16,7 @@ class Public::RequestsController < ApplicationController
 
     @entries = current_member.entries
     @my_entry = @entries.find_by(request_id: @request.id)
-
     @entry_lists = @request.entries
-
     @room = Room.new
     @entry = Entry.new
     # ルーム、エントリーを新しく作る

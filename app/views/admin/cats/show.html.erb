@@ -1,16 +1,18 @@
-<div class="container">
-  <div class="row m-3">
+<div class="container m-3">
+  <div class="row ml-4 mt-3">
     <h3>猫の詳細</h3>
+  </div>
 
+  <div class="row justify-content-center">
     <div class="col-5 p-5">
-      <table class="table table-borderless">
-        <%= image_tag @cat.get_image, size:"150x150" %>
+      <table class="table">
+        <%= image_tag @cat.get_image, size:"350x250" %><br><br>
         <tr>
-          <td>お名前</td>
+          <th>お名前</th>
           <td><%= @cat.name %></td>
         </tr>
         <tr>
-          <td>性別</td>
+          <th>性別</th>
           <td>
           <% if @cat.sex == 'female' %>
             ♀
@@ -20,20 +22,20 @@
           </td>
         </tr>
         <tr>
-          <td>年齢</td>
+          <th>年齢</th>
           <td><%= @cat.age %></td>
         </tr>
         <tr>
-          <td>種類</td>
-          <td><%= @cat.category %></td>
+          <th>種類</th>
+          <td><%= @cat.category.name %></td>
         </tr>
         <tr>
-          <td>猫の紹介</td>
+          <th>猫の紹介</th>
           <td><%= @cat.introduction %></td>
         </tr>
         <tr>
-          <td><%= link_to "編集", edit_cat_path(@cat.id), class: "btn btn-info btn-block" %></td>
-          <td><%= link_to "猫ちゃんのデータを削除", cat_path(@cat.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
+            <td><%= link_to "編集", edit_cat_path(@cat.id), class: "btn btn-info btn-block" %></td>
+            <td><%= link_to "猫ちゃんのデータを削除", cat_path(@cat.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
         </tr>
       </table>
     </div>

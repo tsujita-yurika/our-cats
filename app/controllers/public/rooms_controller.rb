@@ -11,8 +11,8 @@ class Public::RoomsController < ApplicationController
     def show
       @room = Room.find(params[:id])
       # if Entry.where(member_id: current_member.id, room_id: @room.id).present?
-        @messages = @room.messages.all
-        @message = Message.new
-        @entries = @room.entries
+      @messages = @room.messages.all
+      @message = Message.new
+      @entries = @room.entries
     end
 end

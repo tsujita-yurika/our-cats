@@ -1,48 +1,49 @@
 <div class="container">
-  <div class="row justify-content-center mt-3">
+  <div class="row mt-3">
     <h3>依頼詳細</h3>
+  </div>
 
-    <div class="container">
-      <div class="row justify-content-center mt-3">
-
-        <table class="table table-borderless">
-          <tr>
-            <% @my_cats.each do |cat| %>
-            <p><%= image_tag cat.image, size:"80x80" %></p>
-              <p><%= cat.name %></p>
-            <% end %>
-          </tr>
-        </table>
-          <div class="col-5">
-            <table class="table table-borderless">
-                <tr>
-                  <td>時期</td>
-                  <td><%= @request.season %></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>日数</td>
-                  <td><%= @request.days %></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>場所</td>
-                  <td>
-                  <% if @request.location == 'home' %>
-                    自宅に来てもらう
-                  <% else %>
-                    預かってもらう
-                  <% end %>
-                  </td>
-                </tr>
-                <tr>
-                  <td>備考</td>
-                  <td><%= @request.memo %></td>
-                  <td></td>
-                </tr>
-            </table>
-          </div>
+  <div class="row justify-content-center mt-3">
+    <% @my_cats.each do |cat| %>
+      <div class="col-3 p-xl-2 mb-3">
+         <div><%= image_tag cat.image, size:"200x150" %></div>
+         <div><%= cat.name %></div>
       </div>
+    <% end %>
+  </div>
+
+  <div class = "row justify-content-center mt-3">
+    <div class="col-7">
+      <table class="table">
+          <tr>
+            <th>時期</th>
+            <td><%= @request.season %></td>
+          </tr>
+          <tr>
+            <th>日数</th>
+            <td><%= @request.days %></td>
+          </tr>
+          <tr>
+            <th>場所</th>
+            <td>
+            <% if @request.location == 'home' %>
+              自宅に来てもらう
+            <% else %>
+              預かってもらう
+            <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>備考</th>
+            <td><%= @request.memo %></td>
+          </tr>
+          <tr>
+            <% if @request.member_id == current_member.id %>
+              <td><%= link_to "編集", edit_request_path(@request.id), class: "btn btn-info btn-block" %></td>
+              <td><%= link_to "削除", request_path(@request.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
+          </tr>
+      </table>
+      <br>
     </div>
   </div>
 </div>

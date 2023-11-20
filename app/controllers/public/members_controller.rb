@@ -9,7 +9,8 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     @cats = @member.cats
     @cat = Cat.new
-    @requests = @member.requests
+    @requests = @member.requests.includes(:entries)
+    # メンバーのリクエストをエントリー含めてすべて取得
   end
 
   def edit
