@@ -11,6 +11,8 @@ class Public::MembersController < ApplicationController
     @cat = Cat.new
     @requests = @member.requests.includes(:entries)
     # メンバーのリクエストをエントリー含めてすべて取得
+    # @entries = Entry.where(member_id:@member.id)
+    @entries = @member.entries
   end
 
   def edit

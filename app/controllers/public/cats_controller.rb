@@ -6,6 +6,9 @@ class Public::CatsController < ApplicationController
 
   def show
     @cat = Cat.find(params[:id])
+    if @cat.member.is_active == false
+      render_404
+    end
   end
 
   def edit

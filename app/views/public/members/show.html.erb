@@ -10,7 +10,7 @@
             <table>
               <thead>
                 <tr>
-                  <th><%= image_tag @member.get_profile_image, size: "100x100" %></th>
+                  <th><%= image_tag @member.get_profile_image, size: "150x100" %></th>
                 </tr>
                 <tr>
                   <th>お名前</th>
@@ -67,10 +67,10 @@
                     <% end %>
                   <% end %>
                 </td>
-                  <% if @member.email != "guest@example.com" || @member == current_member %>
+                  <% if @member.email != "guest@example.com" && @member == current_member %>
                       <tr>
                         <td>
-                        <%= link_to "プロフィール編集", edit_member_path(@member), class: "btn btn-info edit_member_#{@member.id}" %>
+                          <%= link_to "プロフィール編集", edit_member_path(@member), class: "btn btn-info edit_member_#{@member.id}" %>
                         </td>
                       </tr>
                   <% end %>
@@ -78,9 +78,9 @@
             </table>
           </div>
 
+        <div class="col-4">
           <% if @requests.present? %>
-            <div class="col-4">
-              <h4>あなたの依頼</h4>
+              <h4>あなたが出した依頼</h4>
               <table>
                 <% @requests.each_slice(3) do |request_group| %>
                   <tr>
@@ -96,10 +96,26 @@
                 <% end %>
               </table>
           <% end %>
-
+        <% if @member.email != "guest@example.com" && @member == current_member %>
+        <!--ゲストログインじゃないかつ自分のマイページ-->
+          <% if @entries.present? %>
+                <h4>あなたが受ける依頼</h4>
+              <table>
+                <% @entries.each do |entry| %>
+                  <tr>
+                    <td>
+                      <% cat = entry.request.cats.first %>
+                      <%= link_to image_tag(cat.image, size: "120x90"), request_path(entry.request.id) %><br>
+                      <%= cat.name %><br>
+                      <%= entry.request.season %>
+                    </td>
+                  </tr>
+                <% end %>
+              </table>
+          <% end %>
+        <% end %>
           <table>
             <% if @member.id == current_member.id %>
-              <h3>メッセージルームへのリンク一覧</h3>
               <% if @requests.present? %>
                 <% @requests.each do |req| %>
                   <% req.entries.each do |entry| %>

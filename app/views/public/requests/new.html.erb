@@ -19,12 +19,12 @@
       <%= form_with model: @request, url: requests_path do |f| %>
         <table class="table table-borderless mt-3">
           <tr>
-            <td><h4><%= f.label :お世話をお願いする猫 %><h4></td>
+            <h4><%= f.label :お世話をお願いする猫 %><h4>
               <table class="table table-borderless my-2">
                 <tr>
                   <% if @my_cats.present? %>
                     <table class="table table-borderless my-2">
-                      <% @my_cats.each_slice(5) do |cats| %>
+                      <% @my_cats.each_slice(4) do |cats| %>
                         <tr>
                           <% cats.each do |cat| %>
                             <td>
@@ -68,8 +68,7 @@
           </tr>
           <tr>
             <td><%= f.label :日数 %></td>
-            <td><%= f.text_field :days, placeholder: "7", class: "form-control", required: true %></td>
-            <td>日間</td>
+            <td><%= f.text_field :days, placeholder: "5日間", class: "form-control", required: true %></td>
           </tr>
           <tr>
             <td><%= f.label :場所 %></td>

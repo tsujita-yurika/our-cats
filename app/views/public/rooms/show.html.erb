@@ -21,7 +21,7 @@
 <div class="container">
   <div class="row">
     <div class = "col">
-      <h3><%= "#{@room.entries.select{|other_member| other_member.member_id != current_member.id}[0].member.name}さんとのDM" %></h3>
+      <h3>トークルーム</h3>
 
       <ul class = "list-group">
         <% @messages.each do |m| %>
@@ -45,4 +45,7 @@
       <% end %>
     </div>
   </div>
+    <div class="d-flex justify-content-center">
+      <%= paginate @messages %>
+    </div>
 </div>

@@ -65,7 +65,7 @@ cat = Cat.create!(
   member_id: 1,
   category_id: 2,
   name: "ことら",
-  sex: "男の子",
+  sex: "male",
   age: 6,
   introduction: "布団に潜るのが好き"
 )
@@ -75,7 +75,7 @@ cat = Cat.create!(
   member_id: 1,
   category_id: 2,
   name: "ギャオ",
-  sex: "女の子",
+  sex: "female",
   age: 6,
   introduction: "日向ぼっこが好き"
   )
@@ -85,7 +85,7 @@ cat = Cat.create!(
   member_id: 2,
   category_id: 13,
   name: "アル",
-  sex: "男の子",
+  sex: "male",
   age: 1,
   introduction: ""
   )
@@ -95,7 +95,7 @@ cat = Cat.create!(
   member_id: 3,
   category_id: 6,
   name: "ララ",
-  sex: "女の子",
+  sex: "female",
   age: 4,
   introduction: ""
   )
@@ -105,7 +105,7 @@ cat = Cat.create!(
   member_id: 4,
   category_id: 31,
   name: "みかん",
-  sex: "女の子",
+  sex: "female",
   age: 3,
   introduction: ""
   )
@@ -115,7 +115,7 @@ cat = Cat.create!(
   member_id: 5,
   category_id: 14,
   name: "もふもふ",
-  sex: "女の子",
+  sex: "female",
   age: 5,
   introduction: ""
   )
@@ -125,7 +125,7 @@ cat = Cat.create!(
   member_id: 6,
   category_id: 14,
   name: "ぶる",
-  sex: "男の子",
+  sex: "male",
   age: 5,
   introduction: ""
   )

@@ -38,9 +38,10 @@
             <td><%= @request.memo %></td>
           </tr>
           <tr>
-            <% if @request.member_id == current_member.id %>
+
               <td><%= link_to "編集", edit_request_path(@request.id), class: "btn btn-info btn-block" %></td>
               <td><%= link_to "削除", request_path(@request.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
+
           </tr>
       </table>
       <br>

@@ -1,7 +1,16 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-private
+# 例外処理
+rescue_from ActiveRecord::RecordNotFound, with: :render_404
+rescue_from ActionController::RoutingError, with: :render_404
+
+def render_404
+  render template: 'errors/error_404', status: 404, layout: 'application', content_type: 'text/html'
+end
+
+  private
+
 def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)
         admin_members_path
