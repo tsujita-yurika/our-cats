@@ -68,6 +68,7 @@
                   <% end %>
                 </td>
                   <% if @member.email != "guest@example.com" && @member == current_member %>
+                  <!--ゲストログインじゃないかつ自分のマイページ-->
                       <tr>
                         <td>
                           <%= link_to "プロフィール編集", edit_member_path(@member), class: "btn btn-info edit_member_#{@member.id}" %>
@@ -80,7 +81,8 @@
 
         <div class="col-4">
           <% if @requests.present? %>
-              <h4>あなたが出した依頼</h4>
+          <!--リクエストはある？-->
+              <h4>出した依頼</h4>
               <table>
                 <% @requests.each_slice(3) do |request_group| %>
                   <tr>
@@ -120,12 +122,8 @@
                 <% @requests.each do |req| %>
                   <% req.entries.each do |entry| %>
                     <% if entry.room.present? %>
-                      <div>
-                        <%= link_to "#{entry.room.entries.select{|other_member| other_member.member_id != current_member.id}[0].member.name}さんとのDM", room_path(entry.room) %>
-                      </div>
                     <% end %>
                   <% end %>
-
                 <% end %>
               <% else %>
                 <div>メッセージはありません</div>
