@@ -21,6 +21,9 @@ class Public::RequestsController < ApplicationController
     @room = Room.new
     @entry = Entry.new
     # ルーム、エントリーを新しく作る
+    if @request.member.is_active == false
+      render_404
+    end
   end
 
   def edit

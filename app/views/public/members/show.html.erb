@@ -68,7 +68,7 @@
                   <% end %>
                 </td>
                   <% if @member.email != "guest@example.com" && @member == current_member %>
-                  <!--ゲストログインじゃないかつ自分のマイページ-->
+                  <!--ゲストログインじゃないかつ自分のマイページだったら-->
                       <tr>
                         <td>
                           <%= link_to "プロフィール編集", edit_member_path(@member), class: "btn btn-info edit_member_#{@member.id}" %>
@@ -99,9 +99,9 @@
               </table>
           <% end %>
         <% if @member.email != "guest@example.com" && @member == current_member %>
-        <!--ゲストログインじゃないかつ自分のマイページ-->
+        <!--ゲストログインじゃないかつ自分のマイページだったら-->
           <% if @entries.present? %>
-                <h4>あなたが受ける依頼</h4>
+              <h4>あなたが受ける依頼</h4>
               <table>
                 <% @entries.each do |entry| %>
                   <tr>

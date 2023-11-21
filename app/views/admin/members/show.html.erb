@@ -1,77 +1,81 @@
+<style>
+  table.table tr:first-child th,
+  table.table tr:first-child td {
+    border-top: none;
+  }
+</style>
+
 <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-6 mt-3">
       <h3><%= @member.name %>さんの会員詳細</h3>
-        <table class="table table-borderless">
-          <thead class="no-bg">
-          <tr>
-            <th>会員ID</th>
-            <td><%= @member.id %></td>
-          </tr>
-          <tr>
-            <th>名前</th>
-            <td><%= @member.name %></td>
-          </tr>
-          <tr>
-            <th>性別</th>
-            <td>
-            <% if @member.sex == 'female' %>
-              女性
-            <% else %>
-              男性
-            <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>お住いの都道府県</th>
-            <td><%= @member.prefectures %></td>
-          </tr>
-          <tr>
-            <th>本名</th>
-            <td><%= @member.real_name %></td>
-          </tr>
-          <tr>
-            <th>電話番号</th>
-            <td><%= @member.phone_number %></td>
-          </tr>
-          <tr>
-            <th>住所</th>
-            <td><%= @member.address %></td>
-          </tr>
-          <tr>
-            <th>本人確認書類</th>
-            <td><%= image_tag @member.get_image, size:"150x150" %></td>
-          </tr>
-          <tr>
-            <th>本人確認</th>
-            <% if @member.identification_status == true %>
-              <td class="text-success">確認済</td>
-            <% else %>
-              <td class="text-danger">未確認</td>
-            <% end %>
-          </tr>
-          <tr>
-            <th>会員ステータス</th>
-            <% if @member.is_active == true %>
-              <td class="text-success">有効</td>
-            <% else %>
-              <td class="text-danger">退会</td>
-            <% end %>
-          </tr>
-          <tr>
-            <th></th>
-
-            <td><%= link_to "編集する", edit_admin_member_path, class: "btn btn-success" %> </td>
-          </tr>
-        </thead>
+      <table class="table">
+        <br>
+        <tr>
+          <th>会員ID</th>
+          <td><%= @member.id %></td>
+        </tr>
+        <tr>
+          <th>名前</th>
+          <td><%= @member.name %></td>
+        </tr>
+        <tr>
+          <th>性別</th>
+          <td>
+          <% if @member.sex == 'female' %>
+            女性
+          <% else %>
+            男性
+          <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>お住いの都道府県</th>
+          <td><%= @member.prefectures %></td>
+        </tr>
+        <tr>
+          <th>本名</th>
+          <td><%= @member.real_name %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @member.phone_number %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @member.address %></td>
+        </tr>
       </table>
     </div>
 
-    <div class="row ml-5">
-      <div class="col-2">
-
-      </div>
-    </end>
-
+    <div class="col-6 mt-5">
+      <table class="table">
+        <br><br>
+        <tr>
+          <th>本人確認書類</th>
+          <td><%= image_tag @member.get_image, size:"150x150" %></td>
+        </tr>
+        <tr>
+          <th>本人確認</th>
+          <% if @member.identification_status == true %>
+            <td class="text-success">確認済</td>
+          <% else %>
+            <td class="text-danger">未確認</td>
+          <% end %>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <% if @member.is_active == true %>
+            <td class="text-success">有効</td>
+          <% else %>
+            <td class="text-danger">退会</td>
+          <% end %>
+        </tr>
+        <tr>
+          <td></td><td></td>
+          <td><%= link_to "編集する", edit_admin_member_path, class: "btn btn-success" %> </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
