@@ -97,8 +97,8 @@
               </table>
           <% end %>
           <br><br>
-          <% if @member.email != "guest@example.com" && @member == current_member %>
-          <!--ゲストログインじゃないかつ自分のマイページだったら-->
+          <% if @member == current_member %>
+          <!--自分のマイページだったら-->
             <% if @entries.present? %>
                 <h4>あなたが受ける依頼</h4>
                 <table>

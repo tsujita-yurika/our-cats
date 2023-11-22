@@ -1,17 +1,19 @@
 class Public::MessagesController < ApplicationController
     before_action :authenticate_member!
 
-    def create
-      @message = Message.new(message_params)
-        if @message.save
-          redirect_to "/rooms/#{@message.room_id}"
-        end
+  def create
+    @message = Message.new(message_params)
+    if @message.save
+      redirect_to request.referer
+    else
+      flash[:alert] = @message.errors.full_messages.join(", ")
+      redirect_to request.referer
     end
+  end
 
-    private
+  private
 
-    def message_params
+  def message_params
       params.require(:message).permit(:body, :room_id).merge(member_id: current_member.id)
-    end
-
+  end
 end

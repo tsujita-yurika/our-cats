@@ -1,36 +1,25 @@
-<style>
-.pagination-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.list-group-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 2px;
-}
-
-.message-content {
-  flex-grow: 1;
-  margin-left: 10px; /* スペースの幅を調整 */
-}
-</style>
-
 <div class="container">
+  <% if @message.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @message.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="row">
-    <div class = "col">
+    <div class="col my-3">
       <h3>トークルーム</h3>
 
-      <ul class = "list-group">
+      <ul class="list-group" style="margin-top: 20px;">
         <% @messages.each do |m| %>
-          <li class = "list-group-item">
-            <div class = "message-info">
-              <span class = "member-name"><%= m.member.name %>　</span>
-              <span class = "message-date"><%= m.created_at.localtime('+09:00').strftime('%Y-%m-%d %H:%M:%S') %></span>
+          <li class="list-group-item" style="display: flex; justify-content: space-between; align-items: center; margin: 2px;">
+            <div class="message-info">
+              <span class="member-name"><%= m.member.name %>　</span>
+              <span class="message-date"><%= m.created_at.localtime('+09:00').strftime('%Y-%m-%d %H:%M:%S') %></span>
             </div>
-            <div class = "message-content">
+            <div class="message-content" style="flex-grow: 1; margin-left: 10px;">
               <%= m.body %>
             </div>
           </li>
@@ -38,14 +27,14 @@
       </ul>
 
       <%= form_for @message do |f| %>
-        <%= f.text_field :body, :placeholder => "メッセージを入力して下さい", :size => 100 %>
-        <%= f.hidden_field :room_id, :value => @room.id %>
+        <%= f.text_field :body, placeholder: "メッセージを入力して下さい", size: 100 %>
+        <%= f.hidden_field :room_id, value: @room.id %>
         <br>
         <%= f.submit "送信する" %>
       <% end %>
     </div>
   </div>
-    <div class="d-flex justify-content-center">
-      <%= paginate @messages %>
-    </div>
+  <div class="d-flex justify-content-center">
+    <%= paginate @messages %>
+  </div>
 </div>
