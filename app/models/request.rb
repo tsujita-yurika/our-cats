@@ -1,8 +1,8 @@
 class Request < ApplicationRecord
 
-    belongs_to :member
+    belongs_to :member # 〇request.member, ★request.member_id
     has_many :deposit_cats, dependent: :destroy
-    has_many :cats, through: :deposit_cats
+    has_many :cats, through: :deposit_cats # 〇request.cats, ★request.m
     has_many :entries, dependent: :destroy
 
     has_one_attached :image

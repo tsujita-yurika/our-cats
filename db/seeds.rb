@@ -123,10 +123,23 @@ cat.image.attach(io: File.open(Rails.root.join("app/assets/images/メインク�
 
 cat = Cat.create!(
   member_id: 6,
-  category_id: 14,
+  category_id: 11,
   name: "ぶる",
   sex: "male",
   age: 5,
   introduction: ""
   )
 cat.image.attach(io: File.open(Rails.root.join("app/assets/images/ロシアンブルー4.jpg")), filename: "ロシアンブルー4.jpg")
+
+member = Member.find(1)
+cats = member.cats.map(&:itself)
+# member.catsを144行目のようにmapで改めて配列を返す
+request = Request.create!(
+  member: member,
+  season: "3月下旬～4月上旬",
+  days: "6日間",
+  location: "home",
+  memo: "",
+  cats: cats
+  # cats: cats [cat1, cat2]
+)

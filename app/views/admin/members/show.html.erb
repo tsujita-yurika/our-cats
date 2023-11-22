@@ -7,10 +7,12 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-6 mt-3">
+    <div class="col-6 my-3">
       <h3><%= @member.name %>さんの会員詳細</h3>
-      <table class="table">
-        <br>
+      <table class="table mt-5">
+        <tr>
+         <td><%= image_tag @member.get_profile_image, size: "100x100" %></td>
+        </tr>
         <tr>
           <th>会員ID</th>
           <td><%= @member.id %></td>
@@ -34,6 +36,19 @@
           <td><%= @member.prefectures %></td>
         </tr>
         <tr>
+          <th>メールアドレス</th>
+          <td><%= @member.email %></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-6 mt-5">
+      <table class="table">
+        <tr>
+          <th>本人確認書類</th>
+          <td><%= image_tag @member.get_image, size:"150x150" %></td>
+        </tr>
+        <tr>
           <th>本名</th>
           <td><%= @member.real_name %></td>
         </tr>
@@ -44,16 +59,6 @@
         <tr>
           <th>住所</th>
           <td><%= @member.address %></td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="col-6 mt-5">
-      <table class="table">
-        <br><br>
-        <tr>
-          <th>本人確認書類</th>
-          <td><%= image_tag @member.get_image, size:"150x150" %></td>
         </tr>
         <tr>
           <th>本人確認</th>

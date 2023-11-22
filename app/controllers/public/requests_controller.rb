@@ -13,9 +13,10 @@ class Public::RequestsController < ApplicationController
   def show
     @request = Request.find(params[:id])
     @my_cats = @request.cats
-
-    @entries = current_member.entries
-    @my_entry = @entries.find_by(request_id: @request.id)
+    if member_signed_in?
+      @entries = current_member.entries
+      @my_entry = @entries.find_by(request_id: @request.id)
+    end
     @entry_lists = @request.entries
 
     @room = Room.new

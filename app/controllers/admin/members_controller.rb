@@ -31,7 +31,8 @@ class Admin::MembersController < ApplicationController
                                   :address, :prefectures,
                                   :identification_status,
                                   :is_active,
-                                  :image
+                                  :image,
+                                  :profile_image
                                   )
   end
 
