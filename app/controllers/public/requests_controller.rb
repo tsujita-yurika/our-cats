@@ -34,7 +34,7 @@ class Public::RequestsController < ApplicationController
   def update
     request = Request.find(params[:id])
     request.update(request_params)
-    redirect_to request_path(request.id)
+    redirect_to request_path(request.id), notice: "更新しました。"
   end
 
   def create

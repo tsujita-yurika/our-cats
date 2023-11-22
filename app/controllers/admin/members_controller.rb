@@ -14,13 +14,9 @@ class Admin::MembersController < ApplicationController
   end
 
   def update
-    @member = Member.find(params[:id])
-    if @member.update(member_params)
-      flash[:notice] = "編集しました"
-      redirect_to admin_member_path(@member)
-    else
-      render :edit
-    end
+    member = Member.find(params[:id])
+    member.update(member_params)
+    redirect_to admin_member_path(member.id), notice: "更新しました。"
   end
 
  private

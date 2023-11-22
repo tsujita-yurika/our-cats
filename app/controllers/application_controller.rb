@@ -8,6 +8,7 @@ rescue_from ActionController::RoutingError, with: :render_404
 def render_404
   render template: 'errors/error_404', status: 404, layout: 'application', content_type: 'text/html'
 end
+# ここまで。あとは各コントローラに書く
 
   private
 

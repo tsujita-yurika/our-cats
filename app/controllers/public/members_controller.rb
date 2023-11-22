@@ -13,6 +13,9 @@ class Public::MembersController < ApplicationController
     # メンバーのリクエストをエントリー含めてすべて取得
     @entries = @member.entries
     # メンバーに紐づくエントリーズ（依頼を渡す人・依頼を受ける人のエントリー）
+    if @member.is_active == false
+      render_404
+    end
   end
 
   def edit
@@ -23,7 +26,7 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     @member.profile_image.attach(params[:member][:profile_image])
     if @member.update(member_params)
-      redirect_to member_path(@member.id)
+      redirect_to member_path(@member.id), notice: "更新しました。"
     else
       render 'edit'
     end

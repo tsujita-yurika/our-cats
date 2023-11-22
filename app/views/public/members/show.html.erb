@@ -98,24 +98,25 @@
                 <% end %>
               </table>
           <% end %>
-        <% if @member.email != "guest@example.com" && @member == current_member %>
-        <!--ゲストログインじゃないかつ自分のマイページだったら-->
-          <% if @entries.present? %>
-              <h4>あなたが受ける依頼</h4>
-              <table>
-                <% @entries.each do |entry| %>
-                  <tr>
-                    <td>
-                      <% cat = entry.request.cats.first %>
-                      <%= link_to image_tag(cat.image, size: "120x90"), request_path(entry.request.id) %><br>
-                      <%= cat.name %><br>
-                      <%= entry.request.season %>
-                    </td>
-                  </tr>
-                <% end %>
-              </table>
+          <br><br>
+          <% if @member.email != "guest@example.com" && @member == current_member %>
+          <!--ゲストログインじゃないかつ自分のマイページだったら-->
+            <% if @entries.present? %>
+                <h4>あなたが受ける依頼</h4>
+                <table>
+                  <% @entries.each do |entry| %>
+                    <tr>
+                      <td>
+                        <% cat = entry.request.cats.first %>
+                        <%= link_to image_tag(cat.image, size: "120x90"), request_path(entry.request.id) %><br>
+                        <%= cat.name %><br>
+                        <%= entry.request.season %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </table>
+            <% end %>
           <% end %>
-        <% end %>
           <table>
             <% if @member.id == current_member.id %>
               <% if @requests.present? %>
