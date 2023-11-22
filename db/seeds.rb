@@ -69,7 +69,7 @@ cat = Cat.create!(
   age: 6,
   introduction: "布団に潜るのが好き"
 )
-cat.image.attach(io: File.open(Rails.root.join("app/assets/images/cat.jpg")), filename: "cat.jpg")
+cat.image.attach(io: File.open(Rails.root.join("app/assets/images/ことら小.jpg")), filename: "ことら小.jpg")
 
 cat = Cat.create!(
   member_id: 1,
@@ -79,7 +79,7 @@ cat = Cat.create!(
   age: 6,
   introduction: "日向ぼっこが好き"
   )
-cat.image.attach(io: File.open(Rails.root.join("app/assets/images/ギャオ4.jpg")), filename: "ギャオ4.jpg")
+cat.image.attach(io: File.open(Rails.root.join("app/assets/images/newギャオ小.jpg")), filename: "newギャオ小.jpg")
 
 cat = Cat.create!(
   member_id: 2,
@@ -130,4 +130,3 @@ cat = Cat.create!(
   introduction: ""
   )
 cat.image.attach(io: File.open(Rails.root.join("app/assets/images/ロシアンブルー4.jpg")), filename: "ロシアンブルー4.jpg")
-

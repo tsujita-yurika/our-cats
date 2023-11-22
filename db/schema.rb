@@ -70,14 +70,6 @@ ActiveRecord::Schema.define(version: 2023_11_15_044514) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "post_id", null: false
-    t.text "comment_content", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "deposit_cats", force: :cascade do |t|
     t.integer "cat_id", null: false
     t.integer "request_id", null: false
@@ -94,13 +86,6 @@ ActiveRecord::Schema.define(version: 2023_11_15_044514) do
     t.index ["member_id"], name: "index_entries_on_member_id"
     t.index ["request_id"], name: "index_entries_on_request_id"
     t.index ["room_id"], name: "index_entries_on_room_id"
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "post_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "members", force: :cascade do |t|
@@ -132,18 +117,6 @@ ActiveRecord::Schema.define(version: 2023_11_15_044514) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["member_id"], name: "index_messages_on_member_id"
     t.index ["room_id"], name: "index_messages_on_room_id"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.text "post_content", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "relationships", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "requests", force: :cascade do |t|
