@@ -49,9 +49,9 @@ class Public::RequestsController < ApplicationController
   end
 
   def destroy
-    request = Request.find(params[:id])  # データ（レコード）を1件取得
-    request.destroy  # データ（レコード）を削除
-    redirect_to '/requests'  # 投稿一覧画面へリダイレクト
+    request = Request.find(params[:id])
+    request.destroy
+    redirect_to member_path(current_member.id), notice: "削除しました。"
   end
 
   private

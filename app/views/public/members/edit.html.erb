@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row row justify-content-center mt-3">
+  <div class="row mt-3">
     <h3>プロフィール編集</h3>
 
       <div class="container">
@@ -12,7 +12,7 @@
                 <td></td>
               </tr>
               <tr>
-                <td><%= f.label : %></td>
+                <td><%= f.label :お名前 %></td>
                 <td><%= f.text_field :name, class: "form-control", autofocus: true %></td>
                 <td></td>
               </tr>
@@ -54,8 +54,10 @@
               </table>
             </div>
 
-            <div class="actions text-center m-5">
-              <%= f.submit '保存', class: "button btn btn-success btn-lg center-block" %>
+            <div class="actions text-center mt-2 mb-5">
+              <%= f.submit '変更を保存', class: "button btn btn-success btn-lg center-block" %>
+              <span>　　</span>
+              <%= link_to "退会する", members_check_path, class:"btn btn-danger btn-lg center-block" %></td>
             </div>
           <% end %>
       </div>

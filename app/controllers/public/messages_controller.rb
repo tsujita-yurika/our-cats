@@ -6,8 +6,12 @@ class Public::MessagesController < ApplicationController
     if @message.save
       redirect_to request.referer
     else
-      flash[:alert] = @message.errors.full_messages.join(", ")
+      flash[:error] = @message.errors.full_messages.join(", ")
       redirect_to request.referer
+      #@room = Room.find(message_params[:room_id])
+      #@messages = @room.messages.page(params[:page]).per(10)
+      #@entries = @room.entries
+      #render "public/rooms/show"
     end
   end
 

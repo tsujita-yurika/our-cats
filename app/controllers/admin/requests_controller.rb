@@ -10,4 +10,30 @@ class Admin::RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @my_cats = @request.cats
   end
+
+  def edit
+    @request = Request.find(params[:id])
+    @member = @request.member
+    @my_cats = @member.cats
+  end
+
+  def update
+    request = Request.find(params[:id])
+    request.update(request_params)
+    redirect_to admin_request_path(request.id), notice: "更新しました。"
+  end
+
+  def destroy
+    request = Request.find(params[:id])
+    request.destroy
+    redirect_to '/admin/requests', notice: "削除しました。"
+  end
+
+  private
+
+  def request_params
+    params.require(:request).permit(:season, :days, :location, :memo, cat_ids: [] )
+  end
+
+
 end

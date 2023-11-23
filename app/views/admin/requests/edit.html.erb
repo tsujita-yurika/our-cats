@@ -3,8 +3,8 @@
     <h3>お世話依頼編集</h3>
 
     <div class="container">
-      <div class="row row justify-content-center">
-        <%= form_with model: @request, url: request_path(@request.id), method: :patch do |f| %>
+      <div class="row justify-content-center">
+        <%= form_with model: @request, url: admin_request_path(@request.id), method: :patch do |f| %>
           <table class="table table-borderless">
             <tr>
               <td><%= f.label :お世話してもらう猫 %></td>

@@ -13,8 +13,14 @@
       <% @search_results.each do |cat| %>
         <div class="search-item p-xl-2 ml-4 mb-3">
           <div>
-            <%= link_to cat_path(cat) do %>
-              <%= image_tag cat.image, size: "230x180" %>
+            <% if admin_signed_in? %>
+              <%= link_to admin_cat_path(cat) do %>
+                <%= image_tag cat.image, size: "230x180" %>
+              <% end %>
+            <% else %>
+              <%= link_to cat_path(cat) do %>
+                <%= image_tag cat.image, size: "230x180" %>
+              <% end %>
             <% end %>
           </div>
           <div><%= cat.name %></div>

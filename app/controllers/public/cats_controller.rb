@@ -38,9 +38,9 @@ class Public::CatsController < ApplicationController
   end
 
   def destroy
-    cat = Cat.find(params[:id])  # データ（レコード）を1件取得
-    cat.destroy  # データ（レコード）を削除
-    redirect_to '/cats'  # 投稿一覧画面へリダイレクト
+    cat = Cat.find(params[:id])
+    cat.destroy
+    redirect_to member_path(current_member.id), notice: "削除しました。"
   end
 
   private

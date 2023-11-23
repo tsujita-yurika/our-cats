@@ -15,6 +15,10 @@ class Public::MembersController < ApplicationController
     end
   end
 
+  # def check
+  #   @member = Member.find(params[:id])
+  # end
+
   def edit
     @member = Member.find(params[:id])
   end
@@ -27,6 +31,14 @@ class Public::MembersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def withdraw
+    @member = Member.find(current_member.id)
+    @member.update(is_active: false)
+    reset_session
+    flash[:notice] = "退会処理を行いました。"
+    redirect_to root_path
   end
 
  private

@@ -20,6 +20,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
+    get 'members/check' => 'members#check'
+    patch 'members/withdraw' => 'members#withdraw'
     resources :members
     resources :cats
     resources :requests do
@@ -32,8 +34,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 # 管理者ルーティング
   namespace :admin do
     resources :members, only: [:index, :show, :edit, :update]
-    resources :cats, only: [:index, :show]
-    resources :requests, only: [:index, :show]
+    resources :cats, only: [:index, :show, :edit, :update, :destroy]
+    resources :requests, only: [:index, :show, :edit, :update, :destroy]
     resources :rooms, only: [:index, :show]
     resources :messages, only: [:destroy]
   end

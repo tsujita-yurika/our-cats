@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row mt-3">
+      <h3>猫の編集</h3>
+
+  <div class="container">
+    <div class="row row justify-content-center">
+      <%= form_with model: @cats, url: cat_path(@cats.id), method: :patch do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <td><%= f.label :写真 %></td>
+            <td><%= f.file_field :image, accept: "image/*", class: "form-control-file" %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.label :名前 %></td>
+            <td><%= f.text_field :name, class: "form-control", required: true %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>性別</td>
+            <td>
+              <%= f.radio_button :sex, :male, checked: true %>男の子<span>　　</span>
+              <%= f.radio_button :sex, :female %>女の子
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><%= f.label :年齢 %></td>
+            <td><%= f.text_field :age, class: "form-control" %></td>
+            <td></td>
+          </tr>
+          <tr>
+              <td><%= f.label :category_id, "種類" %></td>
+              <td><%= f.collection_select :category_id, Category.all, :id, :name, prompt: true, required: true %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :自己紹介 %></td>
+            <td><%= f.text_area :introduction, placeholder: "ささみが好きです", class: "form-control", rows:5 %></td>
+            <td></td>
+          </tr>
+        </table>
+
+        <div class="actions text-center m-5">
+          <%= f.submit '保存', class: "button btn btn-success btn-lg center-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  </div>
+</div>
