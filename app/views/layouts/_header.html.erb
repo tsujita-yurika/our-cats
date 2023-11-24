@@ -31,12 +31,16 @@
           <% end %>
 
         <% elsif admin_signed_in? %>
-          <%= link_to  admin_rooms_path, class:"btn m-2", style: "color: brown" do %>
-            ルーム一覧 <i class="fa-solid fa-envelope"></i>
-          <% end %>
+          <div class="col text-center mt-1" style="color: brown">
+            管理者モードです
+          </div>
 
           <%= link_to admin_members_path, class:"btn m-2", style: "color: brown" do %>
             会員一覧 <i class="fa-solid fa-user"></i>
+          <% end %>
+
+          <%= link_to  admin_rooms_path, class:"btn m-2", style: "color: brown" do %>
+            ルーム一覧 <i class="fa-solid fa-envelope"></i>
           <% end %>
 
           <%= link_to admin_requests_path, class:"btn m-2", style: "color: brown" do %>

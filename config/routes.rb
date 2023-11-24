@@ -36,7 +36,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :members, only: [:index, :show, :edit, :update]
     resources :cats, only: [:index, :show, :edit, :update, :destroy]
     resources :requests, only: [:index, :show, :edit, :update, :destroy]
-    resources :rooms, only: [:index, :show]
+    resources :rooms, only: [:index, :show, :destroy]
     resources :messages, only: [:destroy]
   end
 

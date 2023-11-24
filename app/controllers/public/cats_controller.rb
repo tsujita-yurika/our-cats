@@ -1,4 +1,5 @@
 class Public::CatsController < ApplicationController
+  before_action :is_cat_matching_login_member, only: [:edit, :update, :destroy]
 
   def new
     @cat = Cat.new
@@ -52,6 +53,14 @@ class Public::CatsController < ApplicationController
                                 :category_id,
                                 :introduction,
                                 :image)
+  end
+
+  def is_cat_matching_login_member
+    cat = Cat.find(params[:id])
+    unless cat.member == current_member
+      flash[:notice] = "この猫の編集は許可されていません。"
+      redirect_to root_path and return
+    end
   end
 
 end

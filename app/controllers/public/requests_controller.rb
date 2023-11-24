@@ -1,4 +1,5 @@
 class Public::RequestsController < ApplicationController
+before_action :is_request_matching_login_member, only: [:edit, :update, :destroy]
 
   def new
     @request = Request.new
@@ -60,5 +61,12 @@ class Public::RequestsController < ApplicationController
     params.require(:request).permit(:season, :days, :location, :memo, cat_ids: [] )
   end
 
-end
+  def is_request_matching_login_member
+    request = Request.find(params[:id])
+    unless request.member == current_member
+      flash[:notice] = "この依頼の編集は許可されていません。"
+      redirect_to root_path and return
+    end
+  end
 
+end
