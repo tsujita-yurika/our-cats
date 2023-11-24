@@ -4,7 +4,7 @@
 
   <div class="container">
     <div class="row row justify-content-center">
-      <%= form_with model: @cats, url: cat_path(@cats.id), method: :patch do |f| %>
+      <%= form_with model: @cats, url: admin_cat_path(@cats.id), method: :patch do |f| %>
         <table class="table table-borderless">
           <tr>
             <td><%= f.label :写真 %></td>
@@ -41,7 +41,7 @@
         </table>
 
         <div class="actions text-center m-5">
-          <%= f.submit '保存', class: "button btn btn-success btn-lg center-block" %>
+          <%= f.submit '　保存　', class: "button btn btn-success btn-lg center-block" %>
         </div>
       <% end %>
     </div>

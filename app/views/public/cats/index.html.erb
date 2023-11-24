@@ -5,14 +5,16 @@
 
         <div class="row m-xl-2">
           <% @cats.each do |cat| %>
-            <div class="col-3 p-xl-2 mb-3">
-              <div>
-                <%= link_to cat_path(cat.id) do %>
-                  <%= image_tag cat.get_image, size: "230x180" %>
-                <% end %>
+            <% if cat.member.is_active %>
+              <div class="col-3 p-xl-2 mb-3">
+                <div>
+                  <%= link_to cat_path(cat.id) do %>
+                    <%= image_tag cat.get_image, size: "230x180" %>
+                  <% end %>
+                </div>
+                <div><%= cat.name %></div>
               </div>
-              <div><%= cat.name %></div>
-            </div>
+            <% end %>
           <% end %>
         </div>
       </div>

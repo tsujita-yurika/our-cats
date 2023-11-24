@@ -1,15 +1,4 @@
 <div class="container">
-
-  <div>
-    <% if @message.errors.any? %>
-        <ul>
-          <% @message.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-    <% end %>
-  </div>
-
   <div class="row">
     <div class="col my-3">
       <h3>トークルーム</h3>

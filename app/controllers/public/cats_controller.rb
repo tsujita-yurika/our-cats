@@ -16,8 +16,8 @@ class Public::CatsController < ApplicationController
   end
 
   def index
-    @cats = Cat.all.page(params[:page]).per(12)
-    @cat_count = Cat.count
+    @cats = Cat.includes(:member).where(members: { is_active: true }).page(params[:page]).per(12)
+    @cat_count = Cat.includes(:member).where(members: { is_active: true }).count
   end
 
   def update

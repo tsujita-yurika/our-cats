@@ -4,25 +4,15 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :cats, dependent: :destroy
-
-  has_many :messages, dependent: :destroy
-  has_many :entries, dependent: :destroy
-
-  has_many :comments, dependent: :destroy
-
-  has_many :posts
-  has_many :likes
-
-  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id"
-  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id"
-  has_many :followings, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships, source: :follower
-
-  has_many :requests, dependent: :destroy
-
   has_one_attached :profile_image
   has_one_attached :image
+  # 猫
+  has_many :cats, dependent: :destroy
+  # チャット
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  # 依頼
+  has_many :requests, dependent: :destroy
 
   validates :name, presence: true
   validates :sex, presence: true
@@ -30,7 +20,7 @@ class Member < ApplicationRecord
   validates :encrypted_password, presence: true
   validates :prefectures, presence: true
 
-
+#ゲストログイン
 GUEST_MEMBER_EMAIL = "guest@example.com"
 
   def self.guest
@@ -49,6 +39,7 @@ GUEST_MEMBER_EMAIL = "guest@example.com"
     email == GUEST_MEMBER_EMAIL
   end
 
+  #プロフィールの写真
   def get_profile_image
     if profile_image.attached?
       profile_image
@@ -57,6 +48,7 @@ GUEST_MEMBER_EMAIL = "guest@example.com"
     end
   end
 
+  # 投稿写真
   def get_image
      if image.attached?
        image
@@ -74,8 +66,9 @@ GUEST_MEMBER_EMAIL = "guest@example.com"
     end
   end
 
-   def active_for_authentication?
+  #退会したら同じアカウントでログインできない
+  def active_for_authentication?
      super && (is_active == true)
-   end
+  end
 
 end

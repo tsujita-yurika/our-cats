@@ -1,5 +1,7 @@
 class Cat < ApplicationRecord
 
+  has_one_attached :image
+
   belongs_to :member
   belongs_to :category
   has_many :deposit_cats, dependent: :destroy
@@ -9,8 +11,7 @@ class Cat < ApplicationRecord
   validates :sex, presence: true
   validates :age, presence: true
 
-  has_one_attached :image
-
+  # 投稿写真
   def get_image
     if image.attached?
       image
@@ -19,7 +20,7 @@ class Cat < ApplicationRecord
     end
   end
 
-  # 検索方法分岐
+  # 検索機能
   def self.looks(search, word)
     if search == "perfect_match"
       @cat = Cat.where("name LIKE?", "#{word}")

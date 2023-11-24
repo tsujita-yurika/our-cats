@@ -17,13 +17,13 @@ class Admin::CatsController < ApplicationController
   def update
     cat = Cat.find(params[:id])
     cat.update(cat_params)
-    redirect_to cat_path(cat.id), notice: "更新しました。"
+    redirect_to admin_cat_path(cat.id), notice: "更新しました。"
   end
 
   def destroy
     cat = Cat.find(params[:id])
     cat.destroy
-    redirect_to '/cats' , notice: "削除しました。"
+    redirect_to admin_cats_path, notice: "削除しました。"
   end
 
   private
