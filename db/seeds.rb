@@ -140,6 +140,55 @@ request = Request.create!(
   days: "6日間",
   location: "home",
   memo: "",
-  cats: cats
+  cats: cats,
+  is_complete: false
   # cats: cats [cat1, cat2]
+)
+
+member = Member.find(2)
+cats = member.cats.map(&:itself)
+request = Request.create!(
+  member: member,
+  season: "4月上旬",
+  days: "5日間",
+  location: "home",
+  memo: "",
+  cats: cats,
+  is_complete: false
+)
+
+member = Member.find(3)
+cats = member.cats.map(&:itself)
+request = Request.create!(
+  member: member,
+  season: "2月中旬～2月下旬",
+  days: "10日間",
+  location: "hom",
+  memo: "朝晩薬をあげてください。",
+  cats: cats,
+  is_complete: false
+)
+
+member = Member.find(4)
+cats = member.cats.map(&:itself)
+request = Request.create!(
+  member: member,
+  season: "2月中旬",
+  days: "10日間",
+  location: "hom",
+  memo: "人懐っこいです。一緒に寝てあげてください。",
+  cats: cats,
+  is_complete: false
+)
+
+member = Member.find(5)
+cats = member.cats.map(&:itself)
+request = Request.create!(
+  member: member,
+  season: "4月中旬",
+  days: "8日間",
+  location: "home",
+  memo: "",
+  cats: cats,
+  is_complete: false
 )

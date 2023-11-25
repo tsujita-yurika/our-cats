@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row mt-3">
     <h3>猫の登録</h3>
-
-  <div>
-      <% if @cat.errors.any? %>
-        <%= @cat.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @cat.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
   </div>
+    <div>
+        <% if @cat.errors.any? %>
+          <%= @cat.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @cat.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+    </div>
 
   <div class="container">
     <div class="row justify-content-center">

@@ -17,10 +17,9 @@
     </header>
 
     <main style="min-height: 480px;">
-
       <div class="container">
-        <%= flash[:error] %>
-        <%= flash[:notice] %>
+        <%= content_tag(:div, flash[:error], class: 'alert alert-danger') if flash[:error].present? %>
+        <%= content_tag(:div, flash[:notice], class: 'alert alert-success') if flash[:notice].present? %>
       </div>
       <%= yield %>
     </main>

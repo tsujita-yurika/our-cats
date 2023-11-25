@@ -3,26 +3,26 @@
     <h3>お世話依頼編集</h3>
 
     <div class="container">
-      <div class="row row justify-content-center">
+      <div class="row justify-content-center">
         <%= form_with model: @request, url: request_path(@request.id), method: :patch do |f| %>
-          <table class="table table-borderless">
-            <tr>
-              <td><%= f.label :お世話してもらう猫 %></td>
-                <table class="table table-borderless my-2"><tr>
-                <%= f.collection_check_boxes :cat_ids, @my_cats, :id, :name, checked: @my_cats.ids, multiple: true do |b| %>
-                     <td>
-                      <%= b.label do %>
-                      <table>
-                        <tr><td><%= b.check_box %>
-                        <%= image_tag b.object.image, size:"120x100" %></tr></td>
-                        <tr><td><%= b.object.name %></tr></td>
-                      </table>
-                      <% end %>
-                      </td>
-                    <% end %>
-                    </tr>
-                </table>
-            </tr>
+          <table class="table table-borderless mt-3">
+            <h4><%= f.label :お世話してもらう猫 %></h4>
+            <table class="table table-borderless my-2">
+            <% @my_cats.each_with_index do |cat, index| %>
+              <% if index % 4 == 0 %>
+                </tr><tr> <!-- 行の終わりと新しい行の始まりを同時に追加 -->
+              <% end %>
+              <td>
+                <%= f.label cat.name do %> <!-- ラベルの引数に猫の名前を指定 -->
+                  <%= f.check_box :cat_ids, { multiple: true, checked: @request.cat_ids.include?(cat.id) }, cat.id, nil %>
+                  <%= image_tag cat.image, size: "180x120" %>
+                <% end %>
+              </td>
+              <% if (index + 1) % 4 == 0 || cat == @my_cats.last %>
+                </tr> <!-- 行の終わりを追加 -->
+              <% end %>
+            <% end %>
+            </table>
           </table>
           <table class="table table-borderless my-2">
             <tr>

@@ -186,3 +186,13 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+ja:
+  activerecord:
+    attributes:
+      message:
+        body: "メッセージ"
+      cat:
+        cat_id: "猫"
+        category: "種類"
+      request:
+        cat_ids: "猫"

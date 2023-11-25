@@ -51,8 +51,9 @@ before_action :is_request_matching_login_member, only: [:edit, :update, :destroy
 
   def destroy
     request = Request.find(params[:id])
-    request.destroy
-    redirect_to member_path(current_member.id), notice: "削除しました。"
+    request.is_complete = true
+    request.save
+    redirect_to member_path(current_member.id), notice: "依頼が完了しました。"
   end
 
   private

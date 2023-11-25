@@ -2,24 +2,33 @@
   <div class="row mt-3">
     <h3>依頼詳細</h3>
   </div>
-  <div class="row">
-    <%= link_to member_path(@request.member) do %>
-      <%= image_tag @request.member.get_profile_image, size:("80x80") %>
-      <%= @request.member.name %>
-    <% end %>
-  </div>
 
-  <div class="row justify-content-center">
-    <% @my_cats.each do |cat| %>
-      <div class="col-3 p-xl-2 mb-3">
-         <div><%= image_tag cat.image, size:"200x150" %></div>
-         <div><%= cat.name %></div>
+  <div class="row">
+    <div class="col-2 mx-2">
+      <%= link_to member_path(@request.member) do %>
+        <%= image_tag @request.member.get_profile_image, size: "80x80" %>
+      <% end %>
+      <p><%= @request.member.name %></p>
+    </div>
+
+    <div class="col-9">
+      <div class="row justify-content-center">
+
+        <% @my_cats.each do |cat| %>
+          <div class="col-3 mx-2">
+            <div><%= image_tag cat.image, size: "200x150" %></div>
+            <div><%= cat.name %></div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 
   <div class = "row justify-content-center mt-3">
     <div class="col-6">
+        <% if @request.is_complete == true %>
+          <h2>この依頼は完了しました</h2>
+        <% end %>
       <table class="table">
         <tr>
           <th>時期</th>
@@ -50,12 +59,14 @@
       <div class="row">
         <% if member_signed_in? %>
           <% if @request.member_id == current_member.id %>
-            <div class="col-6 mb-3">
-              <%= link_to "編集", edit_request_path(@request.id), class: "btn btn-info btn-block" %>
-            </div>
-            <div class="col-6 mb-3">
-              <%= link_to "削除", request_path(@request.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %>
-            </div>
+            <% if @request.is_complete == false %>
+              <div class="col-6 mb-3">
+                <%= link_to "編集", edit_request_path(@request.id), class: "btn btn-info btn-block" %>
+              </div>
+              <div class="col-6 mb-3">
+                <%= link_to "完了", request_path(@request.id), method: :delete, "data-confirm" => "本当に完了しますか？", class: "btn btn-danger btn-block" %>
+              </div>
+            <% end %>
 
             <% @entry_lists.each do |entry| %>
               <div class="col-4 mb-3">

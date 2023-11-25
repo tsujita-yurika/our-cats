@@ -23,16 +23,22 @@ class Admin::RequestsController < ApplicationController
     redirect_to admin_request_path(request.id), notice: "更新しました。"
   end
 
+# 依頼完了のボタンにした。メソッド名はそのまま利用
   def destroy
     request = Request.find(params[:id])
-    request.destroy
-    redirect_to '/admin/requests', notice: "削除しました。"
+    request.is_complete = true
+    request.save
+    redirect_to '/admin/requests', notice: "依頼が完了しました。"
   end
 
   private
 
   def request_params
-    params.require(:request).permit(:season, :days, :location, :memo, cat_ids: [] )
+    params.require(:request).permit(:season,
+                                    :days,
+                                    :location,
+                                    :memo,
+                                    cat_ids: [] )
   end
 
 

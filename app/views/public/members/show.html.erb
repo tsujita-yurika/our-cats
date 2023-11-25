@@ -10,115 +10,118 @@
     <h3><%= @member.name %>さんのマイページ</h3>
   </div>
 
-    <div class="row my-1 ml-2">
-      <div class="col-12 mx-auto">
-        <div class="row">
-          <div class="col-4 ml-4 mb-3">
-            <table class="table">
-              <tr>
-                <th><%= image_tag @member.get_profile_image, size: "150x150" %></th>
-              </tr>
-              <tr>　</tr>
-              <tr>
-                <th>お名前</th>
-                <td><%= @member.name %></td>
-              </tr>
-              <tr>
-                <th>性別</th>
-                <td>
-                  <% if @member.sex == 'male' %>
-                    男性
-                  <% else %>
-                    女性
-                  <% end %>
-                </td>
-              </tr>
-              <tr>
-                <th>お住いの都道府県</th>
-                <td><%= @member.prefectures %></td>
-              </tr>
-              <tr>
-                <th>家族</th>
-              </tr>
-            </table>
-            <table>
-              <tr>
-              <% @cats.each_slice(3) do |cat_group| %>
-              <!--１行に３つずつ画像を並べる-->
-                  <% cat_group.each do |cat| %>
-                    <td>
-                      <%= link_to cat_path(cat.id) do %>
-                      <table>
-                        <tr>
-                          <td><%= image_tag cat.get_image, size: "160x110" %></td>
-                        </tr>
-                        <tr>
-                          <td><%= cat.name %></td>
-                        </tr>
-                      </table>
-                      <% end %>
-                    </td>
-                  <% end %>
-                  <% (4 - cat_group.size).times do %>
-                    <td></td>
-                  <% end %>
-              </tr>
-              <% end %>
+  <div class="row mt-1 mb-3">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-6">
+          <table class="table">
+            <tr>
+              <th><%= image_tag @member.get_profile_image, size: "150x150" %></th>
+            </tr>
+            <tr>
+              <th>お名前</th>
+              <td><%= @member.name %></td>
+            </tr>
+            <tr>
+              <th>性別</th>
+              <td>
+                <% if @member.sex == 'male' %>
+                  男性
+                <% else %>
+                  女性
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th>お住いの都道府県</th>
+              <td><%= @member.prefectures %></td>
+            </tr>
+            <tr>
+              <th>家族</th>
+            </tr>
+          </table>
 
+          <table>
+           <!--１行に３つずつ画像を並べる-->
+            <% @cats.each_slice(3) do |cat_group| %>
+            　<tr>
+                <% cat_group.each do |cat| %>
+                  <td>
+                    <div class="block-link" style="display: block;">
+                      <%= link_to cat_path(cat.id) do %>
+                        <%= image_tag cat.get_image, size: "180x130" %>
+                      <% end %>
+                      <div><%= cat.name %></div>
+                    </div>
+                  </td>
+                <% end %>
+                <% (3 - cat_group.size).times do %>
+                <% end %>
+              </tr>
+            <% end %>
+            <tr>
               <td>
                 <% if @member == current_member %>
                   <%= link_to new_cat_path do %>
-                     <i class="fa-solid fa-circle-plus fa-3x pl-3 pb-4 "></i>
+                    <i class="fa-solid fa-circle-plus fa-3x pl-3 pb-4"></i>
                   <% end %>
                 <% end %>
               </td>
-                <% if @member.email != "guest@example.com" && @member == current_member %>
-                <!--ゲストログインじゃないかつ自分のマイページだったら-->
-                    <tr>
-                      <td>
-                        <%= link_to "プロフィール編集", edit_member_path(@member), class: "btn btn-info edit_member_#{@member.id}" %>
-                      </td>
-                    </tr>
-                <% end %>
-            </table>
-          </div>
+            </tr>
+            <% if @member.email != "guest@example.com" && @member == current_member %>
+            <!--ゲストログインじゃないかつ自分のマイページだったら-->
+              <tr>
+                <td>
+                  <%= link_to "プロフィール編集", edit_member_path(@member), class: "btn btn-info edit_member_#{@member.id}" %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
 
-        <div class="col-2 mr-4"></div>
-        <div class="col-4 mb-3">
-          <% if @requests.present? %>
+        <div class="col-1"></div>
+        <div class="col-3">
+          <br><br>
+          <h4 class="mb-3">出した依頼</h4>
           <!--リクエストはある？-->
-              <h4 class="mb-3">出した依頼</h4>
+          <% if @requests.present? %>
               <table>
-                <% @requests.each_slice(3) do |request_group| %>
+                <% @requests.each_slice(2) do |request_group| %>
                   <tr>
                     <% request_group.each do |request| %>
                       <td>
-                        <% cat = request.cats.first %>
-                        <%= link_to image_tag(cat.image, size: "160x110"), request_path(request.id) %><br>
-                        <%= cat.name %><br>
-                        <%= request.season %>
+                        <% if request.cats.present? %>
+                          <% cat = request.cats.first %>
+                          <%= link_to image_tag(cat.image, size: "180x130"), request_path(request.id) %><br>
+                          <%= cat.name %><br>
+                          <%= request.season %>
+                        <% else %>
+                        <% end %>
                       </td>
                     <% end %>
                   </tr>
                 <% end %>
               </table>
           <% else %>
+          <br>
             <p>出した依頼はありません</p>
           <% end %>
-          <br><br>
-          <% if @member == current_member %>
+          <br><br><br>
+
           <!--自分のマイページだったら-->
+          <% if @member == current_member %>
+            <br>
+            <h4 class="mb-3">受ける依頼</h4>
             <% if @entries.present? %>
-              <h4 class="mb-3">受ける依頼</h4>
               <table>
                 <tr>
-                  <% @entries.each_slice(3) do |entry_group| %>
+                  <% @entries.each_slice(2) do |entry_group| %>
                     <tr>
                       <% entry_group.each do |entry| %>
                         <td>
                           <% cat = entry.request.cats.first %>
                           <% if cat %>
-                            <%= link_to image_tag(cat.image, size: "160x110"), request_path(entry.request.id) %><br>
+                            <%= link_to image_tag(cat.image, size: "180x130"), request_path(entry.request.id) %><br>
                             <%= cat.name %><br>
                             <%= entry.request.season %>
                           <% end %>
@@ -129,6 +132,7 @@
                 </tr>
               </table>
             <% else %>
+            <br>
             <p>受ける依頼はありません</p>
             <% end %>
           <% end %>

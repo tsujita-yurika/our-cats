@@ -15,7 +15,7 @@ class Request < ApplicationRecord
 
     # 依頼時は猫を1匹以上チェックしてもらう
     def at_least_one_cat_selected
-        errors.add(:cat_ids, "は１つ以上選択してください") if cat_ids.blank?
+        errors.add(:cat_ids, "は１匹以上選択してください") if cat_ids.blank?
     end
 
 end
