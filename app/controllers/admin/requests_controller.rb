@@ -33,7 +33,7 @@ class Admin::RequestsController < ApplicationController
     request = Request.find(params[:id])
     request.is_complete = true
     request.save
-    redirect_to admin_request_path(request), notice: "依頼が完了しました。"
+    redirect_to admin_request_path(request), notice: "募集を終了しました。"
   end
 
 
