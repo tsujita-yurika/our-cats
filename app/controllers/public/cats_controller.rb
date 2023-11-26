@@ -5,6 +5,11 @@ class Public::CatsController < ApplicationController
     @cat = Cat.new
   end
 
+  def index
+    @cats = Cat.page(params[:page]).per(12)
+    @cat_count = Cat.count
+  end
+
   def show
     @cat = Cat.find(params[:id])
     if @cat.member.is_active == false
@@ -14,11 +19,6 @@ class Public::CatsController < ApplicationController
 
   def edit
     @cats = Cat.find(params[:id])
-  end
-
-  def index
-    @cats = Cat.includes(:member).where(members: { is_active: true }).page(params[:page]).per(12)
-    @cat_count = Cat.includes(:member).where(members: { is_active: true }).count
   end
 
   def update

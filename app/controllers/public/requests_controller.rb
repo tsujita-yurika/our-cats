@@ -15,9 +15,12 @@ before_action :is_request_matching_login_member, only: [:edit, :update, :destroy
     @request = Request.find(params[:id])
     @my_cats = @request.cats
     if member_signed_in?
+      # ログインしている人のエントリー
       @entries = current_member.entries
+      # 私が受けたい依頼（ルームがある状態かを判断）
       @my_entry = @entries.find_by(request_id: @request.id)
     end
+    # 依頼を受ける人
     @entry_lists = @request.entries
 
     @room = Room.new
@@ -49,6 +52,7 @@ before_action :is_request_matching_login_member, only: [:edit, :update, :destroy
     end
   end
 
+  # 削除を依頼完了にカスタム
   def destroy
     request = Request.find(params[:id])
     request.is_complete = true

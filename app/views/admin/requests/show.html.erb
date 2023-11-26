@@ -26,7 +26,7 @@
   <div class = "row justify-content-center mt-3">
     <div class="col-6">
         <% if @request.is_complete == true %>
-          <h2>この依頼は完了しました</h2>
+          <h2>この募集は終了しました</h2>
         <% end %>
       <table class="table">
           <tr>
@@ -51,14 +51,24 @@
             <th>備考</th>
             <td><%= @request.memo %></td>
           </tr>
-            <% if @request.is_complete == false %>
-              <tr>
-                <td><%= link_to "編集", edit_admin_request_path(@request.id), class: "btn btn-info btn-block" %></td>
-                <td><%= link_to "完了", admin_request_path(@request.id), method: :delete, "data-confirm" => "本当に完了しますか？", class: "btn btn-danger btn-block" %></td>
-              </tr>
-            <% end %>
       </table>
-      <br>
     </div>
+
+          <div class="col-9">
+            <div class="row justify-content-center">
+            <% if @request.is_complete == false %>
+
+                <div class="col-2 mb-3">
+                  <%= link_to "編集", edit_admin_request_path(@request.id), class: "btn btn-info btn-block" %>
+                </div>
+                <div class="col-2 mb-3">
+                  <%= link_to "募集を終了", admin_complete_request_path(@request), method: :patch, "data-confirm" => "本当に募集を終了しますか？", class: "btn btn-success btn-block" %>
+                </div>
+            <% end %>
+                <div class="col-2 mb-3">
+                  <%= link_to "削除", admin_request_path(@request.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %>
+                </div>
+              </div>
+          </div>
   </div>
 </div>

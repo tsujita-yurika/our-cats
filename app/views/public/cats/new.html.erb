@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-3">
     <h3>猫の登録</h3>
-  </div>
+
     <div>
         <% if @cat.errors.any? %>
           <%= @cat.errors.count %>件のエラーが発生しました
@@ -41,8 +41,8 @@
             <td></td>
           </tr>
           <tr>
-              <td><%= f.label :category_id, "種類" %></td>
-              <td><%= f.collection_select :category_id, Category.all, :id, :name, prompt: true, required: true %></td>
+            <td><%= f.label :category_id, "種類" %></td>
+            <td><%= f.collection_select :category_id, Category.all, :id, :name, prompt: true, required: true %></td>
           </tr>
           <tr>
             <td><%= f.label :自己紹介 %></td>

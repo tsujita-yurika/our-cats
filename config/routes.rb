@@ -33,6 +33,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 # 管理者ルーティング
   namespace :admin do
+    patch 'requests/:id/complete' => 'requests#complete', as: :complete_request
     resources :members, only: [:index, :show, :edit, :update]
     resources :cats, only: [:index, :show, :edit, :update, :destroy]
     resources :requests, only: [:index, :show, :edit, :update, :destroy]

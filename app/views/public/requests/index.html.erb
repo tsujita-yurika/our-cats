@@ -11,9 +11,11 @@
             <%= image_tag request.member.get_profile_image, size:"170x170" %>
           <% end %>
         </div>
-          <% if request.is_complete == true %>
-            <b>完了</b>
-          <% end %>
+          <div class="text-danger">
+            <% if request.is_complete == true %>
+              <b>終了</b>
+            <% end %>
+          </div>
         <div><%=  request.season %></div>
         <div><%= request.member.prefectures %></div>
       </div>

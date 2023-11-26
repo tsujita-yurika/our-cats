@@ -42,7 +42,7 @@
           </tr>
           <tr>
             <% if current_member && current_member.cat_ids.include?(@cat.id) %>
-              <td><%= link_to "編集", edit_cat_path(@cat.id), class: "btn btn-info btn-block" %></td>
+              <td><%= link_to "　　　編集　　　", edit_cat_path(@cat.id), class: "btn btn-info btn-block" %></td>
               <td><%= link_to "猫ちゃんのデータを削除", cat_path(@cat.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger btn-block" %></td>
             <% end %>
           </tr>

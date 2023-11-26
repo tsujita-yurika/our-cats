@@ -83,18 +83,27 @@
         <div class="col-3">
           <br><br>
           <h4 class="mb-3">出した依頼</h4>
-          <!--リクエストはある？-->
+          <!--リクエストがあれば-->
           <% if @requests.present? %>
               <table>
                 <% @requests.each_slice(2) do |request_group| %>
                   <tr>
                     <% request_group.each do |request| %>
                       <td>
+                        <!--依頼した猫があれば-->
                         <% if request.cats.present? %>
                           <% cat = request.cats.first %>
                           <%= link_to image_tag(cat.image, size: "180x130"), request_path(request.id) %><br>
-                          <%= cat.name %><br>
-                          <%= request.season %>
+                          <!--依頼が完了したら-->
+                            <% if request.is_complete == true %>
+                              <div class="text-danger">
+                                <b>終了</b>
+                              </div>
+                              <%= request.season %>
+                            <% else %>
+                                <%= cat.name %><br>
+                                <%= request.season %>
+                                <% end %>
                         <% else %>
                         <% end %>
                       </td>
@@ -112,6 +121,7 @@
           <% if @member == current_member %>
             <br>
             <h4 class="mb-3">受ける依頼</h4>
+            <!--受けようとしている依頼があれば-->
             <% if @entries.present? %>
               <table>
                 <tr>
@@ -122,8 +132,15 @@
                           <% cat = entry.request.cats.first %>
                           <% if cat %>
                             <%= link_to image_tag(cat.image, size: "180x130"), request_path(entry.request.id) %><br>
-                            <%= cat.name %><br>
-                            <%= entry.request.season %>
+                              <% if entry.request.is_complete == true %>
+                                <div class="text-danger">
+                                  <b>終了</b>
+                                </div>
+                                <%= entry.request.season %>
+                              <% else %>
+                                <%= cat.name %><br>
+                                <%= entry.request.season %>
+                              <% end %>
                           <% end %>
                         </td>
                       <% end %>
@@ -132,8 +149,8 @@
                 </tr>
               </table>
             <% else %>
-            <br>
-            <p>受ける依頼はありません</p>
+              <br>
+              <p>受ける依頼はありません</p>
             <% end %>
           <% end %>
 

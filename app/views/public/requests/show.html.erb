@@ -27,7 +27,7 @@
   <div class = "row justify-content-center mt-3">
     <div class="col-6">
         <% if @request.is_complete == true %>
-          <h2>この依頼は完了しました</h2>
+          <h2>この募集は終了しました</h2>
         <% end %>
       <table class="table">
         <tr>
@@ -57,38 +57,47 @@
         </tr>
       </table>
       <div class="row">
+        <!--<ログインしてたら>-->
         <% if member_signed_in? %>
+          <!--依頼主だったら-->
           <% if @request.member_id == current_member.id %>
+            <!--依頼が完了していなかったら-->
             <% if @request.is_complete == false %>
               <div class="col-6 mb-3">
                 <%= link_to "編集", edit_request_path(@request.id), class: "btn btn-info btn-block" %>
               </div>
               <div class="col-6 mb-3">
-                <%= link_to "完了", request_path(@request.id), method: :delete, "data-confirm" => "本当に完了しますか？", class: "btn btn-danger btn-block" %>
+                <%= link_to "募集を終了", request_path(@request.id), method: :delete, "data-confirm" => "本当に募集を終了しますか？", class: "btn btn-success btn-block" %>
               </div>
             <% end %>
-
+            <!--<依頼を受ける人がいたら>-->
             <% @entry_lists.each do |entry| %>
               <div class="col-4 mb-3">
+                <!--その会員の名前がボタンで表示され、トークルームへ遷移-->
                 <%= link_to entry.member.name, room_path(entry.room), class: "btn btn-primary btn-block" %>
               </div>
             <% end %>
+
           <% else %>
-          <!--もしリクエストした人とログインしている人が違ったら（同じであればボタンは出ない）-->
-              <% if @my_entry %>
+          <!--リクエストした人ではなかったら（同じであればボタンは出ない）-->
               <!--さらに、既にルームが有れば-->
+              <% if @my_entry %>
                 <div class="row mx-auto mb-4">
                   <%= link_to "メッセージを続ける", room_path(@my_entry.room), class: "btn btn-success btn-block" %>
                 </div>
               <% else %>
+              <!--ルームがなければ-->
+              <!--新しいルームとエントリーを作成-->
                 <div class="row mx-auto mb-4">
                 <%= form_for @room, url: request_rooms_path(@request) do |f| %>
                   <%= fields_for @entry do |e|%>
-
-                    <% e.hidden_field :member_id, value: @request.member_id %>
                     <!--メンバーidカラムに対してvalue（依頼者のメンバーid）を入れる。次はroomscontrollerへ-->
+                    <% e.hidden_field :member_id, value: @request.member_id %>
                   <% end %>
-                  <%= f.submit "メッセージを始める", class: "btn btn-success btn-block" %>
+                  <!--依頼が完了していなかったら-->
+                  <% if @request.is_complete == false %>
+                    <%= f.submit "メッセージを始める", class: "btn btn-success btn-block" %>
+                  <% end %>
                 <% end %>
                 </div>
               <% end %>

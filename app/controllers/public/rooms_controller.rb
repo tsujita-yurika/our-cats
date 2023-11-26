@@ -22,9 +22,15 @@ class Public::RoomsController < ApplicationController
       #リクエストされたルームのIDを取得
       room_id = params[:id]
       #エントリー情報を取得
-      entry = Entry.find_by(room_id: room_id, member_id: current_member.id)
-      #エントリーが存在しないか、ログイン中のユーザーがエントリーしていない場合はアクセスを制限
-      unless entry
+      entry = Entry.find_by(room_id: room_id)
+      # エントリーがない場合
+      if entry.nil?
+        flash[:notice] = "このルームへのアクセスは制限されています。"
+        redirect_to root_path and return
+      end
+      # if entry.request.member_id != current_member.id || entry.member_id != current_member.id
+      # 依頼を受ける人と依頼主のmember_idが含まれていない場合
+      unless [entry.request.member_id, entry.member_id].include?(current_member.id)
         flash[:notice] = "このルームへのアクセスは制限されています。"
         redirect_to root_path and return
       end
