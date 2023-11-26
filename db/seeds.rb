@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Admin.create!(email: 'our@cats', password: 'ourcats')
+Admin.create!(email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASS'] )
 
 10.times do |num|
  sex = num.even? ? "female" : "male"
