@@ -2,7 +2,7 @@ class Admin::RequestsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @requests = Request.page(params[:page]).per(12)
+    @requests = Request.page(params[:page]).per(8)
     @request_count = Request.count
   end
 

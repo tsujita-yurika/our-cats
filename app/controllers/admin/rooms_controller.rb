@@ -1,7 +1,7 @@
 class Admin::RoomsController < ApplicationController
 
   def index
-    @rooms = Room.page(params[:page]).per(18)
+    @rooms = Room.page(params[:page]).per(15)
   end
 
   def show
