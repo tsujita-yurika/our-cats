@@ -10,7 +10,6 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.string :sex, null: false
       t.string :prefectures, null: false
-      t.string :family
       t.string :real_name
       t.string :phone_number
       t.string :address

@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2023_11_25_103756) do
     t.string "name", null: false
     t.string "sex", null: false
     t.string "age", null: false
-    t.string "family"
     t.text "introduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -94,7 +93,6 @@ ActiveRecord::Schema.define(version: 2023_11_25_103756) do
     t.string "name", null: false
     t.string "sex", null: false
     t.string "prefectures", null: false
-    t.string "family"
     t.string "real_name"
     t.string "phone_number"
     t.string "address"
@@ -122,7 +120,7 @@ ActiveRecord::Schema.define(version: 2023_11_25_103756) do
   create_table "requests", force: :cascade do |t|
     t.integer "member_id", null: false
     t.string "season", null: false
-    t.string "days", null: false
+    t.integer "days", null: false
     t.string "location", null: false
     t.string "memo"
     t.datetime "created_at", precision: 6, null: false

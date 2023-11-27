@@ -10,16 +10,16 @@
             <table class="table table-borderless my-2">
             <% @my_cats.each_with_index do |cat, index| %>
               <% if index % 4 == 0 %>
-                </tr><tr> <!-- 行の終わりと新しい行の始まりを同時に追加 -->
+                </tr><tr>
               <% end %>
               <td>
-                <%= f.label cat.name do %> <!-- ラベルの引数に猫の名前を指定 -->
+                <%= f.label cat.name do %>
                   <%= f.check_box :cat_ids, { multiple: true, checked: @request.cat_ids.include?(cat.id) }, cat.id, nil %>
                   <%= image_tag cat.image, size: "180x120" %>
                 <% end %>
               </td>
               <% if (index + 1) % 4 == 0 || cat == @my_cats.last %>
-                </tr> <!-- 行の終わりを追加 -->
+                </tr>
               <% end %>
             <% end %>
             </table>
@@ -31,9 +31,13 @@
               <td></td>
             </tr>
             <tr>
-              <td align="right"><%= f.label :日数 %></td>
-              <td><%= f.text_field :days, class: "form-control" %></td>
-              <td></td>
+              <td><%= f.label :日数 %></td>
+              <td>
+                <div class="input-group">
+                  <%= f.select :days, options_for_select(1..100), { include_blank: "選択してください" }, class: "form-control", required: true %>
+                  <span class="input-group-addon">日間</span>
+                </div>
+              </td>
             </tr>
             <tr>
               <td align="right">場所</td>

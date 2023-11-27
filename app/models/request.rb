@@ -9,7 +9,7 @@ class Request < ApplicationRecord
     has_many :entries, dependent: :destroy
 
     validates :season, presence: true
-    validates :days, presence: true
+    validates :days, numericality: { only_integer: true, other_than: 0 }
     validates :location, presence: true
     validate :at_least_one_cat_selected
 

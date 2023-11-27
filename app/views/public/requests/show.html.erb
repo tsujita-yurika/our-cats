@@ -8,7 +8,7 @@
       <%= link_to member_path(@request.member) do %>
         <%= image_tag @request.member.get_profile_image, size: "80x80" %>
       <% end %>
-      <p><%= @request.member.name %></p>
+      <p>　<%= @request.member.name %></p>
     </div>
 
     <div class="col-9">
@@ -37,7 +37,7 @@
         </tr>
         <tr>
           <th>日数</th>
-          <td><%= @request.days %></td>
+          <td><%= @request.days %>日間</td>
           <td></td>
         </tr>
         <tr>

@@ -4,7 +4,7 @@ class CreateRequests < ActiveRecord::Migration[6.1]
 
       t.integer :member_id, null: false
       t.string :season, null: false
-      t.string :days, null: false
+      t.integer :days, null: false
       t.string :location, null: false
       t.string :memo
 

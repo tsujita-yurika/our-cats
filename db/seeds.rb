@@ -66,7 +66,7 @@ cat = Cat.create!(
   category_id: 2,
   name: "ことら",
   sex: "male",
-  age: 6,
+  age: "6歳",
   introduction: "布団に潜るのが好き"
 )
 cat.image.attach(io: File.open(Rails.root.join("app/assets/images/ことら小.jpg")), filename: "ことら小.jpg")
@@ -76,7 +76,7 @@ cat = Cat.create!(
   category_id: 2,
   name: "ギャオ",
   sex: "female",
-  age: 6,
+  age: "12歳",
   introduction: "日向ぼっこが好き"
   )
 cat.image.attach(io: File.open(Rails.root.join("app/assets/images/newギャオ小.jpg")), filename: "newギャオ小.jpg")
@@ -86,7 +86,7 @@ cat = Cat.create!(
   category_id: 13,
   name: "アル",
   sex: "male",
-  age: 1,
+  age: "10ヶ月",
   introduction: ""
   )
 cat.image.attach(io: File.open(Rails.root.join("app/assets/images/アメカ4.jpg")), filename: "アメカ4.jpg")
@@ -94,20 +94,20 @@ cat.image.attach(io: File.open(Rails.root.join("app/assets/images/アメカ4.jpg
 cat = Cat.create!(
   member_id: 3,
   category_id: 6,
-  name: "ララ",
+  name: "さば",
   sex: "female",
-  age: 4,
+  age: "4歳",
   introduction: ""
   )
 cat.image.attach(io: File.open(Rails.root.join("app/assets/images/アメショ4.jpg")), filename: "アメショ4.jpg")
 
 cat = Cat.create!(
   member_id: 4,
-  category_id: 31,
-  name: "みかん",
-  sex: "female",
-  age: 3,
-  introduction: ""
+  category_id: 18,
+  name: "ジャム",
+  sex: "male",
+  age: "3歳",
+  introduction: "人懐っこい"
   )
 cat.image.attach(io: File.open(Rails.root.join("app/assets/images/バーマン4.jpg")), filename: "バーマン4.jpg")
 
@@ -116,7 +116,7 @@ cat = Cat.create!(
   category_id: 14,
   name: "もふもふ",
   sex: "female",
-  age: 5,
+  age: "5歳",
   introduction: ""
   )
 cat.image.attach(io: File.open(Rails.root.join("app/assets/images/メインクーン4.jpg")), filename: "メインクーン4.jpg")
@@ -126,8 +126,8 @@ cat = Cat.create!(
   category_id: 11,
   name: "ぶる",
   sex: "male",
-  age: 5,
-  introduction: ""
+  age: "5ヶ月",
+  introduction: "絨毯が好き"
   )
 cat.image.attach(io: File.open(Rails.root.join("app/assets/images/ロシアンブルー4.jpg")), filename: "ロシアンブルー4.jpg")
 
@@ -137,7 +137,7 @@ cats = member.cats.map(&:itself)
 request = Request.create!(
   member: member,
   season: "11月上旬",
-  days: "5日間",
+  days: "5",
   location: "home",
   memo: "",
   cats: cats,
@@ -150,7 +150,7 @@ cats = member.cats.map(&:itself)
 request = Request.create!(
   member: member,
   season: "11月下旬",
-  days: "6日間",
+  days: "6",
   location: "home",
   memo: "",
   cats: cats,
@@ -162,7 +162,7 @@ cats = member.cats.map(&:itself)
 request = Request.create!(
   member: member,
   season: "2月中旬～2月下旬",
-  days: "10日間",
+  days: "10",
   location: "hom",
   memo: "朝晩薬をあげてください。",
   cats: cats,
@@ -174,9 +174,9 @@ cats = member.cats.map(&:itself)
 request = Request.create!(
   member: member,
   season: "2月中旬～下旬",
-  days: "15日間",
+  days: "15",
   location: "hom",
-  memo: "人懐っこいです。",
+  memo: "",
   cats: cats,
   is_complete: false
 )
@@ -186,7 +186,7 @@ cats = member.cats.map(&:itself)
 request = Request.create!(
   member: member,
   season: "3月中旬",
-  days: "8日間",
+  days: "8",
   location: "home",
   memo: "",
   cats: cats,

@@ -37,12 +37,12 @@
           </tr>
           <tr>
             <td><%= f.label :年齢 %></td>
-            <td><%= f.text_field :age, class: "form-control", required: true %></td>
+            <td><%= f.text_field :age, placeholder: "1歳未満", class: "form-control", required: true %></td>
             <td></td>
           </tr>
           <tr>
             <td><%= f.label :category_id, "種類" %></td>
-            <td><%= f.collection_select :category_id, Category.all, :id, :name, prompt: true, required: true %></td>
+            <td><%= f.collection_select :category_id, Category.all, :id, :name, { prompt: true }, { class: 'form-control', required: true } %></td>
           </tr>
           <tr>
             <td><%= f.label :自己紹介 %></td>

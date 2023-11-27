@@ -5,7 +5,7 @@
 
   <div class="row m-xl-2">
     <% @cats.each do |cat| %>
-      <div class="col-3 p-xl-2 mb-3">
+      <div class="col-3 p-xl-3 mb-3">
         <div>
           <%= link_to admin_cat_path(cat.id) do %>
             <%= image_tag cat.get_image, size: "230x180" %>
