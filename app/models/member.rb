@@ -48,7 +48,7 @@ GUEST_MEMBER_EMAIL = "guest@example.com"
     end
   end
 
-  # 投稿写真
+  # 本人確認書類の写真
   def get_image
      if image.attached?
        image
