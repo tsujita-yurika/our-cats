@@ -1,5 +1,6 @@
 # Our cats
-​
+​<img width="658" alt="ef53fdc0acc635670af9310b062d3557" src="https://github.com/tsujita-yurika/our-cats/assets/143866084/68627d59-e70e-4b4a-9c08-693434748e19">
+
 ## サイト概要
 ### サイトテーマ
 ​猫のお世話を依頼したり預かったり助け合いが出来るコミュニティサイトです。​
@@ -16,8 +17,10 @@
 * 旅行、出張、入院等の一時的に猫を預けたい又は家に来てお世話をしてほしい時
 ​
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
-​
+* ER図
+![8a666a86358505a0f610bb58bfc60e71](https://github.com/tsujita-yurika/our-cats/assets/143866084/36f926df-7c7f-4189-8405-ac2d2f97c645)
+
+* [テーブル定義書](https://docs.google.com/spreadsheets/d/1wMPPBu_9_Kj5kujr0B_fwVo7sOw1IAGh/edit#gid=136342688)
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
