@@ -17,7 +17,9 @@
 * 旅行、出張、入院等の一時的に猫を預けたい又は家に来てお世話をしてほしい時
 ​
 ## 設計書
-* [ER図](https://app.diagrams.net/#G1djw0mDeCD_67Wo3k0Yb5cYKlcPBlAWT7#%7B%22pageId%22%3A%22TWzxI4AOEgSL0U_yfMqn%22%7D)
+* ER図
+![8a666a86358505a0f610bb58bfc60e71](https://github.com/tsujita-yurika/our-cats/assets/143866084/fe53bdbc-e038-498d-902f-492657b0961d)
+
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/1wMPPBu_9_Kj5kujr0B_fwVo7sOw1IAGh/edit#gid=136342688)
 ## 開発環境
 - OS：Linux(CentOS)
