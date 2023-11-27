@@ -1,9 +1,9 @@
 # Our cats
-​<img width="658" alt="ef53fdc0acc635670af9310b062d3557" src="https://github.com/tsujita-yurika/our-cats/assets/143866084/68627d59-e70e-4b4a-9c08-693434748e19">
+![5a68b4ade047de17938ef99c959bc127](https://github.com/tsujita-yurika/our-cats/assets/143866084/3a4681ea-d5d6-4a51-b841-28956b4175ce)
 
 ## サイト概要
 ### サイトテーマ
-​猫のお世話を依頼したり預かったり助け合いが出来るコミュニティサイトです。​
+​猫のお世話をお願いしたり預かったり助け合いが出来るサイトです。​
 
 ### テーマを選んだ理由
 猫が好きで飼っているのですが、遠出する際に心配で誰かに見てほしいと思うことが有ります。    
