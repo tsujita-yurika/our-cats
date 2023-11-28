@@ -18,7 +18,7 @@
 ​
 ## 設計書
 * ER図
-<img width="665" alt="4b6a7cd33e3ceadd5e8683fcc2ee5f59" src="https://github.com/tsujita-yurika/our-cats/assets/143866084/c7f060f5-bd7e-49e1-856f-2cfc6bfd7296">
+<img width="665" alt="4b6a7cd33e3ceadd5e8683fcc2ee5f59" src="https://github.com/tsujita-yurika/our-cats/assets/143866084/33e8be35-6b05-4824-8310-84ff934d0a6d">
 
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/1wMPPBu_9_Kj5kujr0B_fwVo7sOw1IAGh/edit#gid=136342688)
 ## 開発環境
