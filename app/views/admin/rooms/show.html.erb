@@ -6,14 +6,12 @@
       <ul class="list-group">
         <% @messages.each do |m| %>
           <li class="list-group-item" style="display: flex; justify-content: space-between; align-items: center; margin: 2px;">
-            <div class="message-info">
-              <span class="member-name"><%= m.member.name %></span>
-              <span class="message-date"><%= m.created_at.localtime('+09:00').strftime('%Y-%m-%d %H:%M:%S') %></span>
-            </div>
+              <span><%= m.member.name %>　</span>
+              <span><%= m.created_at.localtime('+09:00').strftime('%Y-%m-%d %H:%M:%S') %></span>
             <div class="message-content" style="flex-grow: 1; margin-left: 10px;">
               <%= m.body %>
             </div>
-            <div class="message-actions">
+            <div>
               <%= link_to '削除', admin_message_path(m), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "badge badge-danger ml-auto" %>
             </div>
           </li>

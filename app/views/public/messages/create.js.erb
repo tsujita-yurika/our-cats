@@ -1,0 +1,3 @@
+$("#js-messages").html("<%= j(render partial: "public/messages/message", collection: @messages, as: :m) %>")
+$("#js-messages-paginate").html("<%= j(paginate @messages, params: { controller: 'public/rooms', action: 'show', id: @room.id, page: params[:page] }) %>")
+<!--$('input[type=text]').val("")-->

@@ -70,7 +70,7 @@
             <td><%= f.label :日数 %></td>
             <td>
               <div class="input-group">
-                <%= f.select :days, options_for_select(1..100), { include_blank: "選択してください" }, class: "form-control", required: true %>
+                <%= f.select :days, options_for_select(1..30), { include_blank: "選択してください" }, class: "form-control", required: true %>
                 <span class="input-group-addon">日間</span>
               </div>
             </td>

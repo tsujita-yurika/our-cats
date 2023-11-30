@@ -3,15 +3,17 @@ class Public::MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+
+     @room = Room.find(@message.room_id)
+     @messages = @room.messages.page(params[:page]).per(10)
+
     if @message.save
-      redirect_to request.referer
+      render 'public/messages/create.js'
+
+      # redirect_to request.referer
     else
       flash[:error] = @message.errors.full_messages.join(", ")
       redirect_to request.referer
-      #@room = Room.find(message_params[:room_id])
-      #@messages = @room.messages.page(params[:page]).per(10)
-      #@entries = @room.entries
-      #render "public/rooms/show"
     end
   end
 
