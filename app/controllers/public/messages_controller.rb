@@ -10,7 +10,6 @@ class Public::MessagesController < ApplicationController
     if @message.save
       render 'public/messages/create.js'
 
-      # redirect_to request.referer
     else
       flash[:error] = @message.errors.full_messages.join(", ")
       redirect_to request.referer
