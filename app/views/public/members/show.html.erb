@@ -81,6 +81,10 @@
 
         <div class="col-1"></div>
         <div class="col-3">
+          <br>
+            <%= link_to bookmarks_path do %>
+              <i class="fa-solid fa-bookmark"> ブックマーク一覧</i>
+            <% end %>
           <br><br>
           <h4 class="mb-3">出した依頼</h4>
           <!--リクエストがあれば-->
@@ -115,7 +119,7 @@
           <br>
             <p>出した依頼はありません</p>
           <% end %>
-          <br><br><br>
+          <br><br>
 
           <!--自分のマイページだったら-->
           <% if @member == current_member %>

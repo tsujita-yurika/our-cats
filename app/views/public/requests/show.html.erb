@@ -1,6 +1,10 @@
 <div class="container">
   <div class="row mt-3">
     <h3>依頼詳細</h3>
+    <span>　　</span>
+      <div id = "bookmark">
+        <%= render "public/bookmarks/bookmark", request: @request, bookmark: @bookmark %>
+      </div>
   </div>
 
   <div class="row">
@@ -8,7 +12,7 @@
       <%= link_to member_path(@request.member) do %>
         <%= image_tag @request.member.get_profile_image, size: "80x80" %>
       <% end %>
-      <p>　<%= @request.member.name %></p>
+      <p><%= @request.member.name %></p>
     </div>
 
     <div class="col-9">

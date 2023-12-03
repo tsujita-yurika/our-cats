@@ -13,6 +13,7 @@ before_action :is_request_matching_login_member, only: [:edit, :update, :destroy
 
   def show
     @request = Request.find(params[:id])
+    @bookmark = Bookmark.find_by(request_id: @request.id, member_id: current_member.id)
     @my_cats = @request.cats
     if member_signed_in?
       # ログインしている人のエントリー

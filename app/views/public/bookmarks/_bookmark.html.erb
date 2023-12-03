@@ -1,0 +1,12 @@
+<% bookmark = @bookmark %>
+<div id = "bookmark">
+  <% if current_member.bookmarked?(request) %>
+    <%= link_to bookmark_path(bookmark.id), method: :delete, remote: true do %>
+      <i class="fa-solid fa-bookmark"> ブックマークを解除する</i>
+    <% end %>
+  <% else %>
+    <%= link_to bookmarks_path(request_id: request.id), method: :post, remote: true do %>
+      <i class="fa-regular fa-bookmark"> ブックマークする</i>
+    <% end %>
+  <% end %>
+</div>

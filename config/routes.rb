@@ -29,6 +29,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     end
     resources :messages, :only => [:create]
     resources :rooms, :only => [:show]
+    resources :bookmarks, only: [:index, :create, :destroy]
   end
 
 # 管理者ルーティング

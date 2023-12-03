@@ -7,6 +7,8 @@ class Request < ApplicationRecord
     has_many :cats, through: :deposit_cats # 〇request.cats, ★request.cats_id
     # 複数のエントリーを持つ（依頼受けたい人）
     has_many :entries, dependent: :destroy
+    # ブックマーク
+    has_many :bookmarks, dependent: :destroy
 
     validates :season, presence: true
     validates :days, numericality: { only_integer: true, other_than: 0 }

@@ -13,6 +13,8 @@ class Member < ApplicationRecord
   has_many :entries, dependent: :destroy
   # 依頼
   has_many :requests, dependent: :destroy
+  # ブックマーク
+  has_many :bookmarks, dependent: :destroy
 
   validates :name, presence: true
   validates :sex, presence: true
@@ -20,7 +22,12 @@ class Member < ApplicationRecord
   validates :encrypted_password, presence: true
   validates :prefectures, presence: true
 
-#ゲストログイン
+# 現在ログインしているmemberがrequestをブックマークしているかどうかを判定
+  def bookmarked?(bookmark_request)
+    bookmarks.exists?(request_id: bookmark_request.id)
+  end
+
+# ゲストログイン
 GUEST_MEMBER_EMAIL = "guest@example.com"
 
   def self.guest
@@ -39,7 +46,7 @@ GUEST_MEMBER_EMAIL = "guest@example.com"
     email == GUEST_MEMBER_EMAIL
   end
 
-  #プロフィールの写真
+  # プロフィールの写真
   def get_profile_image
     if profile_image.attached?
       profile_image
