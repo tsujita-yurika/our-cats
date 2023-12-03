@@ -184,8 +184,8 @@ member = Member.find(4)
 cats = member.cats.map(&:itself)
 request = Request.create!(
   member: member,
-  season: "2月中旬～下旬",
-  days: "15",
+  season: "2月下旬～3月上旬",
+  days: "12",
   location: "hom",
   memo: "",
   cats: cats,
