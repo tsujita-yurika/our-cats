@@ -1,3 +1,4 @@
+<div class="error-alert"></div>
 <div class="container">
   <div class="row">
     <div class="col my-3">
@@ -8,7 +9,7 @@
         <%= render partial: "public/messages/message", collection: @messages, as: :m %>
       </ul>
 
-      <%= form_with model: @message, url: messages_path, local: false do |f| %>
+      <%= form_with model: @message, url: messages_path, class: "js-form", local: false do |f| %>
         <%= f.text_field :body, placeholder: "メッセージを入力して下さい", size: 100 %>
         <%= f.hidden_field :room_id, value: @room.id %>
         <!--ページも非同期化通信-->
