@@ -2,7 +2,19 @@
 <div class="container">
   <div class="row">
     <div class="col my-3">
-      <h3>トークルーム</h3>
+      <h3><%= link_to @entry.request.member.name, member_path(@entry.request.member) %> と <%= link_to @entry.member.name, member_path(@entry.member) %> のトークルーム</h3>
+      　<h6>
+      　   ◆依頼内容　計<%= @entry.request.cats.count %>匹　<%= @entry.request.member.prefectures %>　<%= @entry.request.season %>
+        　<%= @entry.request.days %>日間
+        　<% if @entry.request.location == "home" %>
+            自宅に来てもらう
+          <% else %>
+            相手に預かってもらう
+          <% end %>
+          <% if @entry.request.memo.present? %>
+          　<%= @entry.request.memo %>
+          <% end %>
+        <h6>
 
       <ul class="list-group" style="margin-top: 20px;" id="js-messages">
         <!--非同期化通信each文の中にrenderの代わりにcollectionを使用-->
@@ -19,7 +31,7 @@
       <% end %>
     </div>
   </div>
-  <div class="d-flex justify-content-center" id="js-messages-paginate">
+  <div class="d-flex justify-content-center mb-2" id="js-messages-paginate">
     <%= paginate @messages %>
   </div>
 </div>

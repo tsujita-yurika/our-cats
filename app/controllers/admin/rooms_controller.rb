@@ -7,6 +7,7 @@ class Admin::RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @messages = @room.messages.page(params[:page]).per(10)
+    @entry = @room.entries.first
   end
 
   def destroy

@@ -13,7 +13,7 @@ class Public::RoomsController < ApplicationController
       @room = Room.find(params[:id])
       @messages = @room.messages.page(params[:page]).per(10)
       @message = Message.new
-      @entries = @room.entries
+      @entry = @room.entries.first
     end
 
     private

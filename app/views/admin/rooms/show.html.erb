@@ -1,8 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h3 id="room-id">Room ID: <%= @room.id %></h3>
-      <h3 class="mt-4">メッセージ一覧</h3>
+    <div class="col my-3">
+      <h3>Room ID: <%= @room.id %>　<%= link_to @entry.request.member.name, admin_member_path(@entry.request.member) %> と <%= link_to @entry.member.name, admin_member_path(@entry.member) %> のトークルーム</h3>
+      　<h6>
+      　   ◆<%= link_to "依頼内容", admin_request_path(@entry.request) %>　計<%= @entry.request.cats.count %>匹　<%= @entry.request.member.prefectures %>　<%= @entry.request.season %>
+        　<%= @entry.request.days %>日間
+        　<% if @entry.request.location == "home" %>
+            自宅に来てもらう
+          <% else %>
+            相手に預かってもらう
+          <% end %>
+          <% if @entry.request.memo.present? %>
+          　<%= @entry.request.memo %>
+          <% end %>
+        <h6>
+
       <ul class="list-group">
         <% @messages.each do |m| %>
           <li class="list-group-item" style="display: flex; justify-content: space-between; align-items: center; margin: 2px;">
@@ -21,6 +33,6 @@
   </div>
 </div>
 <br>
-<div class="pagination-container">
+<div class="pagination-container mb-4">
   <%= paginate @messages %>
 </div>
