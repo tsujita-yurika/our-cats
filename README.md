@@ -18,7 +18,8 @@
 ​
 ## 設計書
 * ER図
-<img width="665" alt="4b6a7cd33e3ceadd5e8683fcc2ee5f59" src="https://github.com/tsujita-yurika/our-cats/assets/143866084/33e8be35-6b05-4824-8310-84ff934d0a6d">
+<img width="470" alt="32aa277e37d1c591a5d79d5ece189d20" src="https://github.com/tsujita-yurika/our-cats/assets/143866084/3996dc0f-2f7e-4a69-b9c1-4f6973ffbb6b">
+
 
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/1wMPPBu_9_Kj5kujr0B_fwVo7sOw1IAGh/edit#gid=136342688)
 ## 開発環境
@@ -27,3 +28,7 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+
+## 使用素材
+- [写真AC](https://www.photo-ac.com/)
+- [PAKUTASO](https://www.pakutaso.com/)
