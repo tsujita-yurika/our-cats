@@ -3,9 +3,11 @@ class Public::RoomsController < ApplicationController
     before_action :restrict_room_access, only: [:show]
 
     def create
+      # ルーム作成
       @room = Room.create
-       # ルームidが新しい部屋のidに対してメンバーidがカレントメンバーid
+      # エントリーを作成。ルームid、自分のid、依頼idを引数とする
       Entry.create(room_id: @room.id, member_id: current_member.id, request_id: params[:request_id])
+      # 作成したルームに遷移
       redirect_to "/rooms/#{@room.id}"
     end
 
@@ -18,10 +20,11 @@ class Public::RoomsController < ApplicationController
 
     private
 
+    # 特定のルームへのアクセス制限
     def restrict_room_access
-      #リクエストされたルームのIDを取得
+      # リクエストされたルームのIDを取得
       room_id = params[:id]
-      #エントリー情報を取得
+      # エントリー情報を取得
       entry = Entry.find_by(room_id: room_id)
       # エントリーがない場合
       if entry.nil?

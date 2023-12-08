@@ -2,6 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col my-3">
+      <!--トークルーム参加者の名前を-->
       <h3><%= link_to @entry.request.member.name, member_path(@entry.request.member) %> と <%= link_to @entry.member.name, member_path(@entry.member) %> のトークルーム</h3>
       　<h6>
       　   ◆依頼内容　計<%= @entry.request.cats.count %>匹　<%= @entry.request.member.prefectures %>　<%= @entry.request.season %>
