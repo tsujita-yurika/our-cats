@@ -22,6 +22,7 @@
 
 
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/1wMPPBu_9_Kj5kujr0B_fwVo7sOw1IAGh/edit#gid=136342688)
+* [AWS構成図](https://app.diagrams.net/#G1NNp1kQD0UXi6YSEyDfqVUGvzZ6q7jOCa)
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -30,5 +31,6 @@
 - IDE：Cloud9
 
 ## 使用素材
+- 自分で撮影
 - [写真AC](https://www.photo-ac.com/)
 - [PAKUTASO](https://www.pakutaso.com/)
