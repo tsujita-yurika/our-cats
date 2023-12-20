@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get 'search', to: 'searches#search'
-  get 'rooms/show'
 # 会員用
 # URL /customers/sign_in ...
 devise_for :members,skip: [:passwords], controllers: {
@@ -25,7 +24,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :members
     resources :cats
     resources :requests do
-    resources :rooms, :only => [:create]
+    resources :rooms, :only => [:create, :show]
     end
     resources :messages, :only => [:create]
     resources :rooms, :only => [:show]
