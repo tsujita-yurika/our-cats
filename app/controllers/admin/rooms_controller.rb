@@ -1,4 +1,5 @@
 class Admin::RoomsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @rooms = Room.page(params[:page]).per(15)

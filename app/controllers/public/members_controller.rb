@@ -15,10 +15,6 @@ class Public::MembersController < ApplicationController
     end
   end
 
-  # def check
-  #   @member = Member.find(params[:id])
-  # end
-
   def edit
     @member = Member.find(params[:id])
   end
@@ -44,17 +40,18 @@ class Public::MembersController < ApplicationController
  private
 
   def member_params
-    params.require(:member).permit(:name,
+    params.require(:member).permit(:profile_image,
+                                  :name,
                                   :sex,
                                   :email,
                                   :encrypted_password,
+                                  :prefectures,
                                   :real_name,
                                   :phone_number,
-                                  :address, :prefectures,
+                                  :address,
                                   :identification_status,
                                   :is_active,
-                                  :image,
-                                  :profile_image
+                                  :image
                                   )
   end
 
