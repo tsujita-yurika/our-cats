@@ -122,8 +122,10 @@
                             <%= request.season %>
                           <!--ない場合-->
                           <% else %>
-                            <%= "猫のデータがありません。" %><br>
-                            <%= request.season %>
+                            <div class="text-danger">
+                              <b><%= "猫のデータがありません" %></b><br>
+                            </div>
+                              <%= request.season %>
                           <% end %>
                         <% end %>
                       </td>
