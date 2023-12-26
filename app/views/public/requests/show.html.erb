@@ -84,11 +84,11 @@
                 <%= link_to entry.member.name, room_path(entry.room), class: "btn btn-primary btn-block" %>
               </div>
             <% end %>
-
-          <% else %>
-            <% if current_member.identification_status == true %>
           <!--リクエストした人ではなかったら（同じであればボタンは出ない）-->
-              <!--さらに、既にルームが有れば-->
+          <!--さらに、既にルームが有れば-->
+          <% else %>
+            <!--本人確認ステータスが確認済の場合-->
+            <% if current_member.identification_status == true %>
               <% if @my_entry %>
                 <div class="row mx-auto mb-4">
                   <%= link_to "メッセージを続ける", room_path(@my_entry.room), class: "btn btn-success btn-block" %>
@@ -111,12 +111,15 @@
               <% end %>
             <% else %>
       </div>
-              <div class="row justify-content-center mb-2">
-                <%= link_to "身分証の登録をしてください", edit_member_path(current_member), class: "btn btn-success" %>
-              </div>
-              <div class="row justify-content-center mb-4">
-                依頼を受けるには身分証の登録が必要です
-              </div>
+              <% if @request.is_complete == false %>
+                <div class="row justify-content-center mb-2">
+                  <%= link_to "本人確認の登録をしてください", edit_member_path(current_member), class: "btn btn-success" %>
+                </div>
+                <div class="row justify-content-center mb-4">
+                  依頼を受けるには本人確認の登録が必要です
+                </div>
+              <% end %>
+
             <% end %>
           <% end %>
         <% end %>
