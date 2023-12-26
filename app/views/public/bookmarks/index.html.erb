@@ -2,23 +2,42 @@
   <div class="row mt-3">
     <h3>ブックマーク一覧（全<%= @bookmarks_count %>件）</h3>
   </div>
-
+    <!--ブックマークはあるか-->
     <% if @bookmarks.present? %>
       <div class="row m-xl-2">
+        <!--１つずつ取り出して表示-->
         <% @bookmarks.each do |bookmark| %>
           <div class="col-3 p-xl-3 mb-3">
-            <%= link_to request_path(bookmark.request) do %>
-              <%= image_tag(bookmark.request.cats.first.get_image,size: "230x180") %>
-            <% end %>
-            <br>
-            <% if bookmark.request.is_complete == true %>
-              <div class="text-danger"><b>終了</b></div>
-              <%= bookmark.request.season %><br>
-              <%= bookmark.request.days %>日間
+            <!--ブックマークした依頼の猫はあるか-->
+            <% if bookmark.request.cats.present? %>
+              <!--ある場合１匹目の画像のリンクを表示-->
+              <%= link_to request_path(bookmark.request) do %>
+                <%= image_tag(bookmark.request.cats.first.get_image,size: "230x180") %><br>
+              <% end %>
+                <!--都道府県、時期、日数を表示-->
+                <%= bookmark.request.member.prefectures %><br>
+                <%= bookmark.request.season %><br>
+                <%= bookmark.request.days %>日間
+            <!--無い場合-->
             <% else %>
-              <%= bookmark.request.member.prefectures %><br>
-              <%= bookmark.request.season %><br>
-              <%= bookmark.request.days %>日間
+              <!--default-image.jpgを表示-->
+              <%= link_to image_tag(asset_path('default-image.jpg'), size: "230x180"), request_path(bookmark.request.id) %><br>
+            <% end %>
+            <!--ブックマークした依頼の猫はあるか。終了を優先したいので画像と別でif文を記述-->
+            <% if bookmark.request.cats.present? %>
+            <!--ない場合-->
+            <% else %>
+            <!--依頼募集が完了している場合-->
+              <% if bookmark.request.is_complete == true %>
+                <div class="text-danger"><b>終了</b></div>
+                <%= bookmark.request.season %><br>
+                <%= bookmark.request.days %>日間
+              <!--していない場合-->
+              <% else %>
+                <div class="text-danger"><b>猫のデータがありません</b></div>
+                <%= bookmark.request.season %><br>
+                <%= bookmark.request.days %>日間
+              <% end %>
             <% end %>
           </div>
         <% end %>

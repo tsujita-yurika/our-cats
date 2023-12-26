@@ -1,4 +1,6 @@
 class Admin::RequestsController < ApplicationController
+  # before_action set_requestで@requestを準備し共通化する
+  before_action :set_request, only: [:edit, :show, :update, :destroy]
   before_action :authenticate_admin!
 
   def index
@@ -7,33 +9,28 @@ class Admin::RequestsController < ApplicationController
   end
 
   def show
-    @request = Request.find(params[:id])
     @my_cats = @request.cats
   end
 
   def edit
-    @request = Request.find(params[:id])
     @member = @request.member
     @my_cats = @member.cats
   end
 
   def update
-    request = Request.find(params[:id])
-    request.update(request_params)
-    redirect_to admin_request_path(request.id), notice: "更新しました。"
+    @request.update(request_params)
+    redirect_to admin_request_path(@request.id), notice: "更新しました。"
   end
 
   def destroy
-    request = Request.find(params[:id])
-    request.destroy
+    @request.destroy
     redirect_to admin_requests_path, notice: "削除しました。"
   end
 
   def complete
-    request = Request.find(params[:id])
-    request.is_complete = true
-    request.save
-    redirect_to admin_request_path(request), notice: "募集を終了しました。"
+    @request.is_complete = true
+    @request.save
+    redirect_to admin_request_path(@request), notice: "募集を終了しました。"
   end
 
 
@@ -48,5 +45,8 @@ class Admin::RequestsController < ApplicationController
                                     cat_ids: [] )
   end
 
+  def set_request
+    @request = Request.find(params[:id])
+  end
 
 end

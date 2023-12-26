@@ -4,23 +4,36 @@
   </div>
 
   <div class="row pl-5 ml-4 mb-3">
-    <% @requests.each do |request| %>
-      <div class="col-3 p-xl-2 mb-3">
-        <div>
-          <%= link_to admin_request_path(request.id) do %>
-           <%= image_tag request.member.get_profile_image, size:"170x170" %>
-          <% end %>
+      <% @requests.each do |request| %>
+        <div class="col-3 p-xl-2 mb-3">
+          <div>
+            <%= link_to admin_request_path(request.id) do %>
+              <%= image_tag request.member.get_profile_image, size:"170x170" %>
+            <% end %>
+          </div>
+            <div class="text-danger">
+              <!--依頼募集が完了したら-->
+              <% if request.is_complete == true %>
+                <div>
+                  <!--ボールドタグで太字に-->
+                  <b>終了</b>
+                </div>
+              <!--してない場合-->
+              <% else %>
+                <!--猫はあるか-->
+                <% if request.cats.present? %>
+                <!--ない場合-->
+                <% else %>
+                  <div>
+                    <b>猫のデータがありません</b>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          <div><%= request.member.prefectures %></div>
+          <div><%=  request.season %></div>
         </div>
-        <div class="text-danger">
-          <% if request.is_complete == true %>
-          <!--ボールドタグで太字に-->
-            <b>終了</b>
-          <% end %>
-        </div>
-        <div><%= request.member.prefectures %></div>
-        <div><%=  request.season %></div>
-      </div>
-    <% end %>
+      <% end %>
   </div>
     <div class="d-flex justify-content-center">
       <%= paginate @requests %>

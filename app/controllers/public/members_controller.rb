@@ -1,5 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
+  # ゲストログインはプロフィール編集を制限
   before_action :ensure_guest_member, only: [:edit]
 
   def show

@@ -1,4 +1,6 @@
 class Public::CatsController < ApplicationController
+  # before_action set_catで@catを準備し共通化する
+  before_action :set_cat, only: [:edit, :show, :update, :destroy]
   before_action :is_cat_matching_login_member, only: [:edit, :update, :destroy]
 
   def new
@@ -11,20 +13,18 @@ class Public::CatsController < ApplicationController
   end
 
   def show
-    @cat = Cat.find(params[:id])
     if @cat.member.is_active == false
       render_404
     end
   end
 
   def edit
-    @cats = Cat.find(params[:id])
   end
 
   def update
-    cat = Cat.find(params[:id])
-    cat.update(cat_params)
-    redirect_to cat_path(cat.id), notice: "更新しました。"
+    ##cat = Cat.find(params[:id])
+    @cat.update(cat_params)
+    redirect_to cat_path(@cat.id), notice: "更新しました。"
   end
 
   def create
@@ -39,8 +39,7 @@ class Public::CatsController < ApplicationController
   end
 
   def destroy
-    cat = Cat.find(params[:id])
-    cat.destroy
+    @cat.destroy
     redirect_to member_path(current_member.id), notice: "削除しました。"
   end
 
@@ -55,9 +54,12 @@ class Public::CatsController < ApplicationController
                                 :image)
   end
 
+  def set_cat
+    @cat = Cat.find(params[:id])
+  end
+
   def is_cat_matching_login_member
-    cat = Cat.find(params[:id])
-    unless cat.member == current_member
+    unless @cat.member == current_member
       flash[:notice] = "この猫の編集は許可されていません。"
       redirect_to root_path and return
     end

@@ -1,4 +1,6 @@
 class Admin::CatsController < ApplicationController
+  # before_action set_catで@catを準備し共通化する
+  before_action :set_cat, only: [:edit, :show, :update, :destroy]
   before_action :authenticate_admin!
 
   def index
@@ -7,22 +9,18 @@ class Admin::CatsController < ApplicationController
   end
 
   def show
-    @cat = Cat.find(params[:id])
   end
 
   def edit
-    @cats = Cat.find(params[:id])
   end
 
   def update
-    cat = Cat.find(params[:id])
-    cat.update(cat_params)
-    redirect_to admin_cat_path(cat.id), notice: "更新しました。"
+    @cat.update(cat_params)
+    redirect_to admin_cat_path(@cat.id), notice: "更新しました。"
   end
 
   def destroy
-    cat = Cat.find(params[:id])
-    cat.destroy
+    @cat.destroy
     redirect_to admin_cats_path, notice: "削除しました。"
   end
 
@@ -35,6 +33,10 @@ class Admin::CatsController < ApplicationController
                                 :category_id,
                                 :introduction,
                                 :image)
+  end
+
+  def set_cat
+    @cat = Cat.find(params[:id])
   end
 
 end

@@ -96,21 +96,35 @@
                   <tr>
                     <% request_group.each do |request| %>
                       <td>
-                        <!--依頼した猫があれば-->
+                        <!--依頼した猫はあるか-->
                         <% if request.cats.present? %>
+                        <!--依頼した1匹目の猫の画像のリンクを表示-->
                           <% cat = request.cats.first %>
                           <%= link_to image_tag(cat.image, size: "180x130"), request_path(request.id) %><br>
-                          <!--依頼が完了したら-->
-                            <% if request.is_complete == true %>
-                              <div class="text-danger">
-                                <b>終了</b>
-                              </div>
-                              <%= request.season %>
-                            <% else %>
-                              <%= cat.name %><br>
-                              <%= request.season %>
-                            <% end %>
+                        <!--ない場合-->
                         <% else %>
+                        <!--default-image.jpgを表示-->
+                          <%= link_to image_tag(asset_path('default-image.jpg'), size: "180x130"), request_path(request.id) %><br>
+                        <% end %>
+
+                        <!--依頼募集が完了したら-->
+                        <% if request.is_complete == true %>
+                          <div class="text-danger">
+                            <b>終了</b>
+                          </div>
+                          <%= request.season %>
+                        <!--してない場合-->
+                        <% else %>
+                        <!--依頼した猫があるか-->
+                          <% if request.cats.present? %>
+                          <!--猫の名前、時期を表示-->
+                            <%= cat.name %><br>
+                            <%= request.season %>
+                          <!--ない場合-->
+                          <% else %>
+                            <%= "猫のデータがありません。" %><br>
+                            <%= request.season %>
+                          <% end %>
                         <% end %>
                       </td>
                     <% end %>

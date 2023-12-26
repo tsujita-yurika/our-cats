@@ -22,8 +22,17 @@ end
 
   protected
 
+  # デバイスログインの入力カラム
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up,keys: [:name, :sex, :encrypted_password, :prefectures, :family, :identification_status, :is_active])
+    devise_parameter_sanitizer.permit(:sign_up,keys: [:name,
+                                                      :sex,
+                                                      :encrypted_password,
+                                                      :prefectures,
+                                                      :real_name,
+                                                      :phone_number,
+                                                      :address, :image,
+                                                      :identification_status,
+                                                      :is_active])
   end
 
 end

@@ -21,6 +21,9 @@ class Member < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true
   validates :prefectures, presence: true
+  validates :real_name, presence: true
+  validates :phone_number, presence: true
+  validates :address, presence: true
 
 # 現在ログインしているmemberがrequestをブックマークしているかどうかを判定
   def bookmarked?(bookmark_request)

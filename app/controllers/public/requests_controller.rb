@@ -1,5 +1,7 @@
 class Public::RequestsController < ApplicationController
-before_action :is_request_matching_login_member, only: [:edit, :update, :destroy]
+  # before_action set_requestで@requestを準備し共通化する
+  before_action :set_request, only: [:edit, :show, :update, :destroy]
+  before_action :is_request_matching_login_member, only: [:edit, :update, :destroy]
 
   def new
     @request = Request.new
@@ -12,7 +14,6 @@ before_action :is_request_matching_login_member, only: [:edit, :update, :destroy
   end
 
   def show
-    @request = Request.find(params[:id])
     if member_signed_in?
       @bookmark = Bookmark.find_by(request_id: @request.id, member_id: current_member.id)
     end
@@ -35,14 +36,12 @@ before_action :is_request_matching_login_member, only: [:edit, :update, :destroy
   end
 
   def edit
-    @request = Request.find(params[:id])
     @my_cats = current_member.cats
   end
 
   def update
-    request = Request.find(params[:id])
-    request.update(request_params)
-    redirect_to request_path(request.id), notice: "更新しました。"
+    @request.update(request_params)
+    redirect_to request_path(@request.id), notice: "更新しました。"
   end
 
   def create
@@ -57,10 +56,9 @@ before_action :is_request_matching_login_member, only: [:edit, :update, :destroy
 
   # 削除を依頼完了にカスタム
   def destroy
-    request = Request.find(params[:id])
-    request.is_complete = true
-    request.save
-    redirect_to member_path(current_member.id), notice: "募集を終了しました。"
+    @request.is_complete = true
+    @request.save
+    redirect_to request_path(@request.id), notice: "募集を終了しました。"
   end
 
   private
@@ -69,9 +67,12 @@ before_action :is_request_matching_login_member, only: [:edit, :update, :destroy
     params.require(:request).permit(:season, :days, :location, :memo, cat_ids: [] )
   end
 
+  def set_request
+    @request = Request.find(params[:id])
+  end
+
   def is_request_matching_login_member
-    request = Request.find(params[:id])
-    unless request.member == current_member
+    unless @request.member == current_member
       flash[:notice] = "この依頼の編集は許可されていません。"
       redirect_to root_path and return
     end
