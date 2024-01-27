@@ -20,10 +20,10 @@
 * [テーブル定義書](https://docs.google.com/spreadsheets/d/1wMPPBu_9_Kj5kujr0B_fwVo7sOw1IAGh/edit#gid=136342688)
 
 * ER図
-<img width="470" alt="32aa277e37d1c591a5d79d5ece189d20" src="https://github.com/tsujita-yurika/our-cats/assets/143866084/3996dc0f-2f7e-4a69-b9c1-4f6973ffbb6b">
+<img width="800" alt="32aa277e37d1c591a5d79d5ece189d20" src="https://github.com/tsujita-yurika/our-cats/assets/143866084/3996dc0f-2f7e-4a69-b9c1-4f6973ffbb6b">
 
 * AWS構成図
-<img width="275" alt="63190ac3b4511a0b33c504a44d9c5946" src="https://github.com/tsujita-yurika/our-cats/assets/143866084/a3edb056-b1e9-4fb9-9faf-b3cfbf68fd50">
+<img width="350" alt="63190ac3b4511a0b33c504a44d9c5946" src="https://github.com/tsujita-yurika/our-cats/assets/143866084/a3edb056-b1e9-4fb9-9faf-b3cfbf68fd50">
 
 ## 開発環境
 - OS：Linux(CentOS)
