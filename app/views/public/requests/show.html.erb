@@ -2,6 +2,7 @@
   <div class="row mt-3">
     <h3>依頼詳細</h3>
     <span>　　</span>
+      <!--ログインしてたら-->
       <% if member_signed_in? %>
         <div id = "bookmark">
           <%= render "public/bookmarks/bookmark", request: @request, bookmark: @bookmark %>

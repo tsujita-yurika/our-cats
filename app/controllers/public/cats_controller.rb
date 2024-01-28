@@ -22,7 +22,6 @@ class Public::CatsController < ApplicationController
   end
 
   def update
-    ##cat = Cat.find(params[:id])
     @cat.update(cat_params)
     redirect_to cat_path(@cat.id), notice: "更新しました。"
   end

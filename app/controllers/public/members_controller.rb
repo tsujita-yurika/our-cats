@@ -18,6 +18,10 @@ class Public::MembersController < ApplicationController
 
   def edit
     @member = Member.find(params[:id])
+    #他のメンバーがログインできないようにする
+    unless @member.id == current_member.id
+      redirect_to member_path(current_member)
+    end
   end
 
   def update
