@@ -1,5 +1,5 @@
 # Our cats
-![5a68b4ade047de17938ef99c959bc127](https://github.com/tsujita-yurika/our-cats/assets/143866084/3a4681ea-d5d6-4a51-b841-28956b4175ce)
+![f63b8d4481532552f94f50f66463f861](https://github.com/tsujita-yurika/our-cats/assets/143866084/d088cfb8-8549-438a-bde6-1eea5553a74c)
 
 ## サイト概要
 ### サイトテーマ
